@@ -13,6 +13,19 @@ Here you should be discussing how you will be delegating tasks among team member
 as protocols and processes you will use to keep the project organised. Keep it updated 
 throughout the duration of the project. By the final submission it should contain 
 a summary of who completed what. (You should of course remove and replace this paragraph!)
+___
+
+Protocols/Plans
+* Weekly Sprints - First sprint starts on the 16/09/22
+* Create features, bugs, etc. in 'Issues', label and assign accordingly
+* Tasks to be delegated during the weekly meetings - Friday, 4pm to 5pm
+* Each feature is in their own branch
+* Pull request reviews
+* Documentation in Markdown in the docs/ folder (to be created) [There's no Wiki available in this repository]
+
+Team communication is done via the team's discord server.
+
+-- Need to include who is responsible for completing what --
 
 <!-- [[EndTeamworkPlan]] PLEASE LEAVE THIS LINE UNTOUCHED -->
 
