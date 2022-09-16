@@ -31,10 +31,10 @@ public static class SubmissionInfo
     // Write a brief blurb of your game, no more than 200 words. Again, ensure
     // this is final by the video milestone deadline.
     public static readonly string GameBlurb = 
-@"Write a blurb of your game here in plain text. This is a
-multiline verbatim string,
-so don't worry about keeping it to one line, just be sure not to indent it.
-// TO BE DONE BEFORE FRIDAY //
+@"Paving the Way is an exciting first-person 3D strategic running game. 
+The aim of this game is to survive each timed level by making it to a goal point at the end of each map. 
+Equipped with a gun that fires out blocks to aid your quest, you must use your allocated amount of blocks wisely to pave a path towards the end goal, whilst collecting coins to improve your character's abilities. 
+It is currently playable in two modes: levelled and endless.
 ";
     
     // By the gameplay video milestone deadline this should be a direct link
