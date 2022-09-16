@@ -20,10 +20,36 @@
 Team communication is done via the team's discord server.
 
 ### Team Member Responsibilties
-**Caitlin Grant**
-**Elizabeth Wong**
-**Benjamin Yi**
-**Sean Maher**
+After brainstorming the most important aspects to start off our game, we have settled on two major categories which can be further broken down: Feels Good and Plays Good.
+
+Feels Good is broken down into UI/UX, Custom Shaders, and Gameplay Mechanics/Ideas.
+
+Plays Good is broken down into Character Movement and Level Generation.
+
+Currently, we have assigned the following down below to each team member. Unassigned work is to be delegated and/or expanded upon every sprint.  Each team member can help the other, but what is listed below is their main responsibility.
+
+**Caitlin Grant - Feels Good**
+- UI -> Start menu, Shop, Pause, Settings, Exit Menu, Resolution
+- Additional game mechanics
+
+**Elizabeth Wong - Plays Good**
+- Character Movement (Running, Jumping, etc.)
+
+**Benjamin Yi - Plays Good**
+- Object placement and controls
+
+**Sean Maher - Feels Good**
+- Level Design -> How each level is laid out
+- Additional game mechanics
+
+**Unassigned AND/OR Potential Work**
+- Saving and loading files
+- Game currency
+- Powerups
+- Endless Mode
+- Custom Shaders 1 & 2
+- Procedural Generation
+- Storage Format
 
 <!-- [[EndTeamworkPlan]] PLEASE LEAVE THIS LINE UNTOUCHED -->
 
