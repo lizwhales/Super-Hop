@@ -9,23 +9,21 @@
 
 <!-- Fill this section by Milestone 1 (see specification for details) -->
 
-Here you should be discussing how you will be delegating tasks among team members, as well
-as protocols and processes you will use to keep the project organised. Keep it updated 
-throughout the duration of the project. By the final submission it should contain 
-a summary of who completed what. (You should of course remove and replace this paragraph!)
-___
-
-Protocols/Plans
-* Weekly Sprints - First sprint starts on the 16/09/22
-* Create features, bugs, etc. in 'Issues', label and assign accordingly
-* Tasks to be delegated during the weekly meetings - Friday, 4pm to 5pm
-* Each feature is in their own branch
-* Pull request reviews
-* Documentation in Markdown in the docs/ folder (to be created) [There's no Wiki available in this repository]
+### Protocols and Plans
+* Sprints will be held weekly, with the first starting on the 16th of September.
+* Team :ok_hand: will be using GitHub's issues to create tickets for features, bugs, and other content required for this project.
+* Tasks are to be delegated during the weekly meetings being held on Fridays, 4:00PM to 5:00PM. 
+* The previous week's work should be completed by the time the sprint is done (the following Friday), any bugs/blockers withstanding.
+* Every feature should be developed in their own branch, with pull requests requiring reviews and approval from fellow team members.
+* Documentation for this project will be written in Markdown and located in the /docs folder, as there is no Wiki available for this type of repository.
 
 Team communication is done via the team's discord server.
 
--- Need to include who is responsible for completing what --
+### Team Member Responsibilties
+**Caitlin Grant**
+**Elizabeth Wong**
+**Benjamin Yi**
+**Sean Maher**
 
 <!-- [[EndTeamworkPlan]] PLEASE LEAVE THIS LINE UNTOUCHED -->
 
@@ -44,7 +42,7 @@ For more details you can find a guide [here](https://docs.github.com/en/github/w
 * [Code Snipets](#code-snippets)
 
 ### Game Summary
-_Exciting title_ is a first-person shooter (FPS) set in...
+_Paving the Way_ is an exciting first-person 3D strategic running game. The aim of this game is to survive each timed level by making it to a goal point at the end of each map. Equipped with a gun that fires out blocks to aid your quest, you must use your allocated amount of blocks wisely to pave a path towards the end goal, whilst collecting coins to improve your character's abilities. It is currently playable in two modes: levelled and endless.
 
 ### Technologies
 Project is created with:
