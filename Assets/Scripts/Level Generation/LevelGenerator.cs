@@ -15,8 +15,8 @@ public class LevelGenerator : MonoBehaviour
     public Transform goal;
 
     // declaring identifiers for different objects in the text file
-    public const string sVoid = "0";
-    public const string sTile = "1";
+    public const string sVoid = "-";
+    public const string sTile = "x";
     public const string sGoal = "G";
 
 
