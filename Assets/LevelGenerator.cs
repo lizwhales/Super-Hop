@@ -43,7 +43,7 @@ public class LevelGenerator : MonoBehaviour
             for (int x = 0; x < level[0].Length; x++) {
                 switch (level[z][x]){
                 case sTile:
-                    Instantiate(cube, new Vector3(x, 0, z), Quaternion.identity);
+                    Instantiate(cube, new Vector3(x*4, 0, z*4), Quaternion.identity);
                     break;
                 case sGoal:
                     Instantiate(goal, new Vector3(x, 0, z), Quaternion.identity);
