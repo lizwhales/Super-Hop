@@ -31,7 +31,9 @@ public class PlayerMovement : MonoBehaviour
     private void Update(){
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, Ground);
+        
         PlayerInput();
+        LimitSpeed();
 
         // ground drag
         if(grounded){
@@ -55,6 +57,18 @@ public class PlayerMovement : MonoBehaviour
         // walk in direction that player is facing
         moveDirection = orientation.forward * upDown + orientation.right * leftRight;
         rb.AddForce(moveDirection.normalized * speed * 10f, ForceMode.Force);
+    }
+
+    // limit movement bc player is flying all over the plce
+    private void LimitSpeed(){
+        Vector3 flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        // limit if movespeed goes over 
+        // calc real max velocity + update 
+        if(flatVelocity.magnitude > speed){
+            Vector3 limitedVelocity = flatVelocity.normalized * speed;
+            rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z);   
+        }
     }
  
 }
