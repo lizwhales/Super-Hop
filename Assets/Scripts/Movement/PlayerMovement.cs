@@ -28,6 +28,13 @@ public class PlayerMovement : MonoBehaviour
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
 
+    // new stuff here
+    public MovementState state;
+    public enum MovementState{
+        walljumping
+    }
+
+    public bool walljumping;
     Vector3 moveDirection;
     Rigidbody rb;
 
@@ -70,6 +77,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // new stuff
+
+    public void StateHandler(){
+        if(walljumping){
+            state = MovementState.walljumping;
+        }
+        
+    }
     private void MovePlayer(){
 
         // walk in direction that player is facing
