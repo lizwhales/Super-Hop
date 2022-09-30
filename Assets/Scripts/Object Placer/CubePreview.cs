@@ -23,7 +23,6 @@ public class CubePreview : MonoBehaviour
     void Start()
     {
         CoinCounter.addCoins(5);
-        Debug.Log("Added 5 coins");
     }
 
     // Update is called once per frame
@@ -46,10 +45,7 @@ public class CubePreview : MonoBehaviour
                     playerCubeInstance = Instantiate(PlayerCube, previewPlayerCubeInstance.transform.position, previewPlayerCubeInstance.transform.rotation);
                     Destroy(previewPlayerCubeInstance);
                     instantiated = false;
-                    Debug.Log("Spent 1 coin");
-                    Debug.Log(CoinCounter.coins + " coins remaining.");
                 } else {
-                    Debug.Log("Not enough coins");
                     Destroy(previewPlayerCubeInstance);
                     instantiated = false;
                 }
