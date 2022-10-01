@@ -92,10 +92,10 @@ public class LevelGenerator : MonoBehaviour
                         break;
                     case sCoinBox:
                         Instantiate(cube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
-                        Instantiate(coin, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING + 1.5f, z * TILE_WIDTH), Quaternion.identity);
+                        Instantiate(coin, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING + 1.5f, z * TILE_WIDTH), coin.transform.rotation);
                         break;
                     case sCoin:
-                        Instantiate(coin, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING + 1.5f, z * TILE_WIDTH), Quaternion.identity);
+                        Instantiate(coin, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING + 1.5f, z * TILE_WIDTH), coin.transform.rotation);
                         break;
                     case sGoal:
                         Instantiate(goal, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
