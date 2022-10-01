@@ -551,6 +551,10 @@ PrefabInstance:
       value: 97.8
       objectReference: {fileID: 0}
     - target: {fileID: 7949915852884162284, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
+      propertyPath: near clip plane
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949915852884162284, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
       propertyPath: m_projectionMatrixMode
       value: 1
       objectReference: {fileID: 0}
