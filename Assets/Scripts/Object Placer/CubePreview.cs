@@ -38,7 +38,7 @@ public class CubePreview : MonoBehaviour
             ray = Camera.main.ViewportPointToRay(centerPointer);
             if (Physics.Raycast(ray, out hit, maxBuildDistance, LayerMask.GetMask("Ground"))) {
                 previewPlayerCubeInstance.transform.position = hit.point + Vector3.Scale(hit.normal, cubeOffsets);
-            }
+            } 
 
             if (Input.GetKeyDown(confirmBuild)) {
                 playerCubeInstance = Instantiate(PlayerCube, previewPlayerCubeInstance.transform.position, previewPlayerCubeInstance.transform.rotation);

@@ -37,15 +37,23 @@ public class LevelGenerator : MonoBehaviour
     public Transform player;
     public Transform start;
     public Transform goal;
+    public Transform slowCube;
+    public Transform iceCube;
+    public Transform coin;
 
     // declaring identifiers for different objects in the text file
     public const string sVoid = "-";
     public const string sTile = "x";
     public const string sGoal = "G";
+    public const string sStart = "S";
     public const string sWall = ">";
+    public const string sSlow = "s";
+    public const string sIce = "i";
+    public const string sCoinBox = "C";
+    public const string sCoin = "c";
 
 
-    public const int numLayers = 6;
+    public const int NUM_LAYERS = 6;
     // layer 0 to 5 :
     // layer 0 -> y = 0 level
     // layer 1 -> y = 1 level
@@ -82,9 +90,26 @@ public class LevelGenerator : MonoBehaviour
                     case sTile:
                         Instantiate(cube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
                         break;
+                    case sCoinBox:
+                        Instantiate(cube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
+                        Instantiate(coin, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING + 1.5f, z * TILE_WIDTH), Quaternion.identity);
+                        break;
+                    case sCoin:
+                        Instantiate(coin, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING + 1.5f, z * TILE_WIDTH), Quaternion.identity);
+                        break;
                     case sGoal:
                         Instantiate(goal, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
                         break;
+                    case sSlow:
+                        Instantiate(slowCube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
+                        break;
+                    case sIce:
+                        Instantiate(iceCube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
+                        break;
+                    case sStart:
+                        Instantiate(cube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
+                        Instantiate(player, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING + 2f, z * TILE_WIDTH), Quaternion.identity);
+                        break;    
                     case sVoid:
                         break; 
                     } 
@@ -127,8 +152,8 @@ public class LevelGenerator : MonoBehaviour
     void Start()
     {
         int i = 0;
-        for (i = 0; i < numLayers; i++){
-            generateLayer(i, "Assets/test.txt");
+        for (i = 0; i < NUM_LAYERS; i++){
+            generateLayer(i, "Assets/Levels/test.txt");
         }
     }
     
