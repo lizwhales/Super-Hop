@@ -153,7 +153,7 @@ public class LevelGenerator : MonoBehaviour
     {
         int i = 0;
         for (i = 0; i < NUM_LAYERS; i++){
-            generateLayer(i, "Assets/Levels/test.txt");
+            generateLayer(i, "Assets/Levels/slow_level.txt");
         }
     }
     
