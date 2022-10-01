@@ -14,7 +14,7 @@ public class MusicControlScript : MonoBehaviour
     public AudioSource bgAudio;
     public AudioSource[] sfxAudio;
 
-    private void Awake()
+    private void OnSceneLoaded()
     {
         DontDestroyOnLoad(this.gameObject);
 
