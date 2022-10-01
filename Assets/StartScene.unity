@@ -757,7 +757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5138792864928648766, guid: 90cf2aa6d768f7a49a2d49ac7f16948d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5138792864928648766, guid: 90cf2aa6d768f7a49a2d49ac7f16948d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -766,22 +766,26 @@ PrefabInstance:
     - target: {fileID: 5138792864928648766, guid: 90cf2aa6d768f7a49a2d49ac7f16948d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1975848539}
     - target: {fileID: 5138792864928648766, guid: 90cf2aa6d768f7a49a2d49ac7f16948d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 5138792864928648766, guid: 90cf2aa6d768f7a49a2d49ac7f16948d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Save
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 5138792864928648766, guid: 90cf2aa6d768f7a49a2d49ac7f16948d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: SliderControl, Assembly-CSharp
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5138792864928648766, guid: 90cf2aa6d768f7a49a2d49ac7f16948d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5138792864928648766, guid: 90cf2aa6d768f7a49a2d49ac7f16948d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5138792865506243561, guid: 90cf2aa6d768f7a49a2d49ac7f16948d, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1310,19 +1314,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1815159318644521862, guid: 8c793c46c806732468e1c1bd33b47819, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1815159318644521862, guid: 8c793c46c806732468e1c1bd33b47819, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1921221408}
     - target: {fileID: 1815159318644521862, guid: 8c793c46c806732468e1c1bd33b47819, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: MainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 1815159318644521862, guid: 8c793c46c806732468e1c1bd33b47819, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UI, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1815159318644521862, guid: 8c793c46c806732468e1c1bd33b47819, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
