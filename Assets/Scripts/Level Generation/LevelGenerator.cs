@@ -13,11 +13,13 @@ public class LevelGenerator : MonoBehaviour
     public Transform player;
     public Transform start;
     public Transform goal;
+    public Transform coin;
 
     // declaring identifiers for different objects in the text file
     public const string sVoid = "-";
     public const string sTile = "x";
     public const string sGoal = "G";
+    public const string sCoin = "c";
 
 
     string[][] readFile(string file){
@@ -50,7 +52,11 @@ public class LevelGenerator : MonoBehaviour
                     break;
                 case sVoid:
                     break; 
-                } 
+                case sCoin:
+                    // TODO: move down
+                    Instantiate(coin, new Vector3(x*4, 2, z*4), coin.transform.rotation);
+                    break; 
+                }
             
             }        
         }
