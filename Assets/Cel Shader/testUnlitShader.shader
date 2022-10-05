@@ -238,7 +238,10 @@ Shader "Unlit/testUnlitShader"
                 float glowIntensity = smoothstep(_GlowAmount - 0.01, _GlowAmount + 0.01, glowDot);
                 float4 glow = glowIntensity * _GlowColor;
 
+                // old glow
+                //float4 glow = glowDot * _GlowColor;
 
+                // now looks like a rim
                 return _BaseColor * sample * lightIntensity + spec + glow; 
                 
 
