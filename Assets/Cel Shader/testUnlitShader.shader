@@ -14,6 +14,7 @@ Shader "Unlit/testUnlitShader"
         _Shinniness("Shinniness", Float) = 2
 
         _GlowColor("Glow Color", Color) = (1, 1, 1, 1)
+        _GlowAmount("Glow Amount", Range(0, 1)) = 0.5
      
     
     }
@@ -182,6 +183,7 @@ Shader "Unlit/testUnlitShader"
             float4 _SpecColor;
 
             float4 _GlowColor;
+            float _GlowAmount;
          
     
             // vertex shader
@@ -233,7 +235,10 @@ Shader "Unlit/testUnlitShader"
                 
                 // glow calcs
                 float glowDot = 1 - dot(viewDir, normal);
-                float4 glow = glowDot * _GlowColor;
+                float glowIntensity = smoothstep(_GlowAmount - 0.01, _GlowAmount + 0.01, glowDot);
+                float4 glow = glowIntensity * _GlowColor;
+
+
                 return _BaseColor * sample * lightIntensity + spec + glow; 
                 
 
