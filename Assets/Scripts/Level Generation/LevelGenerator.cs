@@ -11,6 +11,7 @@ public class LevelGenerator : MonoBehaviour
 
     // level constants
     public const int LAYER_SPACING = 2;
+    public const int LEVEL_HEIGHT = 4;
     private const int LEVEL_WIDTH = 5;
 
     // tile constants
@@ -51,8 +52,6 @@ public class LevelGenerator : MonoBehaviour
     public const string sIce = "i";
     public const string sCoinBox = "C";
     public const string sCoin = "c";
-
-
     public const int NUM_LAYERS = 6;
     // layer 0 to 5 :
     // layer 0 -> y = 0 level
@@ -82,7 +81,15 @@ public class LevelGenerator : MonoBehaviour
     }
     void generateLayer (int layer, string file){
         string[][] curLayer = readLayer(layer, file);
-        if (layer < 4) {
+        if (layer < LEVEL_HEIGHT) {
+            // Create front and back walls
+            for (int x = 0; x < curLayer[0].Length; x++) {
+                for (int y = 0; y < LEVEL_HEIGHT; y++) {
+                    Instantiate(cube, new Vector3(x * TILE_WIDTH, y * LAYER_SPACING, -1 * TILE_WIDTH), Quaternion.identity);
+                    Instantiate(cube, new Vector3(x * TILE_WIDTH, y * LAYER_SPACING, (curLayer.Length + 1) * TILE_WIDTH), Quaternion.identity);
+                }
+            }
+
             // create a layer based on the text file
             for (int z = 0; z < curLayer.Length - 1; z++) { // current layers length - 1 to remove empty field between layers
                 for (int x = 0; x < curLayer[0].Length; x++) {
@@ -113,7 +120,8 @@ public class LevelGenerator : MonoBehaviour
                     case sVoid:
                         break; 
                     } 
-                
+                    Instantiate(cube, new Vector3(x * TILE_WIDTH, 0, z * TILE_WIDTH), Quaternion.identity);
+                    Instantiate(cube, new Vector3(x * TILE_WIDTH, 7, z * TILE_WIDTH), Quaternion.identity);
                 }        
             }
         } else {
@@ -153,7 +161,7 @@ public class LevelGenerator : MonoBehaviour
     {
         int i = 0;
         for (i = 0; i < NUM_LAYERS; i++){
-            generateLayer(i, "Assets/Levels/slow_level.txt");
+            generateLayer(i, "Assets/Levels/test.txt");
         }
     }
     
