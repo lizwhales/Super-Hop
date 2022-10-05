@@ -96,26 +96,17 @@ Shader "Unlit/testUnlitShader"
                 }
                 // sample the texture
                 float4 sample = tex2D(_MainTex, i.uv);
-                // Base COlor
+                // Base Color
                 // return _BaseColor;
                 // Cell Shade
                 
-                //return _BaseColor * sample * lightIntensity;
+                return _BaseColor * sample * lightIntensity;
                 // Normal shading
-                // return _BaseColor * sample * NdotL;
+                //return _BaseColor * sample * NdotL;
 
                 // add emission -> Put this in another pass/function, as this function operates on Shadow the Hedgehog
                 // return _BaseColor * sample * (_Emission + lightIntensity);
 
-                 float3 viewDir = normalize(i.viewDir);
-                 float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir);
-                 float NdotH = dot(normal, halfVector);
-
-                 float specIntensity = pow(NdotH * lightIntensity, _Shinniness * _Shinniness);
-                 float specIntensitySmooth = smoothstep(0.005, 0.01, specIntensity);
-                 float4 spec = specIntensitySmooth * _SpecColor;
-                 return _BaseColor * sample * spec; 
-                //return _BaseColor * sample * spec; 
             }
             ENDCG
         }

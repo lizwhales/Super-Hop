@@ -1,4 +1,4 @@
-Shader "Custom/PostProcessSHader"
+Shader "Custom/PostProcessShader"
 {
     Properties
     {
@@ -41,10 +41,11 @@ Shader "Custom/PostProcessSHader"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                fixed4 col = tex2D(_MainTex, i.uv);
-                // just invert the colors
-                col.rgb = 1 - col.rgb;
-                return col;
+                return tex2D(_MainTex, i.uv) * half4(1,0,0,0);
+                // fixed4 col = tex2D(_MainTex, i.uv);
+                // // just invert the colors
+                // col.rgb = 1 - col.rgb;
+                // return col;
             }
             ENDCG
         }
