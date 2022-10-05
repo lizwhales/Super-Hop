@@ -21,6 +21,8 @@ public class LevelGenerator : MonoBehaviour
     // wall constants
     public const int WALL_LENGTH = 4;
     public const int WALL_HEIGHT = 2;
+    public const int WALL_WIDTH = 1;
+    
     public const float LEFT_WALL_X_OFFSET = -2.5f;
     public const float RIGHT_WALL_X_OFFSET = LEVEL_WIDTH * TILE_WIDTH - 1.5f;
     public const float WALL_Y_OFFSET = -0.5f;
@@ -35,12 +37,15 @@ public class LevelGenerator : MonoBehaviour
    
     public Transform cube;
     public Transform wall;
+    public Transform wallBF;
+    public Transform floor;
     public Transform player;
     public Transform start;
     public Transform goal;
     public Transform slowCube;
     public Transform iceCube;
     public Transform coin;
+    
 
     // declaring identifiers for different objects in the text file
     public const string sVoid = "-";
@@ -82,13 +87,7 @@ public class LevelGenerator : MonoBehaviour
     void generateLayer (int layer, string file){
         string[][] curLayer = readLayer(layer, file);
         if (layer < LEVEL_HEIGHT) {
-            // Create front and back walls
-            for (int x = 0; x < curLayer[0].Length; x++) {
-                for (int y = 0; y < LEVEL_HEIGHT; y++) {
-                    Instantiate(cube, new Vector3(x * TILE_WIDTH, y * LAYER_SPACING, -1 * TILE_WIDTH), Quaternion.identity);
-                    Instantiate(cube, new Vector3(x * TILE_WIDTH, y * LAYER_SPACING, (curLayer.Length + 1) * TILE_WIDTH), Quaternion.identity);
-                }
-            }
+            
 
             // create a layer based on the text file
             for (int z = 0; z < curLayer.Length - 1; z++) { // current layers length - 1 to remove empty field between layers
@@ -120,8 +119,8 @@ public class LevelGenerator : MonoBehaviour
                     case sVoid:
                         break; 
                     } 
-                    Instantiate(cube, new Vector3(x * TILE_WIDTH, 0, z * TILE_WIDTH), Quaternion.identity);
-                    Instantiate(cube, new Vector3(x * TILE_WIDTH, 7, z * TILE_WIDTH), Quaternion.identity);
+                    Instantiate(floor, new Vector3(x * TILE_WIDTH, -(LAYER_SPACING * LEVEL_HEIGHT), z * TILE_WIDTH), Quaternion.identity);
+                    Instantiate(floor, new Vector3(x * TILE_WIDTH, LAYER_SPACING * LEVEL_HEIGHT * 2 - 1, z * TILE_WIDTH), Quaternion.identity);
                 }        
             }
         } else {
@@ -136,6 +135,7 @@ public class LevelGenerator : MonoBehaviour
                         case sVoid:
                             break; 
                         } 
+                        Instantiate(wall, new Vector3(LEFT_WALL_X_OFFSET, -(y * WALL_HEIGHT + WALL_Y_OFFSET), z*WALL_LENGTH), Quaternion.identity);
                     }        
                 }
             // create right wall based on the text file
@@ -149,8 +149,19 @@ public class LevelGenerator : MonoBehaviour
                         case sVoid:
                             break; 
                         } 
+                        //extend wall down to the bottom of the level
+                        Instantiate(wall, new Vector3(RIGHT_WALL_X_OFFSET,-(y * WALL_HEIGHT + WALL_Y_OFFSET), z * WALL_LENGTH), Quaternion.identity);
                     
                     }        
+                }
+                // Create front and back walls
+                for (int x = 0; x < LEVEL_WIDTH; x++) {
+                    for (int y = 0; y <= LEVEL_HEIGHT*2; y++) {
+                        Instantiate(wallBF, new Vector3(x * TILE_WIDTH, y * WALL_HEIGHT + WALL_Y_OFFSET, -(TILE_WIDTH/2 + WALL_WIDTH/2)), Quaternion.identity);
+                        Instantiate(wallBF, new Vector3(x * TILE_WIDTH, y * WALL_HEIGHT + WALL_Y_OFFSET, (curLayer.Length - 1) * TILE_WIDTH - 1.5f), Quaternion.identity);
+                        Instantiate(wallBF, new Vector3(x * TILE_WIDTH, -(y * WALL_HEIGHT + WALL_Y_OFFSET), -(TILE_WIDTH/2 + WALL_WIDTH/2)), Quaternion.identity);
+                        Instantiate(wallBF, new Vector3(x * TILE_WIDTH, -(y * WALL_HEIGHT + WALL_Y_OFFSET), (curLayer.Length - 1) * TILE_WIDTH - 1.5f), Quaternion.identity);
+                    }
                 }
             }
             

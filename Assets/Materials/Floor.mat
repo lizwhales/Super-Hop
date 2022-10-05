@@ -68,7 +68,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _MaxDistance: 12
+    - _MaxDistance: 10
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -81,6 +81,6 @@ Material:
     m_Colors:
     - _Color: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FogColour: {r: 1, g: 0, b: 0, a: 0}
-    - _ObjectColour: {r: 0.17702027, g: 0.24535684, b: 0.735849, a: 0}
+    - _FogColour: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+    - _ObjectColour: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

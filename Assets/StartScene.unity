@@ -1553,6 +1553,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5559612456140375685, guid: 7e91117fb9bd90f44a339a88692fdf0a, type: 3}
     - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
+      propertyPath: floor
+      value: 
+      objectReference: {fileID: 3841950682769472846, guid: 9304263ea3a4bc04d88e042d9a1612a4, type: 3}
+    - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
+      propertyPath: wallBF
+      value: 
+      objectReference: {fileID: 3083816078680252936, guid: 0f9912ac952aabe44a81fac81b0c26b3, type: 3}
+    - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: bounceMat
       value: 
       objectReference: {fileID: 7179536254233851419, guid: fe900451904f45144b9db0b63ac31de8, type: 3}
