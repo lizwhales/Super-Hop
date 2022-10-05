@@ -13,6 +13,8 @@ Shader "Unlit/testUnlitShader"
         _SpecColor("Spec Color", Color) = (0.9, 0.9, 0.9, 1)
         _Shinniness("Shinniness", Float) = 2
 
+        _GlowColor("Glow Color", Color) = (1, 1, 1, 1)
+     
     
     }
     SubShader
@@ -52,14 +54,10 @@ Shader "Unlit/testUnlitShader"
                 float2 uv : TEXCOORD0; //texture coordinate
                 float4 vertex : SV_POSITION; // clip space position
                 float3 worldNormal : NORMAL;
-                float3 viewDir : TEXCOORD1;
             };
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-            
-            float _Shinniness;
-            float4 _SpecColor;
             
     
             // vertex shader
@@ -74,8 +72,7 @@ Shader "Unlit/testUnlitShader"
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 // normalize object space to world space
                 o.worldNormal = UnityObjectToWorldNormal(v.normal);
-                o.viewDir = WorldSpaceViewDir(v.vertex);
-               
+
                 return o;
             }
 
@@ -100,22 +97,13 @@ Shader "Unlit/testUnlitShader"
                 // return _BaseColor;
                 // Cell Shade
                 
-                //return _BaseColor * sample * lightIntensity;
+                return _BaseColor * sample * lightIntensity;
                 // Normal shading
-                // return _BaseColor * sample * NdotL;
+                //return _BaseColor * sample * NdotL;
 
                 // add emission -> Put this in another pass/function, as this function operates on Shadow the Hedgehog
                 // return _BaseColor * sample * (_Emission + lightIntensity);
 
-                 float3 viewDir = normalize(i.viewDir);
-                 float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir);
-                 float NdotH = dot(normal, halfVector);
-
-                 float specIntensity = pow(NdotH * lightIntensity, _Shinniness * _Shinniness);
-                 float specIntensitySmooth = smoothstep(0.005, 0.01, specIntensity);
-                 float4 spec = specIntensitySmooth * _SpecColor;
-                 return _BaseColor * sample * spec; 
-                //return _BaseColor * sample * spec; 
             }
             ENDCG
         }
@@ -153,6 +141,102 @@ Shader "Unlit/testUnlitShader"
             fixed4 frag (v2f i) : SV_Target
             {
                 return _OutlineColor;
+            }
+            ENDCG
+        }
+
+        Pass
+        {
+            // Specular Lighting
+           
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            
+            uniform float4 _LightColor0;
+
+            #include "UnityCG.cginc"
+            
+            
+            // Shader inputs
+            struct appdata
+            {
+                float4 vertex : POSITION; // vertex position
+                float2 uv : TEXCOORD0; // texture coordinate
+                float3 normal : NORMAL; 
+            };
+
+            // Vertex to fragment
+            struct v2f
+            {
+                float2 uv : TEXCOORD0; //texture coordinate
+                float4 vertex : SV_POSITION; // clip space position
+                float3 worldNormal : NORMAL;
+                float3 viewDir : TEXCOORD1;
+            };
+
+            sampler2D _MainTex;
+            float4 _MainTex_ST;
+            
+            float _Shinniness;
+            float4 _SpecColor;
+
+            float4 _GlowColor;
+         
+    
+            // vertex shader
+            v2f vert (appdata v)
+            {
+                // position -> clip space = model*view*projection matrix
+                v2f o;
+                // UNITY_MATRIX_MVP -> global variable
+                o.vertex = UnityObjectToClipPos(v.vertex);
+                // pass the texture coordinates
+                //o.uv = v.uv;
+                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                // normalize object space to world space
+                o.worldNormal = UnityObjectToWorldNormal(v.normal);
+                o.viewDir = WorldSpaceViewDir(v.vertex);
+               
+                return o;
+            }
+
+            // for the color
+            float4 _BaseColor;
+            float lightIntensity;
+            // Fragment shader  
+            fixed4 frag (v2f i) : SV_Target
+            {
+                // Blinn-Phong shading vector
+                float3 normal = normalize(i.worldNormal);
+               
+                float NdotL = dot(_WorldSpaceLightPos0, normal);
+                if (NdotL > 0){
+                    lightIntensity = 1;
+                } else {
+                    lightIntensity = 0.3;
+                }
+                // sample the texture
+                float4 sample = tex2D(_MainTex, i.uv);
+
+                // specular lighting 
+                float3 viewDir = normalize(i.viewDir);
+                float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir);
+                float NdotH = dot(normal, halfVector);
+
+                float specIntensity = pow(NdotH * lightIntensity, _Shinniness * _Shinniness);
+                float specIntensitySmooth = smoothstep(0.005, 0.01, specIntensity);
+                float4 spec = specIntensitySmooth * _SpecColor;
+
+                
+                //return _BaseColor * sample * lightIntensity + spec; 
+                
+                // glow calcs
+                float glowDot = 1 - dot(viewDir, normal);
+                float4 glow = glowDot * _GlowColor;
+                return _BaseColor * sample * lightIntensity + spec + glow; 
+                
+
             }
             ENDCG
         }
