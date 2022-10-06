@@ -27,7 +27,8 @@ public class LevelGenerator : MonoBehaviour
     public const float RIGHT_WALL_X_OFFSET = LEVEL_WIDTH * TILE_WIDTH - 1.5f;
     public const float WALL_Y_OFFSET = -0.5f;
     
-
+    // store which level will be loaded
+    public string levelFile = " ";
 
     
 
@@ -168,12 +169,17 @@ public class LevelGenerator : MonoBehaviour
         }
     }
     // Start is called before the first frame update
+    public void loadLevel(string filename, int numLayers){
+        int i = 0;
+        for (i = 0; i < numLayers; i++){
+            generateLayer(i,filename);
+        }
+    }
     void Start()
     {
-        int i = 0;
-        for (i = 0; i < NUM_LAYERS; i++){
-            generateLayer(i, "Assets/Levels/test.txt");
-        }
+        GameObject level = GameObject.Find("Level_ID");
+        levelFile = level.GetComponent<LevelID>().LevelFile;
+        loadLevel(levelFile, NUM_LAYERS);
     }
     
 }   
