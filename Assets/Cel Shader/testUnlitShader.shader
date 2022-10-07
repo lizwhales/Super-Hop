@@ -12,9 +12,11 @@ Shader "Unlit/testUnlitShader"
 
         _SpecColor("Spec Color", Color) = (0.9, 0.9, 0.9, 1)
         _Shinniness("Shinniness", Float) = 2
-
+   
         _GlowColor("Glow Color", Color) = (1, 1, 1, 1)
         _GlowAmount("Glow Amount", Range(0, 1)) = 0.5
+
+        [IntRange]_StepAmount ("Shadow Steps", Range(1, 16)) = 2
      
     
     }
@@ -40,6 +42,7 @@ Shader "Unlit/testUnlitShader"
             #pragma fragment frag
      
             #include "UnityCG.cginc"
+            
 
             // Shader inputs
             struct appdata
@@ -100,7 +103,7 @@ Shader "Unlit/testUnlitShader"
                 
                 return _BaseColor * sample * lightIntensity;
                 // Normal shading
-                //return _BaseColor * sample * NdotL;
+                return _BaseColor * sample * NdotL;
 
                 // add emission -> Put this in another pass/function, as this function operates on Shadow the Hedgehog
                 // return _BaseColor * sample * (_Emission + lightIntensity);
@@ -146,7 +149,7 @@ Shader "Unlit/testUnlitShader"
             ENDCG
         }
 
-        Pass
+    Pass
         {
             // Specular Lighting
            
@@ -157,6 +160,7 @@ Shader "Unlit/testUnlitShader"
             uniform float4 _LightColor0;
 
             #include "UnityCG.cginc"
+            
             
             
             // Shader inputs
@@ -184,6 +188,9 @@ Shader "Unlit/testUnlitShader"
 
             float4 _GlowColor;
             float _GlowAmount;
+
+    
+            float _StepAmount;
          
     
             // vertex shader
@@ -221,16 +228,16 @@ Shader "Unlit/testUnlitShader"
                 // sample the texture
                 float4 sample = tex2D(_MainTex, i.uv);
 
-                // specular lighting 
+
+                // specular lighting  
                 float3 viewDir = normalize(i.viewDir);
                 float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir);
                 float NdotH = dot(normal, halfVector);
 
                 float specIntensity = pow(NdotH * lightIntensity, _Shinniness * _Shinniness);
-                float specIntensitySmooth = smoothstep(0.005, 0.01, specIntensity);
+                float specIntensitySmooth = smoothstep(0.01, 0.1, specIntensity);
                 float4 spec = specIntensitySmooth * _SpecColor;
 
-                
                 //return _BaseColor * sample * lightIntensity + spec; 
                 
                 // glow calcs
@@ -242,8 +249,13 @@ Shader "Unlit/testUnlitShader"
                 //float4 glow = glowDot * _GlowColor;
 
                 // now looks like a rim
-                return _BaseColor * sample * lightIntensity + spec + glow; 
-                
+                //return _BaseColor * sample * lightIntensity + spec + glow; 
+
+                // shade shadow steps 
+                lightIntensity = lightIntensity / _StepAmount;
+                lightIntensity = saturate(lightIntensity);
+                return _BaseColor * sample * lightIntensity + spec + glow;
+                        
 
             }
             ENDCG
