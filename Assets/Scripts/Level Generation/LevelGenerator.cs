@@ -11,6 +11,7 @@ public class LevelGenerator : MonoBehaviour
 
     // level constants
     public const int LAYER_SPACING = 2;
+    public const int LEVEL_HEIGHT = 4;
     private const int LEVEL_WIDTH = 5;
 
     // tile constants
@@ -20,11 +21,14 @@ public class LevelGenerator : MonoBehaviour
     // wall constants
     public const int WALL_LENGTH = 4;
     public const int WALL_HEIGHT = 2;
+    public const int WALL_WIDTH = 1;
+    
     public const float LEFT_WALL_X_OFFSET = -2.5f;
     public const float RIGHT_WALL_X_OFFSET = LEVEL_WIDTH * TILE_WIDTH - 1.5f;
     public const float WALL_Y_OFFSET = -0.5f;
     
-
+    // store which level will be loaded
+    public string levelFile = " ";
 
     
 
@@ -34,25 +38,27 @@ public class LevelGenerator : MonoBehaviour
    
     public Transform cube;
     public Transform wall;
+    public Transform wallBF;
+    public Transform floor;
     public Transform player;
     public Transform start;
     public Transform goal;
     public Transform slowCube;
     public Transform iceCube;
     public Transform coin;
+    
 
     // declaring identifiers for different objects in the text file
     public const string sVoid = "-";
     public const string sTile = "x";
-    public const string sGoal = "G";
+    public const string sGoalBox = "G";
+    public const string sGoal = "g";
     public const string sStart = "S";
     public const string sWall = ">";
     public const string sSlow = "s";
     public const string sIce = "i";
     public const string sCoinBox = "C";
     public const string sCoin = "c";
-
-
     public const int NUM_LAYERS = 6;
     // layer 0 to 5 :
     // layer 0 -> y = 0 level
@@ -82,7 +88,9 @@ public class LevelGenerator : MonoBehaviour
     }
     void generateLayer (int layer, string file){
         string[][] curLayer = readLayer(layer, file);
-        if (layer < 4) {
+        if (layer < LEVEL_HEIGHT) {
+            
+
             // create a layer based on the text file
             for (int z = 0; z < curLayer.Length - 1; z++) { // current layers length - 1 to remove empty field between layers
                 for (int x = 0; x < curLayer[0].Length; x++) {
@@ -96,6 +104,10 @@ public class LevelGenerator : MonoBehaviour
                         break;
                     case sCoin:
                         Instantiate(coin, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING + 1.5f, z * TILE_WIDTH), coin.transform.rotation);
+                        break;
+                    case sGoalBox:
+                        Instantiate(cube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
+                        Instantiate(goal, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING + 1.5f, z * TILE_WIDTH), Quaternion.identity);
                         break;
                     case sGoal:
                         Instantiate(goal, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
@@ -113,7 +125,8 @@ public class LevelGenerator : MonoBehaviour
                     case sVoid:
                         break; 
                     } 
-                
+                    Instantiate(floor, new Vector3(x * TILE_WIDTH, -(LAYER_SPACING * LEVEL_HEIGHT), z * TILE_WIDTH), Quaternion.identity);
+                    Instantiate(floor, new Vector3(x * TILE_WIDTH, LAYER_SPACING * LEVEL_HEIGHT * 2 - 1, z * TILE_WIDTH), Quaternion.identity);
                 }        
             }
         } else {
@@ -128,6 +141,7 @@ public class LevelGenerator : MonoBehaviour
                         case sVoid:
                             break; 
                         } 
+                        Instantiate(wall, new Vector3(LEFT_WALL_X_OFFSET, -(y * WALL_HEIGHT + WALL_Y_OFFSET), z*WALL_LENGTH), Quaternion.identity);
                     }        
                 }
             // create right wall based on the text file
@@ -141,20 +155,36 @@ public class LevelGenerator : MonoBehaviour
                         case sVoid:
                             break; 
                         } 
+                        //extend wall down to the bottom of the level
+                        Instantiate(wall, new Vector3(RIGHT_WALL_X_OFFSET,-(y * WALL_HEIGHT + WALL_Y_OFFSET), z * WALL_LENGTH), Quaternion.identity);
                     
                     }        
+                }
+                // Create front and back walls
+                for (int x = 0; x < LEVEL_WIDTH; x++) {
+                    for (int y = 0; y <= LEVEL_HEIGHT*2; y++) {
+                        Instantiate(wallBF, new Vector3(x * TILE_WIDTH, y * WALL_HEIGHT + WALL_Y_OFFSET, -(TILE_WIDTH/2 + WALL_WIDTH/2)), Quaternion.identity);
+                        Instantiate(wallBF, new Vector3(x * TILE_WIDTH, y * WALL_HEIGHT + WALL_Y_OFFSET, (curLayer.Length - 1) * TILE_WIDTH - 1.5f), Quaternion.identity);
+                        Instantiate(wallBF, new Vector3(x * TILE_WIDTH, -(y * WALL_HEIGHT + WALL_Y_OFFSET), -(TILE_WIDTH/2 + WALL_WIDTH/2)), Quaternion.identity);
+                        Instantiate(wallBF, new Vector3(x * TILE_WIDTH, -(y * WALL_HEIGHT + WALL_Y_OFFSET), (curLayer.Length - 1) * TILE_WIDTH - 1.5f), Quaternion.identity);
+                    }
                 }
             }
             
         }
     }
     // Start is called before the first frame update
+    public void loadLevel(string filename, int numLayers){
+        int i = 0;
+        for (i = 0; i < numLayers; i++){
+            generateLayer(i,filename);
+        }
+    }
     void Start()
     {
-        int i = 0;
-        for (i = 0; i < NUM_LAYERS; i++){
-            generateLayer(i, "Assets/Levels/slow_level.txt");
-        }
+        GameObject level = GameObject.Find("Level_ID");
+        levelFile = level.GetComponent<LevelID>().LevelFile;
+        loadLevel(levelFile, NUM_LAYERS);
     }
     
 }   
