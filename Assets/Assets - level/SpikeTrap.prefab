@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 4316016316334231319}
   - component: {fileID: 8245867623097153213}
   - component: {fileID: 5540575945672871393}
-  - component: {fileID: 4685308211206944286}
   m_Layer: 3
   m_Name: SpikeTrap
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,20 +127,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9397248, y: 0.33331537, z: 0.9266673}
   m_Center: {x: -0.00037395954, y: 0.6152376, z: 0.007371098}
---- !u!114 &4685308211206944286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8613615257094699530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2706314de1232b745a9d8136da121fe6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  spawnPoint: {fileID: 0}
 --- !u!1001 &307071891178837931
 PrefabInstance:
   m_ObjectHideFlags: 0

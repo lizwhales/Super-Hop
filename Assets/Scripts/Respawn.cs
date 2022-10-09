@@ -7,13 +7,18 @@ public class Respawn : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] Transform spawnPoint;
     
+    public int spikePenalty = 3;
+
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "DeathTrigger")
         {
             Debug.Log("Player has collided with the death trigger!");
-            //respawnPos = new Vector3(8,1.5f,0);
-            transform.position = spawnPoint.position;
+            RespawnPoint();
+        } else if (other.gameObject.tag == "Obstacle") {
+            CoinCounter.removeCoins(spikePenalty);
+            Debug.Log("3 Coins lost!");
+            RespawnPoint();
         }
     }
     
