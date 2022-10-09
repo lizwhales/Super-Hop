@@ -46,6 +46,7 @@ public class LevelGenerator : MonoBehaviour
     public Transform slowCube;
     public Transform iceCube;
     public Transform coin;
+    public Transform spikes;
     
 
     // declaring identifiers for different objects in the text file
@@ -59,6 +60,8 @@ public class LevelGenerator : MonoBehaviour
     public const string sIce = "i";
     public const string sCoinBox = "C";
     public const string sCoin = "c";
+    public const string sSpike = "^";
+
     public const int NUM_LAYERS = 6;
     // layer 0 to 5 :
     // layer 0 -> y = 0 level
@@ -70,10 +73,10 @@ public class LevelGenerator : MonoBehaviour
     string[][] readLayer(int layer, string file){
         string text = System.IO.File.ReadAllText(file);
         string [] layers = Regex.Split(text, "#");
-        Debug.Log("number of layers: "+ layers.Length);
+        //Debug.Log("number of layers: "+ layers.Length);
         string curLayer = layers[layer];
         string[] lines = Regex.Split(curLayer, ",");
-        Debug.Log("This is layer: " + layer);
+        //Debug.Log("This is layer: " + layer);
         for (int k = 0; k < lines.Length; k++){
             Debug.Log(lines[k]);
         }
@@ -121,6 +124,10 @@ public class LevelGenerator : MonoBehaviour
                     case sStart:
                         Instantiate(cube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
                         Instantiate(player, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING + 2f, z * TILE_WIDTH), Quaternion.identity);
+                        break;
+                    case sSpike:
+                        Instantiate(spikes, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
+                        
                         break;    
                     case sVoid:
                         break; 

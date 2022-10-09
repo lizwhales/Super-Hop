@@ -817,7 +817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1986095682388477793, guid: e99113963561c094fa795af2b14692ff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1986095682388477793, guid: e99113963561c094fa795af2b14692ff, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1553,9 +1553,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5559612456140375685, guid: 7e91117fb9bd90f44a339a88692fdf0a, type: 3}
     - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
+      propertyPath: goal
+      value: 
+      objectReference: {fileID: 3234837828736501809, guid: d83925cfd00fe0c49ab07dd9564192d6, type: 3}
+    - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: floor
       value: 
       objectReference: {fileID: 2346103886825777412, guid: 9304263ea3a4bc04d88e042d9a1612a4, type: 3}
+    - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
+      propertyPath: spikes
+      value: 
+      objectReference: {fileID: 1343891419618695515, guid: c966a5a74e4d8824197b3ad08b0b0760, type: 3}
     - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: wallBF
       value: 
