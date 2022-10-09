@@ -462,12 +462,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3064703747376318604, guid: 87a7249a40c9d78428b21efb7f08bf1e, type: 3}
+      propertyPath: jumpKey
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064703747376318604, guid: 87a7249a40c9d78428b21efb7f08bf1e, type: 3}
       propertyPath: groundDrag
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3064703747376318604, guid: 87a7249a40c9d78428b21efb7f08bf1e, type: 3}
       propertyPath: walljumping
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3064703747376318605, guid: 87a7249a40c9d78428b21efb7f08bf1e, type: 3}
       propertyPath: cube

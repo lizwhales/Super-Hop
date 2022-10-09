@@ -39,12 +39,17 @@ public class WallJumping : MonoBehaviour
     void Update()
     {
         CheckForWall();
+        StateMachine();
     }
 
     private void CheckForWall()
     {
         wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallhit, wallCheckDistance, whatIsWall);
         wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallhit, wallCheckDistance, whatIsWall);
+
+        if(wallLeft){
+            Debug.Log("lef thit");
+        }
     }
 
     private bool AboveGround()
@@ -64,7 +69,6 @@ public class WallJumping : MonoBehaviour
 
     private void StateMachine(){
         verticalInput = Input.GetAxisRaw("Vertical");
-
 
         //wall jump here if conditions met
         if((wallLeft || wallRight) && verticalInput > 0 && AboveGround()){

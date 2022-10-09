@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
         PlayerInput();
         LimitSpeed();
+        StateHandler();
 
         // ground drag
         if(grounded){
@@ -75,6 +76,8 @@ public class PlayerMovement : MonoBehaviour
             // jump over and over again whn pressing space
             Invoke(nameof(ResetJump), jumpCD);
         }
+
+        StateHandler();
     }
 
     // new stuff
