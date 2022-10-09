@@ -1,8 +1,10 @@
 using UnityEngine;
 using TMPro;
 public class Timer : MonoBehaviour
+
 {
-    private float timerDuration = 3f * 60f; // TIMER DURATION can change later
+ 
+    private float timerDuration = 1f * 60f; // TIMER DURATION can change later
 
     private float timer;
     [SerializeField]
@@ -16,6 +18,7 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI secondSecond;    
     // set curr time to time duration, etc.
+    
     void Start()
     {
         ResetTimer();
@@ -28,6 +31,10 @@ public class Timer : MonoBehaviour
         UpdateTimerDisplay(timer);
         }else{
             Flash();
+        }
+
+        if(timer == 0){
+            Debug.Log("TIME UP YOU DED");
         }
         
     }
@@ -49,6 +56,11 @@ public class Timer : MonoBehaviour
     }
 
     private void Flash(){
+       // can do smthing here if wanted 
+        firstMinute.text = "8";
+        secondMinute.text = "8";
+        firstSecond.text = "8";
+        secondSecond.text = "8";
 
     }
 }
