@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GoalDetected : MonoBehaviour
 {
@@ -18,5 +19,6 @@ public class GoalDetected : MonoBehaviour
     public static void goalReached()
     {
         Debug.Log("winner winner chicken dinner");
+        SceneManager.LoadScene(0);
     }
 }
