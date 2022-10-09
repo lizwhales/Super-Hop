@@ -6,19 +6,14 @@ public class Respawn : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] Transform spawnPoint;
-    public float respawnHeight = -2f;
-    // Start is called before the first frame update
-    void Start()
+    
+    void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (player.transform.position.y < respawnHeight)
+        if(other.gameObject.tag == "DeathTrigger")
         {
-            RespawnPoint();
+            Debug.Log("Player has collided with the death trigger!");
+            //respawnPos = new Vector3(8,1.5f,0);
+            transform.position = spawnPoint.position;
         }
     }
     

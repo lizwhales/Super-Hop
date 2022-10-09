@@ -13,12 +13,6 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void playLevel1(){
         
         levelIdentifier.GetComponent<LevelID>().LevelFile = "Assets/Levels/test.txt";  
