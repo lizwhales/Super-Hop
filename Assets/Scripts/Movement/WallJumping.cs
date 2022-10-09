@@ -48,7 +48,7 @@ public class WallJumping : MonoBehaviour
         wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallhit, wallCheckDistance, whatIsWall);
 
         if(wallLeft){
-            Debug.Log("lef thit");
+            Debug.Log("left hit");
         }
     }
 

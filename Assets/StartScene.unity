@@ -1098,7 +1098,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   wallCheckDistance: 0.7
-  minJumpHeight: 2
+  minJumpHeight: 0.1
   orientation: {fileID: 1361564740}
   wallJumpUpForce: 2
   wallJumpSideForce: 2
