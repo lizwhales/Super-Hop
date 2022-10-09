@@ -7,18 +7,6 @@ public class CoinCounter : MonoBehaviour
 
     public static int coins = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public static void addCoins(int amount) {
         coins = coins + amount;
         Debug.Log("Added coins: " + amount);
