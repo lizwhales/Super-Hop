@@ -1,10 +1,10 @@
-Shader "Glow/CameraBloomShader"
+Shader "Glow/CameraGlowShader"
 {
     // Used on the Camera with CameraGlowMat and GlowPostProcess
     Properties
     {
         // _MainTex ("Texture", 2D) = "white" {}
-        _UpScale("Scale for Upsample", Range(0.01, 10.0)) = 0.5
+        _UpScale("Scale for Upsample", Range(0.001, 20.0)) = 0.5
         _Intensity("Glow Intensity", Range(0.1, 10.0)) = 0.25
     }
 
@@ -56,7 +56,7 @@ Shader "Glow/CameraBloomShader"
                 tex2D(_GlowMap, i.uv + _GlowMap_TexelSize.xy * float2(-scale,scale)) + //Down, Right
                 tex2D(_GlowMap, i.uv + _GlowMap_TexelSize.xy * float2(scale,-scale)) + //Up, left
                 tex2D(_GlowMap, i.uv + _GlowMap_TexelSize.xy * float2(scale,scale)); //Up, right
-                return fixed4(blurSample*0.25,1);
+                return fixed4(blurSample*0.25,1)*0.5; // Can change 0.5 and add in a variable as a setting
             }
             ENDCG
         }
@@ -71,7 +71,7 @@ Shader "Glow/CameraBloomShader"
                 tex2D(_GlowMap, i.uv + _GlowMap_TexelSize.xy * float2(-_UpScale,_UpScale)) + //Down, Right
                 tex2D(_GlowMap, i.uv + _GlowMap_TexelSize.xy * float2(_UpScale,-_UpScale)) + //Up, left
                 tex2D(_GlowMap, i.uv + _GlowMap_TexelSize.xy * float2(_UpScale,_UpScale)); //Up, right
-                return fixed4(blurSample*0.25,1);
+                return fixed4(blurSample*0.25,1)*0.5;
             }
             ENDCG
         }
