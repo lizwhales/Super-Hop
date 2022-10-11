@@ -5,13 +5,13 @@ using UnityEngine;
 // Used on the Camera with CameraGlowMat and CameraGlowShader
 public class GlowPostProcess : MonoBehaviour
 {
-    public Shader glowShader;
+    private Shader glowShader;
     public Material mat;
     private Camera cam;
     
     void Awake(){
-        QualitySettings.vSyncCount = 1;
-        Application.targetFrameRate = 60;
+        //QualitySettings.vSyncCount = 1;
+        Application.targetFrameRate = 120;
     }
     // Start is called before the first frame update
     void Start()
@@ -40,7 +40,7 @@ public class GlowPostProcess : MonoBehaviour
         RenderTexture tmpSrcRT = tmpDstRT;
 
         // Downsample For Loop
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             width /= 2;
             height /= 2;
@@ -52,7 +52,7 @@ public class GlowPostProcess : MonoBehaviour
         }
 
         // Upsample For Loop
-        for (int i = 2; i >= 0; i--)
+        for (int i = 3; i >= 0; i--)
         {
             width *= 2;
             height *= 2;

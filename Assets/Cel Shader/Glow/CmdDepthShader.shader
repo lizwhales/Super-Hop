@@ -1,14 +1,15 @@
 Shader "Glow/CmdDepthShader"
 {
+    // Used in the GlowObj script with the GlowTargetMat
     Properties
     {
         // _MainTex ("Texture", 2D) = "white" {}
-        _GlowColor ("Glow Color", Color) = (1,1,0,1)
+        _GlowColor ("Glow Color", Color) = (1,0,0,1)
     }
 
     SubShader
     {
-        // Tags { "RenderType" = "Opaque" }
+        Tags { "RenderType" = "Opaque" }
         LOD 100
         Pass
         {
