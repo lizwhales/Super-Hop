@@ -1,7 +1,7 @@
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 // https://docs.unity3d.com/2022.1/Documentation/Manual/built-in-shader-examples-vertex-data.html
 
-Shader "Custom/testUnlitShader"
+Shader "Custom/BasicShader"
 {
     Properties
     {
@@ -155,4 +155,5 @@ Shader "Custom/testUnlitShader"
             ENDCG
         }
     }
+    Fallback "Diffuse"
 }
