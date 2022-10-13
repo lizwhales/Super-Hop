@@ -57,10 +57,10 @@ public class Timer : MonoBehaviour
 
     private void Flash(){
        // can do smthing here if wanted 
-        firstMinute.text = "8";
-        secondMinute.text = "8";
-        firstSecond.text = "8";
-        secondSecond.text = "8";
+        firstMinute.text = "d";
+        secondMinute.text = "e";
+        firstSecond.text = "a";
+        secondSecond.text = "d";
 
     }
 }
