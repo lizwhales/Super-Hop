@@ -18,13 +18,13 @@ public class PlayerMovement : MonoBehaviour
     float leftRight;
     float upDown;
 
-    [Header("onGround")]
+    [Header("onSurface")]
 
     public float playerHeight;
     public LayerMask Ground;
  
     bool grounded;
-
+    
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
 
@@ -48,15 +48,16 @@ public class PlayerMovement : MonoBehaviour
     private void Update(){
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, Ground);
+        
 
         PlayerInput();
         LimitSpeed();
         StateHandler();
 
         // ground drag
-        if(grounded){
+        if (grounded) {
             rb.drag = groundDrag;
-        }else{
+        } else {
             rb.drag = 0;
         }
     }
