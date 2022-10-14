@@ -12,7 +12,7 @@ public class LevelGenerator : MonoBehaviour
     // level constants
     public const int LAYER_SPACING = 2;
     public const int LEVEL_HEIGHT = 4;
-    private const int LEVEL_WIDTH = 5;
+    public const int LEVEL_WIDTH = 5;
 
     // tile constants
     public const int TILE_WIDTH = 4;
@@ -70,15 +70,15 @@ public class LevelGenerator : MonoBehaviour
     // layer 3 -> y = 3 level
     // layer 4 -> left wall
     // layer 5 -> right wall
-    string[][] readLayer(int layer, string file){
-        string text = System.IO.File.ReadAllText(file);
+
+    string[][] readLayerText(int layer, string text) {
         string [] layers = Regex.Split(text, "#");
         //Debug.Log("number of layers: "+ layers.Length);
         string curLayer = layers[layer];
         string[] lines = Regex.Split(curLayer, ",");
         //Debug.Log("This is layer: " + layer);
         for (int k = 0; k < lines.Length; k++){
-            Debug.Log(lines[k]);
+            // Debug.Log(lines[k]);
         }
         int rows = lines.Length;
     
@@ -89,8 +89,19 @@ public class LevelGenerator : MonoBehaviour
         }
         return layerBase;
     }
-    void generateLayer (int layer, string file){
-        string[][] curLayer = readLayer(layer, file);
+
+    string[][] readLayer(int layer, string file){
+        string text = System.IO.File.ReadAllText(file);
+        return readLayerText(layer, text);
+    }
+    void generateLayer (int layer, string file, bool procedural = false){
+        string[][] curLayer;
+        if (procedural) {
+            curLayer = readLayerText(layer, file);
+        } else {
+            curLayer = readLayer(layer, file);
+        }
+        
         if (layer < LEVEL_HEIGHT) {
             
 
@@ -187,11 +198,24 @@ public class LevelGenerator : MonoBehaviour
             generateLayer(i,filename);
         }
     }
+
+    public void loadProceduralLevel(int numLayers) {
+        int depth = 10;
+        GameObject scripts = GameObject.Find("GameScripts");
+        string generatedLevel = 
+            scripts.GetComponent<ProceduralGenerator>().generatePerlinLevel(numLayers, LEVEL_HEIGHT, LEVEL_WIDTH, depth);
+        for (int i = 0; i < numLayers; i++){
+            generateLayer(i, generatedLevel, true);
+        }
+    }
+
     void Start()
     {
         GameObject level = GameObject.Find("Level_ID");
         levelFile = level.GetComponent<LevelID>().LevelFile;
-        loadLevel(levelFile, NUM_LAYERS);
+        // loadLevel(levelFile, NUM_LAYERS);
+
+        loadProceduralLevel(NUM_LAYERS);
     }
     
 }   
