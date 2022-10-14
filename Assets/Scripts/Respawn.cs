@@ -22,7 +22,7 @@ public class Respawn : MonoBehaviour
         }
     }
     
-    void RespawnPoint()
+    public void RespawnPoint()
     {
         transform.position = spawnPoint.position;
         Debug.Log("respawning");

@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
-public class Timer : MonoBehaviour
 
+public class Timer : MonoBehaviour
 {
  
     private float timerDuration = 1f * 60f; // TIMER DURATION can change later
@@ -31,9 +31,16 @@ public class Timer : MonoBehaviour
         UpdateTimerDisplay(timer);
         }else{
             Flash();
+            GameObject Player = GameObject.Find("Player");
+            Player.GetComponent<Respawn>().RespawnPoint();
+            // Respawn.RespawnPoint();
+            Debug.Log("TIME UP YOU DED");
         }
 
         if(timer == 0){
+            GameObject Player = GameObject.Find("Player");
+            Player.GetComponent<Respawn>().RespawnPoint();
+            // Respawn.RespawnPoint();
             Debug.Log("TIME UP YOU DED");
         }
         

@@ -213,9 +213,16 @@ public class LevelGenerator : MonoBehaviour
     {
         GameObject level = GameObject.Find("Level_ID");
         levelFile = level.GetComponent<LevelID>().LevelFile;
-        // loadLevel(levelFile, NUM_LAYERS);
+        Debug.Log("LevelGenerator.cs: " + levelFile);
+        if (levelFile == "Procedural")
+        {
+            loadProceduralLevel(NUM_LAYERS);
+        } else {
+            loadLevel(levelFile, NUM_LAYERS);
+        }
+        
 
-        loadProceduralLevel(NUM_LAYERS);
+        // loadProceduralLevel(NUM_LAYERS);
     }
     
 }   
