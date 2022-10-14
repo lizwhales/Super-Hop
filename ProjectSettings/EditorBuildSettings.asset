@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/StartScene.unity
     guid: 21472fda3398bee49ae0acd9c8c3cc5d
   - enabled: 1
-    path: Assets/Cel Shader-LIZ/testScene -LIZ.unity
+    path: Assets/Cel Shader/testScene.unity
     guid: d3ece0e9fb4f30c46869781df7e812c0
   m_configObjects: {}
