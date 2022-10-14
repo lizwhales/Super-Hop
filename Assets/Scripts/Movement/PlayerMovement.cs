@@ -12,7 +12,11 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float jumpCD;
     public float airMultipler;
+    
+    public float wallRunSpeed;
     bool jumpReady;
+
+
 
     public Transform orientation;
     float leftRight;
@@ -31,10 +35,10 @@ public class PlayerMovement : MonoBehaviour
     // new stuff here
     public MovementState state;
     public enum MovementState{
-        walljumping
+        wallrunning
     }
 
-    public bool walljumping;
+    public bool wallrunning;
     Vector3 moveDirection;
     Rigidbody rb;
 
@@ -52,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
 
         PlayerInput();
         LimitSpeed();
-        StateHandler();
 
         // ground drag
         if (grounded) {
@@ -77,15 +80,14 @@ public class PlayerMovement : MonoBehaviour
             // jump over and over again whn pressing space
             Invoke(nameof(ResetJump), jumpCD);
         }
-
-        StateHandler();
     }
 
     // new stuff
 
     public void StateHandler(){
-        if(walljumping){
-            state = MovementState.walljumping;
+        if(wallrunning){
+            state = MovementState.wallrunning;
+            speed = wallRunSpeed;
         }
         
     }
