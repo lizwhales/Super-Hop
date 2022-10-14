@@ -1472,6 +1472,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pauseMenu: {fileID: 1283078706}
   _crosshair: {fileID: 273842042}
+--- !u!114 &1921221409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921221398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3e93604e0896c141aa6b5903153cc45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1951591369
 GameObject:
   m_ObjectHideFlags: 0
