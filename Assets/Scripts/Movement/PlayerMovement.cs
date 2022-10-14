@@ -12,29 +12,33 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float jumpCD;
     public float airMultipler;
+    
+    public float wallRunSpeed;
     bool jumpReady;
+
+
 
     public Transform orientation;
     float leftRight;
     float upDown;
 
-    [Header("onGround")]
+    [Header("onSurface")]
 
     public float playerHeight;
     public LayerMask Ground;
  
     bool grounded;
-
+    
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
 
     // new stuff here
     public MovementState state;
     public enum MovementState{
-        walljumping
+        wallrunning
     }
 
-    public bool walljumping;
+    public bool wallrunning;
     Vector3 moveDirection;
     Rigidbody rb;
 
@@ -48,15 +52,15 @@ public class PlayerMovement : MonoBehaviour
     private void Update(){
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, Ground);
+        
 
         PlayerInput();
         LimitSpeed();
-        StateHandler();
 
         // ground drag
-        if(grounded){
+        if (grounded) {
             rb.drag = groundDrag;
-        }else{
+        } else {
             rb.drag = 0;
         }
     }
@@ -76,15 +80,14 @@ public class PlayerMovement : MonoBehaviour
             // jump over and over again whn pressing space
             Invoke(nameof(ResetJump), jumpCD);
         }
-
-        StateHandler();
     }
 
     // new stuff
 
     public void StateHandler(){
-        if(walljumping){
-            state = MovementState.walljumping;
+        if(wallrunning){
+            state = MovementState.wallrunning;
+            speed = wallRunSpeed;
         }
         
     }

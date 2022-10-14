@@ -398,7 +398,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190047720}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.15, y: -0.12, z: 0.14}
+  m_LocalPosition: {x: 1.15, y: -0.12, z: 0.13}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -843,7 +843,7 @@ GameObject:
   - component: {fileID: 1399473468}
   - component: {fileID: 1399473467}
   - component: {fileID: 1399473466}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1079,7 +1079,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3064703747376318601, guid: 87a7249a40c9d78428b21efb7f08bf1e, type: 3}
   m_PrefabInstance: {fileID: 492954295}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1900856445
+--- !u!114 &1900856449
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1088,7 +1088,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1900856441}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b7d97c0c50258544b3444908d734568, type: 3}
+  m_Script: {fileID: 11500000, guid: a1704be61627de24581382a86bf0fb95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   whatIsWall:
@@ -1097,9 +1097,37 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  wallRunForce: 3
+  wallClimbSpeed: 1
+  maxWallRunTime: 3
+  upwardsRunKey: 9
+  downwardsRunKey: 306
   wallCheckDistance: 0.7
   minJumpHeight: 0.1
   orientation: {fileID: 1361564740}
-  wallJumpUpForce: 2
-  wallJumpSideForce: 2
+--- !u!114 &1900856450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900856441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b61942e811701942a1b6b79b1e22280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7
+  groundDrag: 4
+  jumpForce: 10
+  jumpCD: 0.5
+  airMultipler: 0.4
+  wallRunSpeed: 8
+  orientation: {fileID: 1361564740}
+  playerHeight: 2
+  Ground:
+    serializedVersion: 2
+    m_Bits: 8
   jumpKey: 32
+  state: 0
+  wallrunning: 0
