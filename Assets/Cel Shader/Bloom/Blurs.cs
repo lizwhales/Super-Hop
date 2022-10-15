@@ -9,6 +9,7 @@ public class Blurs : MonoBehaviour
     public Shader blurShader;
     public Material material;
     private Camera cam;
+
     [Range(0.0f, 2.0f)]
     public float threshold = 1.0f;
 
@@ -22,8 +23,8 @@ public class Blurs : MonoBehaviour
         // SOURCE STUFF
         int width = src.width;
         int height = src.height;
-        material.SetFloat("_Threshold", threshold);
-        material.SetFloat("_Intensity", intensity);
+        material.SetFloat("_BThreshold", threshold);
+        material.SetFloat("_BIntensity", intensity);
 
         // DOWNSAMPLING
         // END RENDER TEXTURE - First Blit

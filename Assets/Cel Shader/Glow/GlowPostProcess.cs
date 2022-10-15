@@ -64,7 +64,7 @@ public class GlowPostProcess : MonoBehaviour
         }
 
         // Output
-        Shader.SetGlobalTexture("_BlurMap", tmpSrcRT);
+        Shader.SetGlobalTexture("_GBlurMap", tmpSrcRT);
         RenderTexture.ReleaseTemporary(tmpSrcRT);
         Graphics.Blit(src, dst, mat, 2);
         
