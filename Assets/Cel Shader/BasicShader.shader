@@ -16,6 +16,10 @@ Shader "Custom/BasicShader"
         _SpecularStep("Specular Step", Range(0.25,0.95)) = 0.5
         _PosterizeDiffuse("Posterize Diffuse", Range(0,16)) = 0.0
         _PosterizeSpecular("Posterize Specular", Range(0,16)) = 0.0
+
+        //Inner glow outline
+        _GlowColor("Glow Color", Color) = (1, 1, 1, 1)
+        _GlowAmount("Glow Amount", Range(0, 1)) = 0.5
     }
     SubShader
     {
@@ -56,6 +60,8 @@ Shader "Custom/BasicShader"
 
             float4 _ObjectColor, _AmbientLight;
             float _Gloss, _DiffuseStep, _SpecularStep, _PosterizeDiffuse, _PosterizeSpecular;
+            float4 _GlowColor;
+            float _GlowAmount;
 
             // vertex shader
             v2f vert (appdata v)
@@ -111,8 +117,13 @@ Shader "Custom/BasicShader"
                 //specularFalloff = step(_SpecularStep, specularFalloff);
                 float4 directSpecular = _LightColor0 * specularFalloff;
 
+                // Inner glow outline
+                float glowDot = 1 - dot(viewDir, normal);
+                float glowIntensity = smoothstep(_GlowAmount - 0.01, _GlowAmount + 0.01, glowDot);
+                float4 glow = glowIntensity * _GlowColor;
+
                 // Composite everything together and return the final look
-                float4 col = diffuseLight * _ObjectColor + directSpecular;
+                float4 col = diffuseLight * _ObjectColor + directSpecular + glow;
                 return col;
             }
             ENDCG
