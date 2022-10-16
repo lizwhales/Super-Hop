@@ -1,12 +1,7 @@
 Shader "Glow/CameraGlowShader"
 {
     // Used on the Camera with CameraGlowMat and GlowPostProcess
-    Properties
-    {
-        // _MainTex ("Texture", 2D) = "white" {}
-        _UpScale("Scale for Upsample", Range(0.001, 20.0)) = 0.5
-        _Intensity("Glow Intensity", Range(0.1, 10.0)) = 0.25
-    }
+    Properties {}
 
     // -------------------CGINCLUDE--------------------//
     CGINCLUDE
@@ -43,7 +38,7 @@ Shader "Glow/CameraGlowShader"
     SubShader
     {
         // No culling or depth
-        //Cull Off ZWrite Off ZTest Always
+        Cull Off ZWrite Off ZTest Always
 
         Pass // 0 - Down Sample
         {
@@ -80,14 +75,14 @@ Shader "Glow/CameraGlowShader"
         {
             //Blend One One
             CGPROGRAM
-            sampler2D _BlurMap, _FinalTex;
+            sampler2D _GBlurMap, _FinalTex;
             float _Intensity;
 
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 mainTexture = tex2D(_FinalTex, i.uv);
                 //return mainTex;
-                fixed4 blurMap = tex2D(_BlurMap, i.uv);
+                fixed4 blurMap = tex2D(_GBlurMap, i.uv);
                 return mainTexture + (blurMap*_Intensity);
             }
             ENDCG

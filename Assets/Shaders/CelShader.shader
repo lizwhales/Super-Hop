@@ -20,6 +20,10 @@ Shader "Custom/BasicShader"
         // Fog
         _FogColour("Fog Colour", Color) = (0.4, 0, 0.6, 0)
         _MaxDistance("MaxDistance", Float) = 35
+
+        // Inner Glow Outline
+        _GlowColor("Inner Glow Color", Color) = (1,1,1,1)
+        _GlowAmount("Inner Glow Amount", Range(0, 1)) = 0.5
     }
     SubShader
     {
@@ -56,10 +60,13 @@ Shader "Custom/BasicShader"
                 float3 normal :TEXCOORD1;
                 float4 diffuse : COLOR0;
                 float3 worldPos : TEXCOORD2;
+                float dis : TEXCOORD3;
             };
 
-            float4 _ObjectColor, _AmbientLight;
-            float _Gloss, _DiffuseStep, _SpecularStep, _PosterizeDiffuse, _PosterizeSpecular;
+            float4 _ObjectColor, _AmbientLight, _GlowColor;
+            float _Gloss, _DiffuseStep, _SpecularStep, _PosterizeDiffuse, _PosterizeSpecular, _GlowAmount;
+            float4 _FogColour;
+            float _MaxDistance;
 
             // vertex shader
             v2f vert (appdata v)
@@ -69,6 +76,7 @@ Shader "Custom/BasicShader"
                 o.normal = v.normal;
                 o.vertex = UnityObjectToClipPos(v.vertex); // Gets position of the clip space
                 o.worldPos = mul(unity_ObjectToWorld, v.vertex); // Gets position of the world space
+                o.dis = length(ObjSpaceViewDir(v.vertex))*2;
                 return o;
             }
 
@@ -115,12 +123,28 @@ Shader "Custom/BasicShader"
                 //specularFalloff = step(_SpecularStep, specularFalloff);
                 float4 directSpecular = _LightColor0 * specularFalloff;
 
-                // Composite everything together and return the final look
-                float4 col = diffuseLight * _ObjectColor + directSpecular;
+                // Inner glow outline from Elizabeth
+                float glowDot = 1 - dot(viewDir, normal);
+                float glowIntensity = smoothstep(_GlowAmount - 0.01, _GlowAmount + 0.01, glowDot);
+                float4 glow = glowIntensity * _GlowColor;
+
+
+                // Composite everything together and then apply fog
+                float4 col = diffuseLight * _ObjectColor + directSpecular + glow;
+
+                // FOG
+                float distToObject = i.dis;
+                float frac = clamp((_MaxDistance - distToObject) / (_MaxDistance), 0.0, 1.0);
+                fixed4 objectFrac = frac * col;
+                fixed4 fogFrac = (1.0 - frac) * _FogColour;
+
+                col = objectFrac + fogFrac;
+
                 return col;
             }
             ENDCG
         }
+        
         pass
         {
             // Very generic outline shader
@@ -165,56 +189,6 @@ Shader "Custom/BasicShader"
             }
             ENDCG
         }
-
-        Pass
-        {
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
-            #include "UnityCG.cginc"
-
-            fixed4 _FogColour, _ObjectColor;
-            float _MaxDistance;
-
-            struct appdata
-            {
-                float4 vertex : POSITION;
-                float4 colour : COLOR0;
-                float2 uv : TEXCOORD0;
-            };
-
-            struct v2f
-            {
-                float2 uv : TEXCOORD0;
-                float4 vertex : SV_POSITION;
-                // float4 colour : COLOR0;
-                float dis : TEXCOORD1;
-            };
-
-
-            v2f vert (appdata v)
-            {
-                v2f o;
-                o.uv = v.uv;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.dis = length(ObjSpaceViewDir(v.vertex))*2;
-                return o;
-            }
-
-            fixed4 frag (v2f i) : SV_Target
-            {
-                float distToObject = i.dis;
-                float frac = clamp((_MaxDistance - distToObject) / (_MaxDistance), 0.0, 1.0);
-                fixed4 objectFrac = frac * _ObjectColor;
-                fixed4 fogFrac = (1.0 - frac) * _FogColour;
-
-                fixed4 finalColour = objectFrac + fogFrac;
-                return finalColour;
-                //return float4(1,0,1,1);
-            }
-            ENDCG
-        }
-        
 
         Pass 
         {

@@ -1,9 +1,7 @@
 Shader "Custom/BloomShader"
 {
     Properties
-    {
-        _MainTex ("Texture", 2D) = "white" {}
-    }
+    { _MainTex ("Texture", 2D) = "white" {} }
 
     // Includes for each pass, reduce code repeats
     // -------------------CGINCLUDE--------------------//
@@ -12,7 +10,6 @@ Shader "Custom/BloomShader"
         #pragma fragment frag
         #include "UnityCG.cginc"
 
-        half _Threshold;
         sampler2D _MainTex;
         float4 _MainTex_TexelSize;
 
@@ -47,7 +44,7 @@ Shader "Custom/BloomShader"
         {
             CGPROGRAM
             float scale = 1.0;
-
+            float _Threshold;
             half3 Prefilter (half3 col)
             {
                 half brightness = max(col.r, max(col.g, col.b));
@@ -58,10 +55,10 @@ Shader "Custom/BloomShader"
             fixed4 frag (v2f i) : SV_Target
             {
                 float3 blurSample = 
-                Prefilter(tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(-scale,-scale))) + //Down, Left
-                Prefilter(tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(-scale,scale))) + //Down, Right
-                Prefilter(tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(scale,-scale))) + //Up, left
-                Prefilter(tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(scale,scale))); //Up, right
+                Prefilter(tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(-scale,-scale))) + 
+                Prefilter(tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(-scale,scale))) +
+                Prefilter(tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(scale,-scale))) +
+                Prefilter(tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(scale,scale)));
                 return fixed4(blurSample*0.25,1);
             }
             ENDCG
@@ -74,10 +71,10 @@ Shader "Custom/BloomShader"
             fixed4 frag (v2f i) : SV_Target
             {
                 float3 blurSample = 
-                tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(-scale,-scale)) + //Down, Left
-                tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(-scale,scale)) + //Down, Right
-                tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(scale,-scale)) + //Up, left
-                tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(scale,scale)); //Up, right
+                tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(-scale,-scale)) +
+                tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(-scale,scale)) +
+                tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(scale,-scale)) +
+                tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(scale,scale));
                 return fixed4(blurSample*0.25,1);
             }
             ENDCG
@@ -91,10 +88,10 @@ Shader "Custom/BloomShader"
             fixed4 frag (v2f i) : SV_Target
             {
                 float3 blurSample = 
-                tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(-scale,-scale)) + //Down, Left
-                tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(-scale,scale)) + //Down, Right
-                tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(scale,-scale)) + //Up, left
-                tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(scale,scale)); //Up, right
+                tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(-scale,-scale)) +
+                tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(-scale,scale)) +
+                tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(scale,-scale)) +
+                tex2D(_MainTex, i.uv + _MainTex_TexelSize.xy * float2(scale,scale));
                 return fixed4(blurSample*0.25,1)*0.25;
             }
             ENDCG
@@ -110,10 +107,10 @@ Shader "Custom/BloomShader"
                 half4 frag (v2f i) : SV_Target
                 {
                     float3 blurSample = 
-                    tex2D(_BloomPassRT, i.uv + _BloomPassRT_TexelSize.xy * float2(-scale,-scale)) + //Down, Left
-                    tex2D(_BloomPassRT, i.uv + _BloomPassRT_TexelSize.xy * float2(-scale,scale)) + //Down, Right
-                    tex2D(_BloomPassRT, i.uv + _BloomPassRT_TexelSize.xy * float2(scale,-scale)) + //Up, left
-                    tex2D(_BloomPassRT, i.uv + _BloomPassRT_TexelSize.xy * float2(scale,scale)); //Up, right
+                    tex2D(_BloomPassRT, i.uv + _BloomPassRT_TexelSize.xy * float2(-scale,-scale)) +
+                    tex2D(_BloomPassRT, i.uv + _BloomPassRT_TexelSize.xy * float2(-scale,scale)) +
+                    tex2D(_BloomPassRT, i.uv + _BloomPassRT_TexelSize.xy * float2(scale,-scale)) +
+                    tex2D(_BloomPassRT, i.uv + _BloomPassRT_TexelSize.xy * float2(scale,scale));
                     half4 c = tex2D(_BloomPassRT,i.uv);
                     half4 mainTex = tex2D(_MainTex, i.uv);
                     c.rgb += _Intensity * blurSample;
