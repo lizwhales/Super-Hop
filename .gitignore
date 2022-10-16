@@ -78,3 +78,4 @@ ProjectSettings/EditorBuildSettings.asset
 Assets/Unity.VisualScripting.Generated/VisualScripting.Flow.meta
 Assets/Unity.VisualScripting.Generated.meta
 Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
+ProjectSettings/VisualScriptingSettings.asset
