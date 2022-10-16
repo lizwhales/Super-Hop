@@ -452,8 +452,20 @@ PrefabInstance:
       value: MainCamera
       objectReference: {fileID: 0}
     - target: {fileID: 7949915852884162284, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
+      propertyPath: m_Depth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949915852884162284, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
       propertyPath: field of view
       value: 97.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949915852884162284, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
+      propertyPath: far clip plane
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949915852884162284, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
+      propertyPath: near clip plane
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7949915852884162284, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
       propertyPath: m_projectionMatrixMode
@@ -466,6 +478,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
+--- !u!1 &683242802 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7949915852884162281, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
+  m_PrefabInstance: {fileID: 683242801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &683242803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683242802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 441656fa7245aa64faade6ca4e39b7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: 0af2de57452e22b49ac12effa2bf17cf, type: 2}
+--- !u!114 &683242804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683242802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d9ec525835e03b44aa18738a93b3460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blurShader: {fileID: 4800000, guid: 9a479a8c3563b084a92b26ec1e129304, type: 3}
+  material: {fileID: 2100000, guid: 37ef9577f96a18543bf51da1a3655916, type: 2}
+  threshold: 1.127
+  intensity: 1.196
 --- !u!1 &708064421
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,7 +523,6 @@ GameObject:
   - component: {fileID: 708064424}
   - component: {fileID: 708064423}
   - component: {fileID: 708064422}
-  - component: {fileID: 708064425}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -500,7 +545,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708064421}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -551,18 +596,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 28.373, y: 0, z: 0}
---- !u!114 &708064425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 708064421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5edadfc333177c4f9a46525f18c9487, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &854918536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1467,6 +1500,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pauseMenu: {fileID: 1283078706}
   _crosshair: {fileID: 273842042}
+--- !u!114 &1921221409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921221398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc804c4517605d42b9e4a5d64c64519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1963129356 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5138792863472771589, guid: 90cf2aa6d768f7a49a2d49ac7f16948d, type: 3}

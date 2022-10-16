@@ -16,6 +16,10 @@ Shader "Custom/BasicShader"
         _SpecularStep("Specular Step", Range(0.25,0.95)) = 0.5
         _PosterizeDiffuse("Posterize Diffuse", Range(0,16)) = 0.0
         _PosterizeSpecular("Posterize Specular", Range(0,16)) = 0.0
+
+        // Fog
+        _FogColour("Fog Colour", Color) = (0.4, 0, 0.6, 0)
+        _MaxDistance("MaxDistance", Float) = 35
     }
     SubShader
     {
@@ -128,8 +132,8 @@ Shader "Custom/BasicShader"
 
             #include "UnityCG.cginc"
 
-            fixed4 _OutlineColor;
-            float _OutlineSize;
+            fixed4 _OutlineColor, _FogColour;
+            float _OutlineSize, _MaxDistance;
 
             struct appdata
             {
@@ -139,21 +143,79 @@ Shader "Custom/BasicShader"
             struct v2f
             {
                 float4 vertex:SV_POSITION;
+                float dis : TEXCOORD0;
             };
 
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex=UnityObjectToClipPos(v.vertex*_OutlineSize);
+                o.dis = length(ObjSpaceViewDir(v.vertex))*2;
                 return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
-                return _OutlineColor;
+                float distToObject = i.dis;
+                float frac = clamp((_MaxDistance - distToObject) / (_MaxDistance), 0.0, 1.0);
+                fixed4 objectFrac = frac * _OutlineColor;
+                fixed4 fogFrac = (1.0 - frac) * _FogColour;
+                fixed4 finalColour = objectFrac + fogFrac;
+                return finalColour;
             }
             ENDCG
         }
+
+        Pass
+        {
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #include "UnityCG.cginc"
+
+            fixed4 _FogColour, _ObjectColor;
+            float _MaxDistance;
+
+            struct appdata
+            {
+                float4 vertex : POSITION;
+                float4 colour : COLOR0;
+                float2 uv : TEXCOORD0;
+            };
+
+            struct v2f
+            {
+                float2 uv : TEXCOORD0;
+                float4 vertex : SV_POSITION;
+                // float4 colour : COLOR0;
+                float dis : TEXCOORD1;
+            };
+
+
+            v2f vert (appdata v)
+            {
+                v2f o;
+                o.uv = v.uv;
+                o.vertex = UnityObjectToClipPos(v.vertex);
+                o.dis = length(ObjSpaceViewDir(v.vertex))*2;
+                return o;
+            }
+
+            fixed4 frag (v2f i) : SV_Target
+            {
+                float distToObject = i.dis;
+                float frac = clamp((_MaxDistance - distToObject) / (_MaxDistance), 0.0, 1.0);
+                fixed4 objectFrac = frac * _ObjectColor;
+                fixed4 fogFrac = (1.0 - frac) * _FogColour;
+
+                fixed4 finalColour = objectFrac + fogFrac;
+                return finalColour;
+                //return float4(1,0,1,1);
+            }
+            ENDCG
+        }
+        
+
         Pass 
         {
             Tags { "LightMode" = "ShadowCaster" }
