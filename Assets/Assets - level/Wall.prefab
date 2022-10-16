@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8826045645853045135}
   - component: {fileID: 4420029942703458581}
   - component: {fileID: 2217251307666337871}
+  - component: {fileID: 8294376312789091933}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8826045645853045135
 MeshFilter:
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3b06ec83fc46dc04f9643e165f9167ff, type: 2}
+  - {fileID: 2100000, guid: 4bb38f02731dbef4e8a05e87f5c6d19e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,3 +98,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8294376312789091933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3087521469511141761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0664f8412a6e0144b1bd1175d8cbd22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowMat: {fileID: 2100000, guid: 4bb38f02731dbef4e8a05e87f5c6d19e, type: 2}
