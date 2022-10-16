@@ -4,7 +4,7 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
  
-    private float timerDuration = 1f * 60f; // TIMER DURATION can change later
+    private float timerDuration = 1f * 30f; // TIMER DURATION can change later
 
     private float timer;
     [SerializeField]
@@ -17,6 +17,8 @@ public class Timer : MonoBehaviour
     private TextMeshProUGUI firstSecond;
     [SerializeField]
     private TextMeshProUGUI secondSecond;    
+    [SerializeField]
+    private GameObject losePanel;
     // set curr time to time duration, etc.
     
     void Start()
@@ -33,6 +35,7 @@ public class Timer : MonoBehaviour
             Flash();
             GameObject Player = GameObject.Find("Player");
             Player.GetComponent<Respawn>().RespawnPoint();
+            losePanel.SetActive(true);
             // Respawn.RespawnPoint();
             Debug.Log("TIME UP YOU DED");
         }
