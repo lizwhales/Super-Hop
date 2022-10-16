@@ -10,6 +10,7 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
@@ -75,7 +76,8 @@ crashlytics-build.properties
 .idea/*
 ProjectSettings/VisualScriptingSettings.asset
 ProjectSettings/EditorBuildSettings.asset
+/[Pp]roject[Ss]ettings/VisualScriptingSettings.asset
+/[Pp]roject[Ss]ettings/EditorBuildSettings.asset
 Assets/Unity.VisualScripting.Generated/VisualScripting.Flow.meta
 Assets/Unity.VisualScripting.Generated.meta
 Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
-ProjectSettings/VisualScriptingSettings.asset
