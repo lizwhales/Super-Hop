@@ -17,6 +17,6 @@ public class GlowObj : MonoBehaviour
 
     public void OnDisable()
     {
-        GlowSystem.instance.Add(this);
+        GlowSystem.instance.Remove(this);
     }
 }
