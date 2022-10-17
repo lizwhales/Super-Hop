@@ -479,6 +479,8 @@ GameObject:
   - component: {fileID: 606448562}
   - component: {fileID: 606448564}
   - component: {fileID: 606448565}
+  - component: {fileID: 606448567}
+  - component: {fileID: 606448566}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -534,15 +536,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   groundDrag: 3
-  jumpForce: 8
+  jumpForce: 10
   jumpCD: 0.5
   airMultipler: 0.4
+  wallRunSpeed: 8
   orientation: {fileID: 933514470}
   playerHeight: 2
   Ground:
     serializedVersion: 2
     m_Bits: 8
   jumpKey: 32
+  state: 0
+  walljumping: 1
+  wallrunning: 1
 --- !u!114 &606448565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,10 +561,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef2f87bb0c49b0d4fa02cbea0d7fdc85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelFile: ' '
   cube: {fileID: 1794974974}
+  wall: {fileID: 0}
+  wall2: {fileID: 0}
+  backWall: {fileID: 0}
+  frontWall: {fileID: 0}
+  sideBackWall: {fileID: 0}
+  floor: {fileID: 0}
   player: {fileID: 0}
   start: {fileID: 0}
   goal: {fileID: 0}
+  slowCube: {fileID: 0}
+  iceCube: {fileID: 0}
+  coin: {fileID: 0}
+  spikes: {fileID: 0}
+--- !u!114 &606448566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606448561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d39d2bb23e73a44fb607ddb566bb9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 264
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  wallRunForce: 10
+  wallClimbSpeed: 10
+  maxWallRunTime: 10
+  upwardsRunKey: 9
+  downwardsRunKey: 9
+  wallCheckDistance: 0.7
+  minJumpHeight: 0.1
+  orientation: {fileID: 933514470}
+--- !u!114 &606448567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606448561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7d97c0c50258544b3444908d734568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 264
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  wallCheckDistance: 0.7
+  minJumpHeight: 0.1
+  orientation: {fileID: 933514470}
+  wallJumpUpForce: 10
+  wallJumpSideForce: 10
+  jumpKey: 32
 --- !u!1 &708064421
 GameObject:
   m_ObjectHideFlags: 0
