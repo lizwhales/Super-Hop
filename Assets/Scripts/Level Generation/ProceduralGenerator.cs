@@ -17,9 +17,9 @@ public class ProceduralGenerator : MonoBehaviour
     private const string sCoin = "c";
     private const string sSpike = "^";
 
-    private int NUM_LAYERS;
-    private int LEVEL_HEIGHT;
-    private int LEVEL_WIDTH;
+    public int NUM_LAYERS;
+    public int LEVEL_HEIGHT;
+    public int LEVEL_WIDTH;
     // layer 0 to 5 :
     // layer 0 -> y = 0 level
     // layer 1 -> y = 1 level

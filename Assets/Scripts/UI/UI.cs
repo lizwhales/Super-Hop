@@ -7,20 +7,23 @@ public class UI : MonoBehaviour
 {
 
     public static bool PausedGame = false;
-    [SerializeField] private GameObject _pauseMenu;
-    [SerializeField] private GameObject _crosshair;
+    [SerializeField] public GameObject _pauseMenu;
+    [SerializeField] public GameObject _crosshair;
+    [SerializeField] public GameObject _winPanel;
+    [SerializeField] public GameObject _losePanel;
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape)){
+    { // Prevent menu from opening if the win or lose panel is active
+        if (Input.GetKeyDown(KeyCode.Escape) && !_winPanel.activeInHierarchy && !_losePanel.activeInHierarchy){
             if (PausedGame){
                 ResumeGame();
             } else {
@@ -49,6 +52,7 @@ public class UI : MonoBehaviour
     }
 
     public void MainMenu(){
+        _pauseMenu.SetActive(false);
         SceneManager.LoadScene(0);
     }
 

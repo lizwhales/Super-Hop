@@ -14,6 +14,11 @@ public class BloomPostProcess : MonoBehaviour
     [Range(0.0f, 2.0f)]
     public float intensity = 1.0f;
 
+    void Start(){
+        cam = GetComponent<Camera>();
+        cam.depthTextureMode = DepthTextureMode.Depth;
+    }
+
     void OnRenderImage(RenderTexture src, RenderTexture dst){
         if (mat == null){ 
             mat = new Material(bloomShader);

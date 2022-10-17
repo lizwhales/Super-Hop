@@ -8,8 +8,8 @@ public class SliderControl : MonoBehaviour
     private static readonly string FirstTime = "FirstTime";
     private int firstTimeInt;
 
-    [SerializeField] Slider bgSlider;
-    [SerializeField] Slider sfxSlider;
+    [SerializeField] public Slider bgSlider;
+    [SerializeField] public Slider sfxSlider;
 
     public AudioSource bgAudio;
     public AudioSource[] sfxAudio;

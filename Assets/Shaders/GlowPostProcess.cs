@@ -5,7 +5,7 @@ using UnityEngine;
 // Used on the Camera with CameraGlowMat and CameraGlowShader
 public class GlowPostProcess : MonoBehaviour
 {
-    private Shader glowShader;
+    public Shader glowShader;
     public Material mat;
     private Camera cam;
 

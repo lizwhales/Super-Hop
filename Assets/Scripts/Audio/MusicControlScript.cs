@@ -8,8 +8,8 @@ public class MusicControlScript : MonoBehaviour
     public static MusicControlScript instance;
     private float bgFloat, sfxFloat;
 
-    [SerializeField] Slider bgSlider;
-    [SerializeField] Slider sfxSlider;
+    [SerializeField] public Slider bgSlider;
+    [SerializeField] public Slider sfxSlider;
     
     public AudioSource bgAudio;
     public AudioSource[] sfxAudio;
