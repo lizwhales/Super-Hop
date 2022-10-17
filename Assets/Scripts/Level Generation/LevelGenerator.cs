@@ -80,7 +80,7 @@ public class LevelGenerator : MonoBehaviour
         string [] layers = Regex.Split(text, "#");
         //Debug.Log("number of layers: "+ layers.Length);
         string curLayer = layers[layer];
-        string[] lines = Regex.Split(curLayer, ",");
+        string[] lines = Regex.Split(curLayer, ",\r\n");
         //Debug.Log("This is layer: " + layer);
         for (int k = 0; k < lines.Length; k++){
             // Debug.Log(lines[k]);
@@ -175,7 +175,7 @@ public class LevelGenerator : MonoBehaviour
                 }
             // create right wall based on the text file
             } else if (layer == 5) {
-                for (int z = 0; z < curLayer.Length - 1; z++) { 
+                for (int z = 0; z < curLayer.Length; z++) { 
                     for (int y = 0; y < curLayer[0].Length; y++) {
                         switch (curLayer[z][y]){
                         case sWall:
@@ -199,9 +199,9 @@ public class LevelGenerator : MonoBehaviour
                 for (int x = 0; x < LEVEL_WIDTH; x++) {
                     for (int y = 0; y <= LEVEL_HEIGHT*2; y++) {
                         Instantiate(frontWall, new Vector3(x * TILE_WIDTH, y * WALL_HEIGHT + WALL_Y_OFFSET, -(TILE_WIDTH/2 + WALL_WIDTH/2)), Quaternion.identity);
-                        Instantiate(backWall, new Vector3(x * TILE_WIDTH, y * WALL_HEIGHT + WALL_Y_OFFSET, (curLayer.Length - 1) * TILE_WIDTH - 1.5f), Quaternion.identity);
+                        Instantiate(backWall, new Vector3(x * TILE_WIDTH, y * WALL_HEIGHT + WALL_Y_OFFSET, (curLayer.Length) * TILE_WIDTH - 1.5f), Quaternion.identity);
                         Instantiate(frontWall, new Vector3(x * TILE_WIDTH, -(y * WALL_HEIGHT + WALL_Y_OFFSET), -(TILE_WIDTH/2 + WALL_WIDTH/2)), Quaternion.identity);
-                        Instantiate(backWall, new Vector3(x * TILE_WIDTH, -(y * WALL_HEIGHT + WALL_Y_OFFSET), (curLayer.Length - 1) * TILE_WIDTH - 1.5f), Quaternion.identity);
+                        Instantiate(backWall, new Vector3(x * TILE_WIDTH, -(y * WALL_HEIGHT + WALL_Y_OFFSET), (curLayer.Length) * TILE_WIDTH - 1.5f), Quaternion.identity);
                     }
                 }
             }
