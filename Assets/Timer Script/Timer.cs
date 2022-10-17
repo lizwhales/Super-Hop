@@ -19,6 +19,8 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI secondSecond;
     [SerializeField]
     public GameObject losePanel;
+    [SerializeField]
+    public GameObject objPanel;
     // set curr time to time duration, etc.
     
     void Start()
@@ -54,6 +56,7 @@ public class Timer : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         losePanel.SetActive(true);
+        objPanel.SetActive(false);
     }
 
     void ResetTimer(){
@@ -78,6 +81,5 @@ public class Timer : MonoBehaviour
         secondMinute.text = "e";
         firstSecond.text = "a";
         secondSecond.text = "d";
-
     }
 }

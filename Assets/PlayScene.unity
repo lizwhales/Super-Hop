@@ -3658,6 +3658,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1991403751243061913, guid: de60973f7f346bf479f98940870904db, type: 3}
+      propertyPath: objPanel
+      value: 
+      objectReference: {fileID: 1870065816}
+    - target: {fileID: 1991403751243061913, guid: de60973f7f346bf479f98940870904db, type: 3}
       propertyPath: losePanel
       value: 
       objectReference: {fileID: 2017948649}
@@ -3693,6 +3697,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1921221408, guid: 62908557cc9198a41834532780cc3dad, type: 3}
+      propertyPath: _objPanel
+      value: 
+      objectReference: {fileID: 1870065816}
     - target: {fileID: 1921221408, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: _winPanel
       value: 

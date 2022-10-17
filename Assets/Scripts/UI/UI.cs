@@ -11,13 +11,14 @@ public class UI : MonoBehaviour
     [SerializeField] public GameObject _crosshair;
     [SerializeField] public GameObject _winPanel;
     [SerializeField] public GameObject _losePanel;
-
+    [SerializeField] public GameObject _objPanel;
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1f;
+        _objPanel.SetActive(true);
     }
 
     // Update is called once per frame
