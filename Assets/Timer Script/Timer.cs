@@ -8,17 +8,17 @@ public class Timer : MonoBehaviour
 
     private float timer;
     [SerializeField]
-    private TextMeshProUGUI firstMinute;
+    public TextMeshProUGUI firstMinute;
     [SerializeField]
-    private TextMeshProUGUI secondMinute;
+    public TextMeshProUGUI secondMinute;
     [SerializeField]
-    private TextMeshProUGUI seperator;
+    public TextMeshProUGUI seperator;
     [SerializeField]
-    private TextMeshProUGUI firstSecond;
+    public TextMeshProUGUI firstSecond;
     [SerializeField]
-    private TextMeshProUGUI secondSecond;    
+    public TextMeshProUGUI secondSecond;
     [SerializeField]
-    private GameObject losePanel;
+    public GameObject losePanel;
     // set curr time to time duration, etc.
     
     void Start()
@@ -35,7 +35,7 @@ public class Timer : MonoBehaviour
             Flash();
             GameObject Player = GameObject.Find("Player");
             Player.GetComponent<Respawn>().RespawnPoint();
-            losePanel.SetActive(true);
+            LoseGame();
             // Respawn.RespawnPoint();
             Debug.Log("TIME UP YOU DED");
         }
@@ -47,6 +47,13 @@ public class Timer : MonoBehaviour
             Debug.Log("TIME UP YOU DED");
         }
         
+    }
+
+    private void LoseGame(){
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        losePanel.SetActive(true);
     }
 
     void ResetTimer(){

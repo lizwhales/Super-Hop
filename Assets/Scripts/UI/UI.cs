@@ -7,10 +7,10 @@ public class UI : MonoBehaviour
 {
 
     public static bool PausedGame = false;
-    [SerializeField] private GameObject _pauseMenu;
-    [SerializeField] private GameObject _crosshair;
-    [SerializeField] private GameObject _winPanel;
-    [SerializeField] private GameObject _losePanel;
+    [SerializeField] public GameObject _pauseMenu;
+    [SerializeField] public GameObject _crosshair;
+    [SerializeField] public GameObject _winPanel;
+    [SerializeField] public GameObject _losePanel;
 
     // Start is called before the first frame update
     void Start()

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
-    [SerializeField] GameObject player;
-    [SerializeField] Transform spawnPoint;
+    [SerializeField] public GameObject player;
+    [SerializeField] public Transform spawnPoint;
     
     public int spikePenalty = 3;
 
