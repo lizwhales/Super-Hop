@@ -38,7 +38,10 @@ public class LevelGenerator : MonoBehaviour
    
     public Transform cube;
     public Transform wall;
-    public Transform wallBF;
+    public Transform wall2;
+    public Transform backWall;
+    public Transform frontWall;
+    public Transform sideBackWall;
     public Transform floor;
     public Transform player;
     public Transform start;
@@ -56,6 +59,8 @@ public class LevelGenerator : MonoBehaviour
     public const string sGoal = "g";
     public const string sStart = "S";
     public const string sWall = ">";
+    public const string sWall2 = "<";
+    public const string sBackWall = "=";
     public const string sSlow = "s";
     public const string sIce = "i";
     public const string sCoinBox = "C";
@@ -156,10 +161,16 @@ public class LevelGenerator : MonoBehaviour
                         case sWall:
                             Instantiate(wall, new Vector3(LEFT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z*WALL_LENGTH), Quaternion.identity);
                             break;
+                        case sWall2:
+                            Instantiate(wall2, new Vector3(LEFT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z*WALL_LENGTH), Quaternion.identity);
+                            break;
+                        case sBackWall:
+                            Instantiate(sideBackWall, new Vector3(LEFT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z*WALL_LENGTH), Quaternion.identity);
+                            break;
                         case sVoid:
                             break; 
                         } 
-                        Instantiate(wall, new Vector3(LEFT_WALL_X_OFFSET, -(y * WALL_HEIGHT + WALL_Y_OFFSET), z*WALL_LENGTH), Quaternion.identity);
+                        Instantiate(wall, new Vector3(LEFT_WALL_X_OFFSET, -(y * WALL_HEIGHT + WALL_Y_OFFSET)-1, z*WALL_LENGTH), Quaternion.identity);
                     }        
                 }
             // create right wall based on the text file
@@ -170,21 +181,27 @@ public class LevelGenerator : MonoBehaviour
                         case sWall:
                             Instantiate(wall, new Vector3(RIGHT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z * WALL_LENGTH), Quaternion.identity);
                             break;
+                        case sWall2:
+                            Instantiate(wall2, new Vector3(RIGHT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z * WALL_LENGTH), Quaternion.identity);
+                            break;
+                        case sBackWall:
+                            Instantiate(sideBackWall, new Vector3(RIGHT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z * WALL_LENGTH), Quaternion.identity);
+                            break;
                         case sVoid:
                             break; 
                         } 
                         //extend wall down to the bottom of the level
-                        Instantiate(wall, new Vector3(RIGHT_WALL_X_OFFSET,-(y * WALL_HEIGHT + WALL_Y_OFFSET), z * WALL_LENGTH), Quaternion.identity);
+                        Instantiate(wall, new Vector3(RIGHT_WALL_X_OFFSET,-(y * WALL_HEIGHT + WALL_Y_OFFSET)-1, z * WALL_LENGTH), Quaternion.identity);
                     
                     }        
                 }
                 // Create front and back walls
                 for (int x = 0; x < LEVEL_WIDTH; x++) {
                     for (int y = 0; y <= LEVEL_HEIGHT*2; y++) {
-                        Instantiate(wallBF, new Vector3(x * TILE_WIDTH, y * WALL_HEIGHT + WALL_Y_OFFSET, -(TILE_WIDTH/2 + WALL_WIDTH/2)), Quaternion.identity);
-                        Instantiate(wallBF, new Vector3(x * TILE_WIDTH, y * WALL_HEIGHT + WALL_Y_OFFSET, (curLayer.Length - 1) * TILE_WIDTH - 1.5f), Quaternion.identity);
-                        Instantiate(wallBF, new Vector3(x * TILE_WIDTH, -(y * WALL_HEIGHT + WALL_Y_OFFSET), -(TILE_WIDTH/2 + WALL_WIDTH/2)), Quaternion.identity);
-                        Instantiate(wallBF, new Vector3(x * TILE_WIDTH, -(y * WALL_HEIGHT + WALL_Y_OFFSET), (curLayer.Length - 1) * TILE_WIDTH - 1.5f), Quaternion.identity);
+                        Instantiate(frontWall, new Vector3(x * TILE_WIDTH, y * WALL_HEIGHT + WALL_Y_OFFSET, -(TILE_WIDTH/2 + WALL_WIDTH/2)), Quaternion.identity);
+                        Instantiate(backWall, new Vector3(x * TILE_WIDTH, y * WALL_HEIGHT + WALL_Y_OFFSET, (curLayer.Length - 1) * TILE_WIDTH - 1.5f), Quaternion.identity);
+                        Instantiate(frontWall, new Vector3(x * TILE_WIDTH, -(y * WALL_HEIGHT + WALL_Y_OFFSET), -(TILE_WIDTH/2 + WALL_WIDTH/2)), Quaternion.identity);
+                        Instantiate(backWall, new Vector3(x * TILE_WIDTH, -(y * WALL_HEIGHT + WALL_Y_OFFSET), (curLayer.Length - 1) * TILE_WIDTH - 1.5f), Quaternion.identity);
                     }
                 }
             }
@@ -200,7 +217,7 @@ public class LevelGenerator : MonoBehaviour
     }
 
     public void loadProceduralLevel(int numLayers) {
-        int depth = 10;
+        int depth = 50;
         GameObject scripts = GameObject.Find("GameScripts");
         string generatedLevel = 
             scripts.GetComponent<ProceduralGenerator>().generatePerlinLevel(numLayers, LEVEL_HEIGHT, LEVEL_WIDTH, depth);

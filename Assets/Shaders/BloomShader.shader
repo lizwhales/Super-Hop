@@ -1,7 +1,11 @@
 Shader "Custom/BloomShader"
 {
     Properties
-    { _MainTex ("Texture", 2D) = "white" {} }
+    { 
+        _MainTex ("Texture", 2D) = "white" {}
+        _Threshold("Prefilter Threshold", Range(0.1,2.0)) = 1.0
+        _Intensity("Intensity", Range(0.0,5.0)) = 1.0
+    }
 
     // Includes for each pass, reduce code repeats
     // -------------------CGINCLUDE--------------------//

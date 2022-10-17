@@ -1,7 +1,7 @@
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 // https://docs.unity3d.com/2022.1/Documentation/Manual/built-in-shader-examples-vertex-data.html
 
-Shader "Custom/BasicShader"
+Shader "Custom/CelShader"
 {
     Properties
     {
@@ -9,6 +9,7 @@ Shader "Custom/BasicShader"
         _OutlineColor("Outline Color", Color) = (1,1,1,1)
         _OutlineSize("Outline Size", Range(1.0,1.5)) = 1.1
         _AmbientLight("Ambient Light", Color) = (0.2,0.32,0.44,0)
+        _AmbientModifier("Ambient Intensity", Range(0.0, 1.0)) = 0.5
         _ObjectColor("Object Color", Color) = (1,1,1,1)
 
         // Diffuse, and Specular || Step & Posterize
@@ -19,7 +20,8 @@ Shader "Custom/BasicShader"
 
         // Fog
         _FogColour("Fog Colour", Color) = (0.4, 0, 0.6, 0)
-        _MaxDistance("MaxDistance", Float) = 35
+        _MaxDistance("MaxDistance", Range(0,250)) = 35
+        _MinDistance("MinDistance", Range(0,25)) = 7
 
         // Inner Glow Outline
         _GlowColor("Inner Glow Color", Color) = (1,1,1,1)
@@ -36,7 +38,6 @@ Shader "Custom/BasicShader"
         Pass
         {
             CGPROGRAM
-
             #pragma vertex vert
             #pragma fragment frag
      
@@ -66,7 +67,8 @@ Shader "Custom/BasicShader"
             float4 _ObjectColor, _AmbientLight, _GlowColor;
             float _Gloss, _DiffuseStep, _SpecularStep, _PosterizeDiffuse, _PosterizeSpecular, _GlowAmount;
             float4 _FogColour;
-            float _MaxDistance;
+            float _MaxDistance, _MinDistance;
+            float _AmbientModifier;
 
             // vertex shader
             v2f vert (appdata v)
@@ -104,7 +106,7 @@ Shader "Custom/BasicShader"
 
                 // Direct diffues light
                 i.diffuse = lightFalloff * _LightColor0;
-                float4 diffuseLight = i.diffuse + _AmbientLight;
+                float4 diffuseLight = i.diffuse + (_AmbientLight*_AmbientModifier);
 
                 // Direct Specular light. Dir from object to camera, need to define view vector
                 float3 camPos = _WorldSpaceCameraPos;
@@ -133,8 +135,10 @@ Shader "Custom/BasicShader"
                 float4 col = diffuseLight * _ObjectColor + directSpecular + glow;
 
                 // FOG
-                float distToObject = i.dis;
+                float distToObject = i.dis-_MinDistance;
+                // float distToObject = i.dis;
                 float frac = clamp((_MaxDistance - distToObject) / (_MaxDistance), 0.0, 1.0);
+                frac = sqrt(frac);
                 fixed4 objectFrac = frac * col;
                 fixed4 fogFrac = (1.0 - frac) * _FogColour;
 
@@ -157,7 +161,7 @@ Shader "Custom/BasicShader"
             #include "UnityCG.cginc"
 
             fixed4 _OutlineColor, _FogColour;
-            float _OutlineSize, _MaxDistance;
+            float _OutlineSize, _MaxDistance, _MinDistance;
 
             struct appdata
             {
@@ -180,7 +184,7 @@ Shader "Custom/BasicShader"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float distToObject = i.dis;
+                float distToObject = i.dis - _MinDistance;
                 float frac = clamp((_MaxDistance - distToObject) / (_MaxDistance), 0.0, 1.0);
                 fixed4 objectFrac = frac * _OutlineColor;
                 fixed4 fogFrac = (1.0 - frac) * _FogColour;

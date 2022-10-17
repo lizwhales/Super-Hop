@@ -9,11 +9,11 @@ public class GlowPostProcess : MonoBehaviour
     public Material mat;
     private Camera cam;
 
-    [Range(0.0f, 20.0f)]
-    public float upscale = 2.5f;
+    // [Range(0.0f, 20.0f)]
+    // public float upscale = 2.5f;
 
-    [Range(0.0f, 10.0f)]
-    public float intensity = 0.8f;
+    // [Range(0.0f, 10.0f)]
+    // public float intensity = 0.8f;
     
     void Awake(){
         //QualitySettings.vSyncCount = 1;
@@ -37,8 +37,8 @@ public class GlowPostProcess : MonoBehaviour
         // SRC info and pass Shader values
         int width = src.width;
         int height = src.height;
-        mat.SetFloat("_UpScale", upscale);
-        mat.SetFloat("_Intensity", intensity);
+        // mat.SetFloat("_UpScale", upscale);
+        // mat.SetFloat("_Intensity", intensity);
 
         // First Blit - Use temporary RTs
         RenderTexture tmpDstRT = RenderTexture.GetTemporary(width, height, 0, src.format);

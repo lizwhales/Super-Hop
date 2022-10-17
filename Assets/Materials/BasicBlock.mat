@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GlowObjMat
-  m_Shader: {fileID: 4800000, guid: 42c61a31d001f044a9261533af838fb7, type: 3}
-  m_Parent: {fileID: 0}
+  m_Name: BasicBlock
+  m_Shader: {fileID: 4800000, guid: 670c00368775f4840bcca33f40b18604, type: 3}
+  m_Parent: {fileID: 2100000, guid: f4afa4d542cad614d954aa8ae8410541, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -24,7 +24,13 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _AmbientModifier: 0.03
+    - _MaxDistance: 30
     m_Colors:
-    - _GlowColor: {r: 1, g: 0, b: 0, a: 1}
+    - _AmbientLight: {r: 1, g: 1, b: 1, a: 1}
+    - _FogColour: {r: 0.003921569, g: 0, b: 0.2, a: 0}
+    - _GlowColor: {r: 0.8962264, g: 0.13105197, b: 0.13105197, a: 1}
+    - _ObjectColor: {r: 1, g: 0.38039216, b: 0.92156863, a: 1}
+    - _OutlineColor: {r: 0, g: 1, b: 0.25330424, a: 1}
   m_BuildTextureStacks: []

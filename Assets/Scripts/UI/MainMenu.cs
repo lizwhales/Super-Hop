@@ -26,7 +26,7 @@ public class MainMenu : MonoBehaviour
     }
     public void playLevel3(){
         
-        levelIdentifier.GetComponent<LevelID>().LevelFile = "Assets/Levels/slow_level.txt";  
+        levelIdentifier.GetComponent<LevelID>().LevelFile = "Assets/Levels/ice_level.txt";  
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 

@@ -58,8 +58,8 @@ GameObject:
   - component: {fileID: 7949915852884162284}
   - component: {fileID: 7949915852884162287}
   - component: {fileID: 7949915852884162285}
-  - component: {fileID: 2727456179251400676}
   - component: {fileID: 826041364350776177}
+  - component: {fileID: 2727456179251400676}
   m_Layer: 0
   m_Name: PlayerCam
   m_TagString: Untagged
@@ -148,6 +148,22 @@ MonoBehaviour:
   xSense: 400
   ySense: 400
   orientation: {fileID: 0}
+--- !u!114 &826041364350776177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7949915852884162281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 441656fa7245aa64faade6ca4e39b7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowShader: {fileID: 0}
+  mat: {fileID: 2100000, guid: 0af2de57452e22b49ac12effa2bf17cf, type: 2}
+  upscale: 6.3
+  intensity: 0.8
 --- !u!114 &2727456179251400676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,18 +180,3 @@ MonoBehaviour:
   mat: {fileID: 2100000, guid: 37ef9577f96a18543bf51da1a3655916, type: 2}
   threshold: 1.4
   intensity: 0.75
---- !u!114 &826041364350776177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7949915852884162281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 441656fa7245aa64faade6ca4e39b7a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: 0af2de57452e22b49ac12effa2bf17cf, type: 2}
-  upscale: 2.5
-  intensity: 0.8

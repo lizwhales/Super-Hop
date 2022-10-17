@@ -8,11 +8,11 @@ public class BloomPostProcess : MonoBehaviour
     public Material mat;
     private Camera cam;
 
-    [Range(0.0f, 2.0f)]
-    public float threshold = 1.0f;
+    // [Range(0.0f, 2.0f)]
+    // public float threshold = 1.0f;
 
-    [Range(0.0f, 2.0f)]
-    public float intensity = 1.0f;
+    // [Range(0.0f, 2.0f)]
+    // public float intensity = 1.0f;
 
     void Start(){
         cam = GetComponent<Camera>();
@@ -27,8 +27,8 @@ public class BloomPostProcess : MonoBehaviour
         // SRC info and pass Shader values
         int width = src.width;
         int height = src.height;
-        mat.SetFloat("_Threshold", threshold);
-        mat.SetFloat("_Intensity", intensity);
+        // mat.SetFloat("_Threshold", threshold);
+        // mat.SetFloat("_Intensity", intensity);
 
         // First Blit - Use temporary RTs
         RenderTexture tmpDstRT = RenderTexture.GetTemporary(width,height,0,src.format);

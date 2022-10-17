@@ -1,7 +1,11 @@
 Shader "Glow/CameraGlowShader"
 {
     // Used on the Camera with CameraGlowMat and GlowPostProcess
-    Properties {}
+    Properties 
+    {
+        _UpScale("Sample Scale", Range(0.1,10.0)) = 2.0
+        _Intensity("Ambient Light", Range(0.1,5.0)) = 0.9
+    }
 
     // -------------------CGINCLUDE--------------------//
     CGINCLUDE

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mud
+  m_Name: FloorMat
   m_Shader: {fileID: 4800000, guid: 670c00368775f4840bcca33f40b18604, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -61,14 +61,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AmbientModifier: 0.193
+    - _AmbientModifier: 0.5
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DiffuseStep: 0.1
+    - _DiffuseStep: 0.001
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GlowAmount: 1
     - _MaxDistance: 30
@@ -76,22 +76,22 @@ Material:
     - _MinDistance: 7
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineSize: 1.1
+    - _OutlineSize: 1.044
     - _Parallax: 0.02
     - _PosterizeDiffuse: 0
-    - _PosterizeSpecular: 0
+    - _PosterizeSpecular: 16
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SpecularStep: 0.5
+    - _SpecularStep: 0.409
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _AmbientLight: {r: 0.084905684, g: 0.025242532, b: 0.015619444, a: 0}
-    - _Color: {r: 0.254717, g: 0.18997225, b: 0.111739054, a: 1}
+    - _AmbientLight: {r: 0.7490196, g: 0.33333334, b: 0.8352942, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FogColour: {r: 0.003921569, g: 0, b: 0.2, a: 0}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ObjectColor: {r: 0.14117648, g: 0.019607844, b: 0, a: 1}
-    - _OutlineColor: {r: 0.14150941, g: 0.019071376, b: 0, a: 1}
+    - _ObjectColor: {r: 0.1478333, g: 0, b: 0.21698111, a: 1}
+    - _OutlineColor: {r: 0, g: 0.2, b: 0.004439498, a: 1}
   m_BuildTextureStacks: []

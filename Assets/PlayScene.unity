@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44221413, g: 0.48419088, b: 0.5331436, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -285,12 +285,12 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.39215687, g: 0.14117648, b: 0.5058824, a: 1}
+  m_Intensity: 0.25
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize: 5
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
@@ -343,14 +343,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160475343}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: -0.9917313, y: 0.06298072, z: 0.0009789378, w: -0.11181097}
+  m_LocalPosition: {x: 0, y: 3, z: 50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 12.806, y: -179.058, z: 187.373}
 --- !u!1 &163945553
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,6 +1274,18 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 826041364350776177, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
+      propertyPath: upscale
+      value: 5.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 826041364350776177, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
+      propertyPath: intensity
+      value: 2.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 826041364350776177, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
+      propertyPath: glowShader
+      value: 
+      objectReference: {fileID: 4800000, guid: fdfee942b4c5096449751120c8e25a15, type: 3}
     - target: {fileID: 7949915852859949072, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
       propertyPath: m_Name
       value: CameraHolder
@@ -1333,6 +1345,10 @@ PrefabInstance:
     - target: {fileID: 7949915852884162284, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
       propertyPath: field of view
       value: 97.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949915852884162284, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
+      propertyPath: far clip plane
+      value: 210
       objectReference: {fileID: 0}
     - target: {fileID: 7949915852884162284, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
       propertyPath: near clip plane
@@ -1521,8 +1537,8 @@ Camera:
   m_GameObject: {fileID: 708064421}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.9056604, g: 0, b: 0.81790406, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3251,7 +3267,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1921221408, guid: 62908557cc9198a41834532780cc3dad, type: 3}
   m_PrefabInstance: {fileID: 602794962353665230}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 602794962353665231}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08d34984de3f35542a5f15b0b7b7cd88, type: 3}
@@ -3774,6 +3790,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2346103886825777412, guid: 9304263ea3a4bc04d88e042d9a1612a4, type: 3}
     - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
+      propertyPath: wall2
+      value: 
+      objectReference: {fileID: 6361403019609001211, guid: aa3cc76987848ab4d9606e301f0fba0a, type: 3}
+    - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 2342464468515327993}
@@ -3785,6 +3805,18 @@ PrefabInstance:
       propertyPath: wallBF
       value: 
       objectReference: {fileID: 1176361260786171863, guid: 0f9912ac952aabe44a81fac81b0c26b3, type: 3}
+    - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
+      propertyPath: backWall
+      value: 
+      objectReference: {fileID: 1176361260786171863, guid: 4bdbda0cef7e40341bc42e1111ee3f65, type: 3}
+    - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
+      propertyPath: frontWall
+      value: 
+      objectReference: {fileID: 1176361260786171863, guid: 0f9912ac952aabe44a81fac81b0c26b3, type: 3}
+    - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
+      propertyPath: sideBackWall
+      value: 
+      objectReference: {fileID: 6361403019609001211, guid: 6f8ad32992e7e6047bc762620de4ce80, type: 3}
     - target: {fileID: 602794963944520921, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: m_Name
       value: GameScripts
@@ -3797,6 +3829,23 @@ PrefabInstance:
     - {fileID: 1921221407, guid: 62908557cc9198a41834532780cc3dad, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 62908557cc9198a41834532780cc3dad, type: 3}
+--- !u!1 &602794962353665231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 602794963944520921, guid: 62908557cc9198a41834532780cc3dad, type: 3}
+  m_PrefabInstance: {fileID: 602794962353665230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &602794962353665232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602794962353665231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc804c4517605d42b9e4a5d64c64519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1843730216811475778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4400,12 +4449,20 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
+      propertyPath: speed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
       propertyPath: jumpForce
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
       propertyPath: groundDrag
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
+      propertyPath: walljumping
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
       propertyPath: airMultipler

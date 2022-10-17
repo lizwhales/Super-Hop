@@ -11,6 +11,8 @@ public class ProceduralGenerator : MonoBehaviour
     private const string sGoal = "g";
     private const string sStart = "S";
     private const string sWall = ">";
+    private const string sWall2 = "<";
+    private const string sBackWall = "=";
     private const string sSlow = "s";
     private const string sIce = "i";
     private const string sCoinBox = "C";
@@ -97,10 +99,10 @@ public class ProceduralGenerator : MonoBehaviour
 
         // Mutate environment
         float startX_env = Random.value;
-        float xyscale_env = 0.5F;
+        float xyscale_env = 0.8F;
 
-        float ice = 0.1F;
-        float mud = 0.1F;
+        float ice = 0.3F;
+        float mud = 0.3F;
 
         for (int i = 0; i < LEVEL_WIDTH; i++) {
             for (int j = 0; j < LEVEL_DEPTH; j++) {
@@ -201,11 +203,18 @@ public class ProceduralGenerator : MonoBehaviour
         // Left Wall
         levelText[lineCounter] = "Left Wall #";
         lineCounter++;
+
+        double glowyChance = 0.1;
         
         for (int i = 0; i < LEVEL_DEPTH; i++) {
             slice = "";
             for (int j = 0; j < LEVEL_HEIGHT * 2; j++) {
-                slice += "> ";
+                if (Random.value < glowyChance) {
+                    slice += "< "; // Glowy boy
+                } else {
+                    slice += "> "; // Standard boy
+                }
+
             }
             slice = slice.Trim();
             slice += ",";
@@ -220,7 +229,11 @@ public class ProceduralGenerator : MonoBehaviour
         for (int i = 0; i < LEVEL_DEPTH; i++) {
             slice = "";
             for (int j = 0; j < LEVEL_HEIGHT * 2; j++) {
-                slice += "> ";
+                if (Random.value < glowyChance) {
+                    slice += "< "; // Glowy boy
+                } else {
+                    slice += "> "; // Standard boy
+                }
             }
             slice = slice.Trim();
             slice += ",";
