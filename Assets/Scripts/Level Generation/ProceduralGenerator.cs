@@ -241,7 +241,7 @@ public class ProceduralGenerator : MonoBehaviour
             lineCounter++;
         }
 
-        return System.String.Join("\n", levelText);
+        return System.String.Join("\r\n", levelText);
 
     }
     
