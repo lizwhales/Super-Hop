@@ -4540,6 +4540,35 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 723418005896816068, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
   m_PrefabInstance: {fileID: 2342464468515327992}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2342464468515327994 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 723418005896816070, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
+  m_PrefabInstance: {fileID: 2342464468515327992}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2342464468515327995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2342464468515327994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7d97c0c50258544b3444908d734568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 264
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  wallCheckDistance: 0.7
+  minJumpHeight: 0.1
+  orientation: {fileID: 3064703747219033449}
+  wallJumpUpForce: 4
+  wallJumpSideForce: 4
+  jumpKey: 32
 --- !u!4 &3064703747219033449 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 723418005636645521, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
