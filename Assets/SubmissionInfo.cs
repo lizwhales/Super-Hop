@@ -26,21 +26,21 @@ public static class SubmissionInfo
 
     // This may be a "working title" to begin with, but ensure it is final by
     // the video milestone deadline (plain text, no more than 50 chars).
-    public static readonly string GameName = "Paving The Way";
+    public static readonly string GameName = "SUPERHOP";
 
     // Write a brief blurb of your game, no more than 200 words. Again, ensure
     // this is final by the video milestone deadline.
     public static readonly string GameBlurb = 
-@"Paving the Way is an exciting first-person 3D strategic running game. 
+@"SUPERHOP is an exciting first-person 3D strategic running game. 
 The aim of this game is to survive each timed level by making it to a goal point at the end of each map. 
-Equipped with a gun that fires out blocks to aid your quest, you must use your allocated amount of blocks wisely to pave a path towards the end goal, whilst collecting coins to improve your character's abilities. 
+Equipped with the power to fire out blocks to aid your quest, you must use your allocated amount of blocks wisely to pave a path towards the end goal, whilst collecting coins to improve your character's abilities. 
 It is currently playable in two modes: levelled and endless.
 ";
     
     // By the gameplay video milestone deadline this should be a direct link
     // to a YouTube video upload containing your video. Ensure "Made for kids"
     // is turned off in the video settings. 
-    public static readonly string GameplayVideo = "https://youtube.com/...";
+    public static readonly string GameplayVideo = "https://www.youtube.com/watch?v=KMayMJteF5o";
     
     // No more info to fill out!
     // Please don't modify anything below here.
