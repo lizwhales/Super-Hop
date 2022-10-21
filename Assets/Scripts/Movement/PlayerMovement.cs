@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float jumpCD;
     public float airMultipler;
+    public float wallRunSpeed;
     bool jumpReady;
 
     public Transform orientation;
@@ -31,10 +32,12 @@ public class PlayerMovement : MonoBehaviour
     // new stuff here
     public MovementState state;
     public enum MovementState{
-        walljumping
+        walljumping, 
+        wallsliding
     }
 
     public bool walljumping;
+    public bool wallsliding;
     Vector3 moveDirection;
     Rigidbody rb;
 
@@ -86,6 +89,9 @@ public class PlayerMovement : MonoBehaviour
     public void StateHandler(){
         if(walljumping){
             state = MovementState.walljumping;
+        }else if(wallsliding){
+            state = MovementState.wallsliding;
+            speed = wallRunSpeed;
         }
         
     }
