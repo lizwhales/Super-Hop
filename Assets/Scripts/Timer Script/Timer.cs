@@ -4,9 +4,9 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
  
-    private float timerDuration = 1f * 120f; // TIMER DURATION can change later
-
-    private float timer;
+    public static float timerDuration = 1f * 115f; // TIMER DURATION can change later
+    public static float timeAdded = 5f;
+    public static float timer;
     [SerializeField]
     public TextMeshProUGUI firstMinute;
     [SerializeField]
@@ -61,6 +61,11 @@ public class Timer : MonoBehaviour
 
     void ResetTimer(){
         timer = timerDuration;
+        AddTime();
+    }
+
+    public static void AddTime(){
+        timer += timeAdded;
     }
 
     private void UpdateTimerDisplay(float time){

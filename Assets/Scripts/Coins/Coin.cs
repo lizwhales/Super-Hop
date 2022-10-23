@@ -20,6 +20,8 @@ public class Coin : MonoBehaviour
     void OnTriggerEnter(Collider col) {
         if (col.tag == "Player") {
             CoinCounter.addCoins(1);
+            // add 5 secs to timer here
+            Timer.AddTime();
             Destroy(this.gameObject);
         }
     }
