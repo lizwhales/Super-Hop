@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 8691324463730697740}
   m_Layer: 3
   m_Name: Synty_Car
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

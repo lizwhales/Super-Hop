@@ -99,7 +99,7 @@ public class LevelGenerator : MonoBehaviour
         string text = System.IO.File.ReadAllText(file);
         return readLayerText(layer, text);
     }
-    void generateLayer (int layer, string file, bool procedural = false){
+    void generateLayer (int layer, string file, bool procedural = false, float offset = 0F){
         string[][] curLayer;
         if (procedural) {
             curLayer = readLayerText(layer, file);
@@ -115,41 +115,41 @@ public class LevelGenerator : MonoBehaviour
                 for (int x = 0; x < curLayer[0].Length; x++) {
                     switch (curLayer[z][x]){
                     case sTile:
-                        Instantiate(cube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
+                        Instantiate(cube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH + offset), Quaternion.identity);
                         break;
                     case sCoinBox:
-                        Instantiate(cube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
-                        Instantiate(coin, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING + 1.5f, z * TILE_WIDTH), coin.transform.rotation);
+                        Instantiate(cube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH + offset), Quaternion.identity);
+                        Instantiate(coin, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING + 1.5f, z * TILE_WIDTH + offset), coin.transform.rotation);
                         break;
                     case sCoin:
-                        Instantiate(coin, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING + 1.5f, z * TILE_WIDTH), coin.transform.rotation);
+                        Instantiate(coin, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING + 1.5f, z * TILE_WIDTH + offset), coin.transform.rotation);
                         break;
                     case sGoalBox:
-                        Instantiate(cube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
-                        Instantiate(goal, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING + 1.5f, z * TILE_WIDTH), Quaternion.identity);
+                        Instantiate(cube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH + offset), Quaternion.identity);
+                        Instantiate(goal, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING + 1.5f, z * TILE_WIDTH + offset), Quaternion.identity);
                         break;
                     case sGoal:
-                        Instantiate(goal, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
+                        Instantiate(goal, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH + offset), Quaternion.identity);
                         break;
                     case sSlow:
-                        Instantiate(slowCube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
+                        Instantiate(slowCube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH + offset), Quaternion.identity);
                         break;
                     case sIce:
-                        Instantiate(iceCube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
+                        Instantiate(iceCube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH + offset), Quaternion.identity);
                         break;
                     case sStart:
-                        Instantiate(cube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
-                        Instantiate(player, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING + 2f, z * TILE_WIDTH), Quaternion.identity);
+                        Instantiate(cube, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH + offset), Quaternion.identity);
+                        Instantiate(player, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING + 2f, z * TILE_WIDTH + offset), Quaternion.identity);
                         break;
                     case sSpike:
-                        Instantiate(spikes, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH), Quaternion.identity);
+                        Instantiate(spikes, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH + offset), Quaternion.identity);
                         
                         break;    
                     case sVoid:
                         break; 
                     } 
-                    Instantiate(floor, new Vector3(x * TILE_WIDTH, -(LAYER_SPACING * LEVEL_HEIGHT), z * TILE_WIDTH), Quaternion.identity);
-                    Instantiate(floor, new Vector3(x * TILE_WIDTH, LAYER_SPACING * LEVEL_HEIGHT * 2 - 1, z * TILE_WIDTH), Quaternion.identity);
+                    Instantiate(floor, new Vector3(x * TILE_WIDTH, -(LAYER_SPACING * LEVEL_HEIGHT), z * TILE_WIDTH + offset), Quaternion.identity);
+                    Instantiate(floor, new Vector3(x * TILE_WIDTH, LAYER_SPACING * LEVEL_HEIGHT * 2 - 1, z * TILE_WIDTH + offset), Quaternion.identity);
                 }        
             }
         } else {
@@ -159,18 +159,18 @@ public class LevelGenerator : MonoBehaviour
                     for (int y = 0; y < curLayer[0].Length; y++) {
                         switch (curLayer[z][y]){
                         case sWall:
-                            Instantiate(wall, new Vector3(LEFT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z*WALL_LENGTH), Quaternion.identity);
+                            Instantiate(wall, new Vector3(LEFT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z*WALL_LENGTH + offset), Quaternion.identity);
                             break;
                         case sWall2:
-                            Instantiate(wall2, new Vector3(LEFT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z*WALL_LENGTH), Quaternion.identity);
+                            Instantiate(wall2, new Vector3(LEFT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z*WALL_LENGTH + offset), Quaternion.identity);
                             break;
                         case sBackWall:
-                            Instantiate(sideBackWall, new Vector3(LEFT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z*WALL_LENGTH), Quaternion.identity);
+                            Instantiate(sideBackWall, new Vector3(LEFT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z*WALL_LENGTH + offset), Quaternion.identity);
                             break;
                         case sVoid:
                             break; 
                         } 
-                        Instantiate(wall, new Vector3(LEFT_WALL_X_OFFSET, -(y * WALL_HEIGHT + WALL_Y_OFFSET)-1, z*WALL_LENGTH), Quaternion.identity);
+                        Instantiate(wall, new Vector3(LEFT_WALL_X_OFFSET, -(y * WALL_HEIGHT + WALL_Y_OFFSET)-1, z*WALL_LENGTH + offset), Quaternion.identity);
                     }        
                 }
             // create right wall based on the text file
@@ -179,29 +179,34 @@ public class LevelGenerator : MonoBehaviour
                     for (int y = 0; y < curLayer[0].Length; y++) {
                         switch (curLayer[z][y]){
                         case sWall:
-                            Instantiate(wall, new Vector3(RIGHT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z * WALL_LENGTH), Quaternion.identity);
+                            Instantiate(wall, new Vector3(RIGHT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z * WALL_LENGTH + offset), Quaternion.identity);
                             break;
                         case sWall2:
-                            Instantiate(wall2, new Vector3(RIGHT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z * WALL_LENGTH), Quaternion.identity);
+                            Instantiate(wall2, new Vector3(RIGHT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z * WALL_LENGTH + offset), Quaternion.identity);
                             break;
                         case sBackWall:
-                            Instantiate(sideBackWall, new Vector3(RIGHT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z * WALL_LENGTH), Quaternion.identity);
+                            Instantiate(sideBackWall, new Vector3(RIGHT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z * WALL_LENGTH + offset), Quaternion.identity);
                             break;
                         case sVoid:
                             break; 
                         } 
                         //extend wall down to the bottom of the level
-                        Instantiate(wall, new Vector3(RIGHT_WALL_X_OFFSET,-(y * WALL_HEIGHT + WALL_Y_OFFSET)-1, z * WALL_LENGTH), Quaternion.identity);
+                        Instantiate(wall, new Vector3(RIGHT_WALL_X_OFFSET,-(y * WALL_HEIGHT + WALL_Y_OFFSET)-1, z * WALL_LENGTH + offset), Quaternion.identity);
                     
                     }        
                 }
                 // Create front and back walls
                 for (int x = 0; x < LEVEL_WIDTH; x++) {
                     for (int y = 0; y <= LEVEL_HEIGHT*2; y++) {
-                        Instantiate(frontWall, new Vector3(x * TILE_WIDTH, y * WALL_HEIGHT + WALL_Y_OFFSET, -(TILE_WIDTH/2 + WALL_WIDTH/2)), Quaternion.identity);
-                        Instantiate(backWall, new Vector3(x * TILE_WIDTH, y * WALL_HEIGHT + WALL_Y_OFFSET, (curLayer.Length) * TILE_WIDTH - 1.5f), Quaternion.identity);
-                        Instantiate(frontWall, new Vector3(x * TILE_WIDTH, -(y * WALL_HEIGHT + WALL_Y_OFFSET), -(TILE_WIDTH/2 + WALL_WIDTH/2)), Quaternion.identity);
-                        Instantiate(backWall, new Vector3(x * TILE_WIDTH, -(y * WALL_HEIGHT + WALL_Y_OFFSET), (curLayer.Length) * TILE_WIDTH - 1.5f), Quaternion.identity);
+                        if (offset == 0) {
+                            Instantiate(frontWall, new Vector3(x * TILE_WIDTH, y * WALL_HEIGHT + WALL_Y_OFFSET, -(TILE_WIDTH/2 + WALL_WIDTH/2)), Quaternion.identity);
+                            Instantiate(frontWall, new Vector3(x * TILE_WIDTH, -(y * WALL_HEIGHT + WALL_Y_OFFSET), -(TILE_WIDTH/2 + WALL_WIDTH/2)), Quaternion.identity);
+                        } else {
+                            Instantiate(frontWall, new Vector3(x * TILE_WIDTH, y * WALL_HEIGHT + WALL_Y_OFFSET, offset - (curLayer.Length) * TILE_WIDTH), Quaternion.identity);
+                            Instantiate(frontWall, new Vector3(x * TILE_WIDTH, -(y * WALL_HEIGHT + WALL_Y_OFFSET), offset - (curLayer.Length) * TILE_WIDTH), Quaternion.identity);
+                        }
+                        Instantiate(backWall, new Vector3(x * TILE_WIDTH, y * WALL_HEIGHT + WALL_Y_OFFSET, (curLayer.Length) * TILE_WIDTH - 1.5f + offset), Quaternion.identity);
+                        Instantiate(backWall, new Vector3(x * TILE_WIDTH, -(y * WALL_HEIGHT + WALL_Y_OFFSET), (curLayer.Length) * TILE_WIDTH - 1.5f + offset), Quaternion.identity);
                     }
                 }
             }
@@ -216,13 +221,13 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    public void loadProceduralLevel(int numLayers) {
-        int depth = 50;
+    public void loadProceduralLevel(int numLayers, float offset = 0F) {
+        int depth = 20;
         GameObject scripts = GameObject.Find("GameScripts");
         string generatedLevel = 
             scripts.GetComponent<ProceduralGenerator>().generatePerlinLevel(numLayers, LEVEL_HEIGHT, LEVEL_WIDTH, depth);
         for (int i = 0; i < numLayers; i++){
-            generateLayer(i, generatedLevel, true);
+            generateLayer(i, generatedLevel, true, offset);
         }
     }
 

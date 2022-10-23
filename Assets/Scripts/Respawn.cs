@@ -24,7 +24,17 @@ public class Respawn : MonoBehaviour
     
     public void RespawnPoint()
     {
-        transform.position = spawnPoint.position;
-        Debug.Log("respawning");
+        GameObject level = GameObject.Find("Level_ID");
+        string levelFile = level.GetComponent<LevelID>().LevelFile;
+        if (levelFile == "Procedural")
+        {
+            GameObject UI = GameObject.Find("UI");
+            UI.transform.Find("Timer").GetComponent<Timer>().LoseGame();
+        } else {
+            transform.position = spawnPoint.position;
+            Debug.Log("respawning");
+        }
+
+
     }
 }

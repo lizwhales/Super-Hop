@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: -7819377875694316215}
   m_Layer: 0
   m_Name: Player 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -230,12 +230,16 @@ MonoBehaviour:
   jumpForce: 8
   jumpCD: 0.5
   airMultipler: 0.4
+  wallRunSpeed: 0
   orientation: {fileID: 723418005636645521}
   playerHeight: 2
   Ground:
     serializedVersion: 2
     m_Bits: 8
   jumpKey: 32
+  state: 0
+  walljumping: 0
+  wallsliding: 0
 --- !u!114 &-7819377875694316215
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -35,8 +35,8 @@ public class Timer : MonoBehaviour
         UpdateTimerDisplay(timer);
         }else{
             Flash();
-            GameObject Player = GameObject.Find("Player");
-            Player.GetComponent<Respawn>().RespawnPoint();
+            // GameObject Player = GameObject.Find("Player");
+            // Player.GetComponent<Respawn>().RespawnPoint();
             LoseGame();
             // Respawn.RespawnPoint();
             Debug.Log("TIME UP YOU DED");
@@ -51,10 +51,14 @@ public class Timer : MonoBehaviour
         
     }
 
-    private void LoseGame(){
+    public void LoseGame(){
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        int score = Score.getScore();
+        losePanel.transform.Find("ScoreText").GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score;
+
         losePanel.SetActive(true);
         objPanel.SetActive(false);
     }

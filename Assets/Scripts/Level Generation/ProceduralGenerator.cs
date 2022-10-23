@@ -158,8 +158,6 @@ public class ProceduralGenerator : MonoBehaviour
 
             }
         }
-        levelArray[LEVEL_WIDTH/2, LEVEL_DEPTH-2, 0] = 'G';
-
 
         string levelText = buildLevelText(levelArray);
         Debug.Log(levelText);
