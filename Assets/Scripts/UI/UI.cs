@@ -17,6 +17,7 @@ public class UI : MonoBehaviour
     public GameObject level1Text;
     public GameObject level2Text;
     public GameObject level3Text;
+    public GameObject endlessText;
 
     GameObject gameScripts;
     string levelIdentifier;    
@@ -38,11 +39,15 @@ public class UI : MonoBehaviour
         gameScripts = GameObject.Find("GameScripts");
         levelIdentifier = gameScripts.GetComponent<LevelGenerator>().levelFile;
         tutClosed = false;
+        AddTutText();
+    }
 
+    public void AddTutText(){
         if (levelIdentifier == "Assets/Levels/level_1.txt")
         {
             level3Text.SetActive(false);
             level2Text.SetActive(false);
+            endlessText.SetActive(false);
             level1Text.SetActive(true);
         }
         
@@ -50,6 +55,7 @@ public class UI : MonoBehaviour
         {
             level3Text.SetActive(false);
             level1Text.SetActive(false);
+            endlessText.SetActive(false);
             level2Text.SetActive(true);
         }
 
@@ -57,7 +63,16 @@ public class UI : MonoBehaviour
         {
             level1Text.SetActive(false);
             level2Text.SetActive(false);
+            endlessText.SetActive(false);
             level3Text.SetActive(true);
+        }
+
+        if (levelIdentifier == "Procedural")
+        {
+            level1Text.SetActive(false);
+            level2Text.SetActive(false);
+            level3Text.SetActive(false);
+            endlessText.SetActive(true);
         }
     }
 
@@ -96,6 +111,11 @@ public class UI : MonoBehaviour
                 RemoveTutText();
                 tutClosed = true;
                 level3Text.SetActive(false);
+            } else if (Input.anyKey && levelIdentifier == "Procedural")
+            {
+                RemoveTutText();
+                tutClosed = true;
+                endlessText.SetActive(false);
             }
         }
     }
