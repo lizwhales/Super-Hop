@@ -59,7 +59,7 @@ public class UI : MonoBehaviour
             level2Text.SetActive(true);
         }
 
-        if (levelIdentifier == "Assets/Levels/ice_level.txt")
+        if (levelIdentifier == "Assets/Levels/level_3.txt")
         {
             level1Text.SetActive(false);
             level2Text.SetActive(false);
@@ -106,7 +106,7 @@ public class UI : MonoBehaviour
                 RemoveTutText();
                 tutClosed = true;
                 level2Text.SetActive(false);
-            } else if (Input.anyKey && levelIdentifier == "Assets/Levels/ice_level.txt")
+            } else if (Input.anyKey && levelIdentifier == "Assets/Levels/level_3.txt")
             {
                 RemoveTutText();
                 tutClosed = true;
