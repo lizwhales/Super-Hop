@@ -5089,7 +5089,7 @@ PrefabInstance:
     - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: goal
       value: 
-      objectReference: {fileID: 3234837828736501809, guid: d83925cfd00fe0c49ab07dd9564192d6, type: 3}
+      objectReference: {fileID: 1307978980551929505, guid: fe0ce85dc662bc64187871b4f6439a99, type: 3}
     - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: floor
       value: 
