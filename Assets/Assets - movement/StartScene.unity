@@ -651,7 +651,7 @@ MonoBehaviour:
     m_Bits: 8
   wallSlideForce: 10
   wallClimbSpeed: 10
-  maxWallSlideTime: 10
+  maxWallSlideTime: 5
   upwardsRunKey: 9
   wallCheckDistance: 0.7
   minJumpHeight: 0.1
