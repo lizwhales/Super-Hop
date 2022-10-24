@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &104746754
 RectTransform:
   m_ObjectHideFlags: 0
@@ -286,7 +286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &122797742
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1485,7 +1485,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &591138010
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3574,6 +3574,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1063997387972451880, guid: 096fd09204b2edf4583d993b2b74644a, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 841868337804d6f42b865aa90971d67c, type: 3}
     - target: {fileID: 1063997387972451881, guid: 096fd09204b2edf4583d993b2b74644a, type: 3}
       propertyPath: m_Name
       value: MusicControl
@@ -4842,8 +4846,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1815159318076535591}
   - {fileID: 1815159317089101886}
+  - {fileID: 1815159318076535591}
   - {fileID: 1815159317543632485}
   m_Father: {fileID: 618205843}
   m_RootOrder: -1

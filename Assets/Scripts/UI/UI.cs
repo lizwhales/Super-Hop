@@ -7,6 +7,7 @@ public class UI : MonoBehaviour
 {
 
     public static bool PausedGame = false;
+    
     public GameObject _pauseMenu;
     public GameObject _crosshair;
     public GameObject _winPanel;
@@ -19,7 +20,7 @@ public class UI : MonoBehaviour
 
     GameObject gameScripts;
     string levelIdentifier;    
-
+    bool tutClosed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,7 @@ public class UI : MonoBehaviour
         // Set up Tutorial Text
         gameScripts = GameObject.Find("GameScripts");
         levelIdentifier = gameScripts.GetComponent<LevelGenerator>().levelFile;
+        tutClosed = false;
 
         if (levelIdentifier == "Assets/Levels/level_1.txt")
         {
@@ -74,6 +76,26 @@ public class UI : MonoBehaviour
                 ResumeGame();
             } else {
                 PauseGame();
+            }
+        }
+
+        if (tutClosed == false){
+            if (Input.anyKey && levelIdentifier == "Assets/Levels/level_1.txt")
+            {
+                RemoveTutText();
+                tutClosed = true;
+                level1Text.SetActive(false);
+
+            } else if (Input.anyKey && levelIdentifier == "Assets/Levels/level_2.txt")
+            {
+                RemoveTutText();
+                tutClosed = true;
+                level2Text.SetActive(false);
+            } else if (Input.anyKey && levelIdentifier == "Assets/Levels/ice_level.txt")
+            {
+                RemoveTutText();
+                tutClosed = true;
+                level3Text.SetActive(false);
             }
         }
     }
