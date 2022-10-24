@@ -68,7 +68,7 @@ For more details you can find a guide [here](https://docs.github.com/en/github/w
 * [Code Snipets](#code-snippets)
 
 ### Game Summary
-_Paving the Way_ is an exciting first-person 3D strategic running game. The aim of this game is to survive each timed level by making it to a goal point at the end of each map. Equipped with a gun that fires out blocks to aid your quest, you must use your allocated amount of blocks wisely to pave a path towards the end goal, whilst collecting coins to improve your character's abilities. It is currently playable in two modes: levelled and endless.
+_Super Hop_ is an exciting first-person 3D strategic running game. The aim of this game is to survive each timed level by making it to a goal point at the end of each map. In a race against time, you must use your allocated amount of blocks wisely to pave a path towards the end goal, whilst collecting coins to continue forging your way forwards and keep your timer from ticking to zero. Hop your way to victory with complex movement mechanics such as wall sliding and wall jumping! But beware, not all tiles you step on are as equal as others - one wrong block could send you plummeting to death. Currently playable in two modes: levelled and endless..
 
 ### Technologies
 Project is created with:
