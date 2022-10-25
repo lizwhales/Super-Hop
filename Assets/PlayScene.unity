@@ -2069,20 +2069,44 @@ PrefabInstance:
       value: MainCamera
       objectReference: {fileID: 0}
     - target: {fileID: 7949915852884162284, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949915852884162284, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
       propertyPath: field of view
       value: 97.8
       objectReference: {fileID: 0}
     - target: {fileID: 7949915852884162284, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
       propertyPath: far clip plane
-      value: 450
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7949915852884162284, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
       propertyPath: near clip plane
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7949915852884162284, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.16820934
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949915852884162284, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.17444871
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949915852884162284, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.7924528
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949915852884162284, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
       propertyPath: m_projectionMatrixMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949915852884162285, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
+      propertyPath: xSense
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949915852884162285, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
+      propertyPath: ySense
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7949915852884162285, guid: 7988266572a2bde418d7e97d7442dc21, type: 3}
       propertyPath: orientation
@@ -5085,43 +5109,63 @@ PrefabInstance:
     - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: coin
       value: 
-      objectReference: {fileID: 5559612456140375685, guid: 7e91117fb9bd90f44a339a88692fdf0a, type: 3}
+      objectReference: {fileID: 5913988344296476536, guid: 7e91117fb9bd90f44a339a88692fdf0a, type: 3}
+    - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
+      propertyPath: cube
+      value: 
+      objectReference: {fileID: 8753983138637002637, guid: 02cbaaef327e5cb4db1af3ab21860b2b, type: 3}
     - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: goal
       value: 
-      objectReference: {fileID: 1307978980551929505, guid: fe0ce85dc662bc64187871b4f6439a99, type: 3}
+      objectReference: {fileID: 881172726385084007, guid: d83925cfd00fe0c49ab07dd9564192d6, type: 3}
+    - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
+      propertyPath: wall
+      value: 
+      objectReference: {fileID: 3087521469511141761, guid: 2e8ec673aacd71f4796d1c4fb3c9e849, type: 3}
     - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: floor
       value: 
-      objectReference: {fileID: 2346103886825777412, guid: 9304263ea3a4bc04d88e042d9a1612a4, type: 3}
+      objectReference: {fileID: 105976632264404541, guid: 9304263ea3a4bc04d88e042d9a1612a4, type: 3}
+    - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
+      propertyPath: start
+      value: 
+      objectReference: {fileID: 8753983138637002637, guid: 02cbaaef327e5cb4db1af3ab21860b2b, type: 3}
     - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: wall2
       value: 
-      objectReference: {fileID: 6361403019609001211, guid: aa3cc76987848ab4d9606e301f0fba0a, type: 3}
+      objectReference: {fileID: 3087521469511141761, guid: aa3cc76987848ab4d9606e301f0fba0a, type: 3}
     - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 2342464468515327993}
+      objectReference: {fileID: 723418005896816070, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
     - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: spikes
       value: 
-      objectReference: {fileID: 1343891419618695515, guid: c966a5a74e4d8824197b3ad08b0b0760, type: 3}
+      objectReference: {fileID: 8613615257094699530, guid: c966a5a74e4d8824197b3ad08b0b0760, type: 3}
     - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: wallBF
       value: 
       objectReference: {fileID: 1176361260786171863, guid: 0f9912ac952aabe44a81fac81b0c26b3, type: 3}
     - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
+      propertyPath: iceCube
+      value: 
+      objectReference: {fileID: 7906385301711768287, guid: b6eba6998a2e226468c7f50adf22c613, type: 3}
+    - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: backWall
       value: 
-      objectReference: {fileID: 1176361260786171863, guid: 4bdbda0cef7e40341bc42e1111ee3f65, type: 3}
+      objectReference: {fileID: 3113522889058328028, guid: 4bdbda0cef7e40341bc42e1111ee3f65, type: 3}
+    - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
+      propertyPath: slowCube
+      value: 
+      objectReference: {fileID: 2248940674192166104, guid: e2b54df2b6a67ca44af399d81178ab8c, type: 3}
     - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: frontWall
       value: 
-      objectReference: {fileID: 1176361260786171863, guid: 0f9912ac952aabe44a81fac81b0c26b3, type: 3}
+      objectReference: {fileID: 3113522889058328028, guid: 0f9912ac952aabe44a81fac81b0c26b3, type: 3}
     - target: {fileID: 602794963944520919, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: sideBackWall
       value: 
-      objectReference: {fileID: 6361403019609001211, guid: 6f8ad32992e7e6047bc762620de4ce80, type: 3}
+      objectReference: {fileID: 3113522889058328028, guid: 4bdbda0cef7e40341bc42e1111ee3f65, type: 3}
     - target: {fileID: 602794963944520921, guid: 62908557cc9198a41834532780cc3dad, type: 3}
       propertyPath: m_Name
       value: GameScripts
@@ -6738,11 +6782,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
---- !u!4 &2342464468515327993 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 723418005896816068, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
-  m_PrefabInstance: {fileID: 2342464468515327992}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2342464468515327994 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 723418005896816070, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}

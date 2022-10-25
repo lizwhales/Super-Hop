@@ -6,7 +6,7 @@ public class EndlessGenerator : MonoBehaviour
 {
     private List<GameObject> sceneObjects;
     private float distanceToGoal;
-    private GameObject goalInstance;
+    private GameObject goalInstance = null;
     private bool proc;
 
     void Start() {
@@ -17,11 +17,15 @@ public class EndlessGenerator : MonoBehaviour
     void Update() {
 
         if (proc) {
-            goalInstance = GameObject.FindWithTag("Finish");
+            if (goalInstance == null) {
+                goalInstance = GameObject.FindWithTag("Finish");
+            }
+
             distanceToGoal = Vector3.Distance(this.gameObject.transform.position, goalInstance.transform.position);
 
             if (distanceToGoal < 50) {
                 RemovePast();
+                goalInstance = null;
             }
         }
 

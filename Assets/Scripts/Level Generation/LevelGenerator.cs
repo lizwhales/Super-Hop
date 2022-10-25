@@ -36,20 +36,20 @@ public class LevelGenerator : MonoBehaviour
 
     // declaring transformations for a given object
    
-    public Transform cube;
-    public Transform wall;
-    public Transform wall2;
-    public Transform backWall;
-    public Transform frontWall;
-    public Transform sideBackWall;
-    public Transform floor;
-    public Transform player;
-    public Transform start;
-    public Transform goal;
-    public Transform slowCube;
-    public Transform iceCube;
-    public Transform coin;
-    public Transform spikes;
+    public GameObject cube;
+    public GameObject wall;
+    public GameObject wall2;
+    public GameObject backWall;
+    public GameObject frontWall;
+    public GameObject sideBackWall;
+    public GameObject floor;
+    public GameObject player;
+    public GameObject start;
+    public GameObject goal;
+    public GameObject slowCube;
+    public GameObject iceCube;
+    public GameObject coin;
+    public GameObject spikes;
     
 
     // declaring identifiers for different objects in the text file
@@ -96,7 +96,8 @@ public class LevelGenerator : MonoBehaviour
     }
 
     string[][] readLayer(int layer, string file){
-        string text = System.IO.File.ReadAllText(file);
+        var textFile = Resources.Load<TextAsset>(file);
+        string text = textFile.ToString();
         return readLayerText(layer, text);
     }
     void generateLayer (int layer, string file, bool procedural = false, float offset = 0F){
@@ -106,6 +107,9 @@ public class LevelGenerator : MonoBehaviour
         } else {
             curLayer = readLayer(layer, file);
         }
+
+        List<GameObject> gos = new List<GameObject>();
+        GameObject container = new GameObject();
         
         if (layer < LEVEL_HEIGHT) {
             
@@ -143,13 +147,12 @@ public class LevelGenerator : MonoBehaviour
                         break;
                     case sSpike:
                         Instantiate(spikes, new Vector3(x * TILE_WIDTH, layer * LAYER_SPACING, z * TILE_WIDTH + offset), Quaternion.identity);
-                        
                         break;    
                     case sVoid:
                         break; 
                     } 
-                    Instantiate(floor, new Vector3(x * TILE_WIDTH, -(LAYER_SPACING * LEVEL_HEIGHT), z * TILE_WIDTH + offset), Quaternion.identity);
-                    Instantiate(floor, new Vector3(x * TILE_WIDTH, LAYER_SPACING * LEVEL_HEIGHT * 2 - 1, z * TILE_WIDTH + offset), Quaternion.identity);
+                    gos.Add(Instantiate(floor, new Vector3(x * TILE_WIDTH, -(LAYER_SPACING * LEVEL_HEIGHT), z * TILE_WIDTH + offset), Quaternion.identity));
+                    gos.Add(Instantiate(floor, new Vector3(x * TILE_WIDTH, LAYER_SPACING * LEVEL_HEIGHT * 2 - 1, z * TILE_WIDTH + offset), Quaternion.identity));
                 }        
             }
         } else {
@@ -159,42 +162,45 @@ public class LevelGenerator : MonoBehaviour
                     for (int y = 0; y < curLayer[0].Length; y++) {
                         switch (curLayer[z][y]){
                         case sWall:
-                            Instantiate(wall, new Vector3(LEFT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z*WALL_LENGTH + offset), Quaternion.identity);
+                            gos.Add(Instantiate(wall, new Vector3(LEFT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z*WALL_LENGTH + offset), Quaternion.identity));
                             break;
                         case sWall2:
                             Instantiate(wall2, new Vector3(LEFT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z*WALL_LENGTH + offset), Quaternion.identity);
                             break;
                         case sBackWall:
-                            Instantiate(sideBackWall, new Vector3(LEFT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z*WALL_LENGTH + offset), Quaternion.identity);
+                            gos.Add(Instantiate(sideBackWall, new Vector3(LEFT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z*WALL_LENGTH + offset), Quaternion.identity));
                             break;
                         case sVoid:
                             break; 
+                        
                         } 
-                        Instantiate(wall, new Vector3(LEFT_WALL_X_OFFSET, -(y * WALL_HEIGHT + WALL_Y_OFFSET)-1, z*WALL_LENGTH + offset), Quaternion.identity);
+                        gos.Add(Instantiate(wall, new Vector3(LEFT_WALL_X_OFFSET, -(y * WALL_HEIGHT + WALL_Y_OFFSET)-1, z*WALL_LENGTH + offset), Quaternion.identity));
                     }        
                 }
+
             // create right wall based on the text file
             } else if (layer == 5) {
                 for (int z = 0; z < curLayer.Length; z++) { 
                     for (int y = 0; y < curLayer[0].Length; y++) {
                         switch (curLayer[z][y]){
                         case sWall:
-                            Instantiate(wall, new Vector3(RIGHT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z * WALL_LENGTH + offset), Quaternion.identity);
+                            gos.Add(Instantiate(wall, new Vector3(RIGHT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z * WALL_LENGTH + offset), Quaternion.identity));
                             break;
                         case sWall2:
                             Instantiate(wall2, new Vector3(RIGHT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z * WALL_LENGTH + offset), Quaternion.identity);
                             break;
                         case sBackWall:
-                            Instantiate(sideBackWall, new Vector3(RIGHT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z * WALL_LENGTH + offset), Quaternion.identity);
+                            gos.Add(Instantiate(sideBackWall, new Vector3(RIGHT_WALL_X_OFFSET, y * WALL_HEIGHT + WALL_Y_OFFSET, z * WALL_LENGTH + offset), Quaternion.identity));
                             break;
                         case sVoid:
                             break; 
                         } 
                         //extend wall down to the bottom of the level
-                        Instantiate(wall, new Vector3(RIGHT_WALL_X_OFFSET,-(y * WALL_HEIGHT + WALL_Y_OFFSET)-1, z * WALL_LENGTH + offset), Quaternion.identity);
+                        gos.Add(Instantiate(wall, new Vector3(RIGHT_WALL_X_OFFSET,-(y * WALL_HEIGHT + WALL_Y_OFFSET)-1, z * WALL_LENGTH + offset), Quaternion.identity));
                     
                     }        
                 }
+
                 // Create front and back walls
                 for (int x = 0; x < LEVEL_WIDTH; x++) {
                     for (int y = 0; y <= LEVEL_HEIGHT*2; y++) {
@@ -212,6 +218,9 @@ public class LevelGenerator : MonoBehaviour
             }
             
         }
+
+        StaticBatchingUtility.Combine(gos.ToArray(), container);
+
     }
     // Start is called before the first frame update
     public void loadLevel(string filename, int numLayers){

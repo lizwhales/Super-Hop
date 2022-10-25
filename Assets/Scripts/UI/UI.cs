@@ -43,7 +43,7 @@ public class UI : MonoBehaviour
     }
 
     public void AddTutText(){
-        if (levelIdentifier == "Assets/Levels/level_1.txt")
+        if (levelIdentifier == "level_1")
         {
             level3Text.SetActive(false);
             level2Text.SetActive(false);
@@ -51,7 +51,7 @@ public class UI : MonoBehaviour
             level1Text.SetActive(true);
         }
         
-        if (levelIdentifier == "Assets/Levels/level_2.txt")
+        if (levelIdentifier == "level_2")
         {
             level3Text.SetActive(false);
             level1Text.SetActive(false);
@@ -59,7 +59,7 @@ public class UI : MonoBehaviour
             level2Text.SetActive(true);
         }
 
-        if (levelIdentifier == "Assets/Levels/level_3.txt")
+        if (levelIdentifier == "level_3")
         {
             level1Text.SetActive(false);
             level2Text.SetActive(false);
@@ -95,18 +95,18 @@ public class UI : MonoBehaviour
         }
 
         if (tutClosed == false){
-            if (Input.anyKey && levelIdentifier == "Assets/Levels/level_1.txt")
+            if (Input.anyKey && levelIdentifier == "level_1")
             {
                 RemoveTutText();
                 tutClosed = true;
                 level1Text.SetActive(false);
 
-            } else if (Input.anyKey && levelIdentifier == "Assets/Levels/level_2.txt")
+            } else if (Input.anyKey && levelIdentifier == "level_2")
             {
                 RemoveTutText();
                 tutClosed = true;
                 level2Text.SetActive(false);
-            } else if (Input.anyKey && levelIdentifier == "Assets/Levels/level_3.txt")
+            } else if (Input.anyKey && levelIdentifier == "level_3")
             {
                 RemoveTutText();
                 tutClosed = true;

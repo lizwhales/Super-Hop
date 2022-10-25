@@ -16,17 +16,17 @@ public class MainMenu : MonoBehaviour
 
     public void playLevel1(){
         
-        levelIdentifier.GetComponent<LevelID>().LevelFile = "Assets/Levels/level_1.txt";  
+        levelIdentifier.GetComponent<LevelID>().LevelFile = "level_1";  
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1); 
     }
     public void playLevel2(){
         
-        levelIdentifier.GetComponent<LevelID>().LevelFile = "Assets/Levels/level_2.txt";  
+        levelIdentifier.GetComponent<LevelID>().LevelFile = "level_2";  
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
     public void playLevel3(){
         
-        levelIdentifier.GetComponent<LevelID>().LevelFile = "Assets/Levels/level_3.txt";  
+        levelIdentifier.GetComponent<LevelID>().LevelFile = "level_3";  
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 
