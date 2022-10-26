@@ -8,6 +8,8 @@ public class WallJumping : MonoBehaviour
     [Header("Wall Jumping")]
     public LayerMask whatIsWall;
     public LayerMask whatIsGround;
+    
+    public float wallJumpCD;
 
     [Header("Detection")]
     public float wallCheckDistance;
@@ -16,6 +18,7 @@ public class WallJumping : MonoBehaviour
     private RaycastHit rightWallhit;
     private bool wallLeft;
     private bool wallRight;
+    bool wallJumpReady;
 
     [Header("References")]
     public Transform orientation;
@@ -33,6 +36,7 @@ public class WallJumping : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<PlayerMovement>();
+        wallJumpReady = true;
     }
 
     // Update is called once per frame
@@ -73,8 +77,17 @@ public class WallJumping : MonoBehaviour
         //wall jump here if conditions met
         if((wallLeft || wallRight) && verticalInput > 0 && AboveGround()){
             if(Input.GetKeyDown(jumpKey)){
+                wallJumpReady = false;
                 WallJump();
+
+                Invoke(nameof(ResetJump), wallJumpCD);
             }
         }
+    }
+
+    
+    private void ResetJump(){
+        wallJumpReady = true;
+        Debug.Log("jump reset");
     }
 }
