@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    [Header("Sensitivity")]
-  
     public float xSense;
     public float ySense;
 
