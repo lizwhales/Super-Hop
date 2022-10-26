@@ -75,7 +75,7 @@ public class WallJumping : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         //wall jump here if conditions met
-        if((wallLeft || wallRight) && verticalInput > 0 && AboveGround()){
+        if((wallLeft || wallRight) && verticalInput > 0 && AboveGround() && wallJumpReady){
             if(Input.GetKeyDown(jumpKey)){
                 wallJumpReady = false;
                 WallJump();
