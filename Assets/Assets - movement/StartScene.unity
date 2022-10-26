@@ -538,7 +538,7 @@ MonoBehaviour:
   speed: 7
   groundDrag: 3
   jumpForce: 8
-  jumpCD: 0.5
+  jumpCD: 5
   airMultipler: 0.8
   wallRunSpeed: 0
   orientation: {fileID: 933514470}
@@ -589,24 +589,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e24e45fd5a47ba45b5c699f410bf073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whatIsWall:
-    m_Bits: 264
-  whatIsGround:
-    m_Bits: 8
-  wallSlideForce: 0
-  wallClimbSpeed: 10
-  maxWallRunTime: 10
-  upwardsRunKey: 9
-  upwardsRunning: 0
-  horizontalInput: 0
-  verticalInput: 0
-  wallCheckDistance: 0.7
-  minJumpHeight: 0.1
-  wallLeft: 0
-  wallRight: 0
-  orientation: {fileID: 933514470}
-  pm: {fileID: 0}
-  rb: {fileID: 0}
 --- !u!114 &606448567
 MonoBehaviour:
   m_ObjectHideFlags: 0
