@@ -4,7 +4,8 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
  
-    public static float timerDuration = 1f * 115f; // TIMER DURATION can change later
+    public static float timerDuration = 1f * 235f; // TIMER DURATION can change later
+    public static float timerDurationProcedural = 1f * 55f;
     public static float timeAdded = 5f;
     public static float timer;
     [SerializeField]
@@ -23,9 +24,13 @@ public class Timer : MonoBehaviour
     public GameObject objPanel;
     // set curr time to time duration, etc.
     
+    
+    
     void Start()
     {
-        ResetTimer();
+        GameObject level = GameObject.Find("Level_ID");
+        string levelFile = level.GetComponent<LevelID>().LevelFile;
+        ResetTimer(levelFile);
     }
 
     void Update()
@@ -63,8 +68,18 @@ public class Timer : MonoBehaviour
         objPanel.SetActive(false);
     }
 
-    void ResetTimer(){
-        timer = timerDuration;
+    void ResetTimer(string level){
+        
+        
+        if (level == "Procedural")
+        {
+            timer = timerDurationProcedural;
+        }
+        else
+        {
+            timer = timerDuration;
+        }
+        
         AddTime();
     }
 

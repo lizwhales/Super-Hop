@@ -10,7 +10,7 @@ public class CoinCounter : MonoBehaviour
 
     public void Start()
     {   
-        addCoins(10);
+        addCoins(5);
     }
 
     public static void addCoins(int amount) {
