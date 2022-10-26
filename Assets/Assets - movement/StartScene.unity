@@ -539,7 +539,7 @@ MonoBehaviour:
   groundDrag: 3
   jumpForce: 8
   jumpCD: 0.5
-  airMultipler: 0.4
+  airMultipler: 0.8
   wallRunSpeed: 0
   orientation: {fileID: 933514470}
   playerHeight: 2
