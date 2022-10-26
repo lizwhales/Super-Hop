@@ -7,6 +7,7 @@ public class UI : MonoBehaviour
 {
 
     public static bool PausedGame = false;
+    
     public GameObject _pauseMenu;
     public GameObject _crosshair;
     public GameObject _winPanel;
@@ -16,10 +17,11 @@ public class UI : MonoBehaviour
     public GameObject level1Text;
     public GameObject level2Text;
     public GameObject level3Text;
+    public GameObject endlessText;
 
     GameObject gameScripts;
     string levelIdentifier;    
-
+    bool tutClosed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,11 +38,16 @@ public class UI : MonoBehaviour
         // Set up Tutorial Text
         gameScripts = GameObject.Find("GameScripts");
         levelIdentifier = gameScripts.GetComponent<LevelGenerator>().levelFile;
+        tutClosed = false;
+        AddTutText();
+    }
 
+    public void AddTutText(){
         if (levelIdentifier == "Assets/Levels/level_1.txt")
         {
             level3Text.SetActive(false);
             level2Text.SetActive(false);
+            endlessText.SetActive(false);
             level1Text.SetActive(true);
         }
         
@@ -48,14 +55,24 @@ public class UI : MonoBehaviour
         {
             level3Text.SetActive(false);
             level1Text.SetActive(false);
+            endlessText.SetActive(false);
             level2Text.SetActive(true);
         }
 
-        if (levelIdentifier == "Assets/Levels/ice_level.txt")
+        if (levelIdentifier == "Assets/Levels/level_3.txt")
         {
             level1Text.SetActive(false);
             level2Text.SetActive(false);
+            endlessText.SetActive(false);
             level3Text.SetActive(true);
+        }
+
+        if (levelIdentifier == "Procedural")
+        {
+            level1Text.SetActive(false);
+            level2Text.SetActive(false);
+            level3Text.SetActive(false);
+            endlessText.SetActive(true);
         }
     }
 
@@ -74,6 +91,31 @@ public class UI : MonoBehaviour
                 ResumeGame();
             } else {
                 PauseGame();
+            }
+        }
+
+        if (tutClosed == false){
+            if (Input.anyKey && levelIdentifier == "Assets/Levels/level_1.txt")
+            {
+                RemoveTutText();
+                tutClosed = true;
+                level1Text.SetActive(false);
+
+            } else if (Input.anyKey && levelIdentifier == "Assets/Levels/level_2.txt")
+            {
+                RemoveTutText();
+                tutClosed = true;
+                level2Text.SetActive(false);
+            } else if (Input.anyKey && levelIdentifier == "Assets/Levels/level_3.txt")
+            {
+                RemoveTutText();
+                tutClosed = true;
+                level3Text.SetActive(false);
+            } else if (Input.anyKey && levelIdentifier == "Procedural")
+            {
+                RemoveTutText();
+                tutClosed = true;
+                endlessText.SetActive(false);
             }
         }
     }
