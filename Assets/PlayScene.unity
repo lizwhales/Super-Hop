@@ -6660,12 +6660,16 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
+      propertyPath: airSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
       propertyPath: jumpForce
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
       propertyPath: groundDrag
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
       propertyPath: walljumping
@@ -6774,7 +6778,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
-  wallJumpCD: 5
+  wallJumpCD: 3
   wallCheckDistance: 1
   minJumpHeight: 0.1
   orientation: {fileID: 3064703747219033449}

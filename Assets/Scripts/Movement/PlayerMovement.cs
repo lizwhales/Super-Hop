@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-  
+    
+    public float airSpeed;
     public float speed;
     public float groundDrag;
 
@@ -106,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
 
         // in air
         else if(!grounded)
-            rb.AddForce(moveDirection.normalized * speed * 10f * airMultipler, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * airSpeed * 8f * airMultipler, ForceMode.Force);
     }
 
     // limit movement bc player is flying all over the plce
