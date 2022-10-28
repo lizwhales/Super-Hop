@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SliderControl : MonoBehaviour
+public class AudioControl : MonoBehaviour
 {
     private static readonly string FirstTime = "FirstTime";
     private int firstTimeInt;
+    private float bgFloat;
 
+    public static AudioControl instance;
     [SerializeField] public Slider bgSlider;
-    // [SerializeField] public Slider sfxSlider;
 
     public AudioSource bgAudio;
-    // public AudioSource[] sfxAudio;
     
     void Start()
         {
@@ -20,36 +20,45 @@ public class SliderControl : MonoBehaviour
 
             if(firstTimeInt == 0)
             {
-                PlayerPrefs.SetFloat("BGVolume", 1);
-                // PlayerPrefs.SetFloat("SFXVolume", 1);
+                PlayerPrefs.SetFloat("BGVolume", 0.75f);
                 PlayerPrefs.SetInt(FirstTime,  -1);
-                Load();
+                LoadSettings();
             }
             else
             {
-                Load();
+                LoadSettings();
             }
         }
+
+    private void OnSceneLoaded()
+    {
+        DontDestroyOnLoad(this.gameObject);
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        LoadSettings();
+    }
+
+    public void LoadSettings()
+    {
+        bgFloat = PlayerPrefs.GetFloat("BGVolume");
+        bgSlider.value = bgFloat;
+        bgAudio.volume = bgFloat;
+    }    
 
     public void ChangeVolume()
         {
             bgAudio.volume = bgSlider.value;
-
-            // for( int i = 0; i < sfxAudio.Length; i++)
-            // {
-            //     sfxAudio[i].volume = sfxSlider.value;
-            // }
-
             Save();
         }
 
-        private void Load(){
-            bgSlider.value = PlayerPrefs.GetFloat("BGVolume");
-            // sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
-        }
-
-        public void Save(){
+    public void Save(){
             PlayerPrefs.SetFloat("BGVolume", bgSlider.value);
-            // PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
         }
 }
