@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class MusicControlScript : MonoBehaviour
 {
     public static MusicControlScript instance;
-    private float bgFloat, sfxFloat;
+    private float bgFloat;
+    // private float sfxFloat;
 
     [SerializeField] public Slider bgSlider;
-    [SerializeField] public Slider sfxSlider;
+    // [SerializeField] public Slider sfxSlider;
     
     public AudioSource bgAudio;
-    public AudioSource[] sfxAudio;
+    // public AudioSource[] sfxAudio;
 
     private void OnSceneLoaded()
     {
@@ -33,15 +34,15 @@ public class MusicControlScript : MonoBehaviour
     public void LoadSettings()
     {
         bgFloat = PlayerPrefs.GetFloat("BGVolume");
-        sfxFloat = PlayerPrefs.GetFloat("SFXVolume");
+        // sfxFloat = PlayerPrefs.GetFloat("SFXVolume");
 
         bgSlider.value = bgFloat;
-        sfxSlider.value = sfxFloat;
+        // sfxSlider.value = sfxFloat;
 
         bgAudio.volume = bgFloat;
-        for(int i = 0; i < sfxAudio.Length; i++){
-            sfxAudio[i].volume = sfxFloat;
-        }
+        // for(int i = 0; i < sfxAudio.Length; i++){
+        //     sfxAudio[i].volume = sfxFloat;
+        // }
     }    
 
    

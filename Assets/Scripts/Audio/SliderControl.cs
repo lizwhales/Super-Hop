@@ -9,10 +9,10 @@ public class SliderControl : MonoBehaviour
     private int firstTimeInt;
 
     [SerializeField] public Slider bgSlider;
-    [SerializeField] public Slider sfxSlider;
+    // [SerializeField] public Slider sfxSlider;
 
     public AudioSource bgAudio;
-    public AudioSource[] sfxAudio;
+    // public AudioSource[] sfxAudio;
     
     void Start()
         {
@@ -21,7 +21,7 @@ public class SliderControl : MonoBehaviour
             if(firstTimeInt == 0)
             {
                 PlayerPrefs.SetFloat("BGVolume", 1);
-                PlayerPrefs.SetFloat("SFXVolume", 1);
+                // PlayerPrefs.SetFloat("SFXVolume", 1);
                 PlayerPrefs.SetInt(FirstTime,  -1);
                 Load();
             }
@@ -35,21 +35,21 @@ public class SliderControl : MonoBehaviour
         {
             bgAudio.volume = bgSlider.value;
 
-            for( int i = 0; i < sfxAudio.Length; i++)
-            {
-                sfxAudio[i].volume = sfxSlider.value;
-            }
+            // for( int i = 0; i < sfxAudio.Length; i++)
+            // {
+            //     sfxAudio[i].volume = sfxSlider.value;
+            // }
 
             Save();
         }
 
         private void Load(){
             bgSlider.value = PlayerPrefs.GetFloat("BGVolume");
-            sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+            // sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
         }
 
         public void Save(){
             PlayerPrefs.SetFloat("BGVolume", bgSlider.value);
-            PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
+            // PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
         }
 }
