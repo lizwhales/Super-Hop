@@ -23,9 +23,12 @@ public class PlayerMovement : MonoBehaviour
     [Header("onSurface")]
 
     public float playerHeight;
+    public float coyoteTime;
     public LayerMask Ground;
  
     bool grounded;
+    
+    float groundedTime;
     
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -47,26 +50,37 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         jumpReady = true;
+        groundedTime = coyoteTime;
     }
 
     private void Update(){
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, Ground);
-        
+
+        if (!grounded) {
+            groundedTime -= Time.deltaTime;
+            if (groundedTime > 0.00F) {
+                grounded = true;
+            }
+        } else {
+            groundedTime = coyoteTime;
+        }
+
+        // Drag
+        var v = rb.velocity;
+        v.y = 0f;
+        v = -v * v.magnitude;
+        rb.AddForce(groundDrag * v);
 
         PlayerInput();
         LimitSpeed();
         StateHandler();
 
-        // ground drag
-        if (grounded) {
-            rb.drag = groundDrag;
-        } else {
-            rb.drag = 0;
-        }
+
     }
 
     private void FixedUpdate(){
+        LimitSpeed();
         MovePlayer();
     }
 
@@ -76,6 +90,8 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetKey(jumpKey) && grounded && jumpReady){
             jumpReady = false;
+            grounded = false;
+            groundedTime = 0.0F;
             Jump();
 
             // jump over and over again whn pressing space
@@ -102,12 +118,16 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = orientation.forward * upDown + orientation.right * leftRight;
         
          // on ground
-        if(grounded)
+        if(grounded) {
             rb.AddForce(moveDirection.normalized * speed * 10f, ForceMode.Force);
+        }
+            
 
         // in air
-        else if(!grounded)
-            rb.AddForce(moveDirection.normalized * airSpeed * 8f * airMultipler, ForceMode.Force);
+        else if(!grounded) {
+            rb.AddForce(moveDirection.normalized * airSpeed * 10f * airMultipler, ForceMode.Force);
+        }
+            
     }
 
     // limit movement bc player is flying all over the plce
@@ -126,6 +146,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+
     }
 
     private void ResetJump(){

@@ -6657,19 +6657,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
       propertyPath: speed
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
       propertyPath: airSpeed
-      value: 5
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
       propertyPath: jumpForce
-      value: 8
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
+      propertyPath: coyoteTime
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
       propertyPath: groundDrag
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
       propertyPath: walljumping
@@ -6681,11 +6685,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
       propertyPath: airMultipler
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
       propertyPath: wallRunSpeed
-      value: 7
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
       propertyPath: IceSurface.m_Bits
