@@ -238,6 +238,7 @@ public class ProceduralGenerator : MonoBehaviour
             levelText[lineCounter] = slice;
             lineCounter++;
         }
+        levelText[lineCounter-1] = levelText[lineCounter-1].Remove(levelText[lineCounter-1].Length - 1, 1);
 
         return System.String.Join("\r\n", levelText);
 
