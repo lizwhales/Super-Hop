@@ -66,7 +66,7 @@ public class ProceduralGenerator : MonoBehaviour
         }
 
         // Delete random floors
-        float platformDensity = 0.2F;
+        float platformDensity = 0.1F;
         for (int i = 0; i < LEVEL_WIDTH; i++) {
             for (int j = 0; j < LEVEL_DEPTH; j++) {
                 for (int k = 0; k < LEVEL_HEIGHT; k++) {
@@ -80,7 +80,7 @@ public class ProceduralGenerator : MonoBehaviour
         }
 
         // Add some coins and spikes on platforms
-        float coinPlatformDensity = 0.2F;
+        float coinPlatformDensity = 0.1F;
         float spikePlatformDensity = 0.1F;
         for (int i = 0; i < LEVEL_WIDTH; i++) {
             for (int j = 0; j < LEVEL_DEPTH; j++) {
@@ -121,7 +121,7 @@ public class ProceduralGenerator : MonoBehaviour
         }
 
         // Add some coins in air
-        float coinAirDensity = 0.05F;
+        float coinAirDensity = 0.03F;
         for (int i = 0; i < LEVEL_WIDTH; i++) {
             for (int j = 0; j < LEVEL_DEPTH; j++) {
                 for (int k = 0; k < LEVEL_HEIGHT; k++) {
@@ -238,6 +238,7 @@ public class ProceduralGenerator : MonoBehaviour
             levelText[lineCounter] = slice;
             lineCounter++;
         }
+        levelText[lineCounter-1] = levelText[lineCounter-1].Remove(levelText[lineCounter-1].Length - 1, 1);
 
         return System.String.Join("\r\n", levelText);
 
