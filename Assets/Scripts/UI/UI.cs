@@ -42,6 +42,43 @@ public class UI : MonoBehaviour
         AddTutText();
     }
 
+    // Update is called once per frame
+    void Update()
+    { // Prevent menu from opening if the win or lose panel is active
+        if (Input.GetKeyDown(KeyCode.Escape) && !_winPanel.activeInHierarchy && !_losePanel.activeInHierarchy){
+            if (PausedGame){
+                ResumeGame();
+            } else {
+                PauseGame();
+            }
+        }
+
+        if (tutClosed == false){
+            if (Input.anyKey && levelIdentifier == "Assets/Levels/level_1.txt")
+            {
+                RemoveTutText();
+                tutClosed = true;
+                level1Text.SetActive(false);
+
+            } else if (Input.anyKey && levelIdentifier == "Assets/Levels/level_2.txt")
+            {
+                RemoveTutText();
+                tutClosed = true;
+                level2Text.SetActive(false);
+            } else if (Input.anyKey && levelIdentifier == "Assets/Levels/level_3.txt")
+            {
+                RemoveTutText();
+                tutClosed = true;
+                level3Text.SetActive(false);
+            } else if (Input.anyKey && levelIdentifier == "Procedural")
+            {
+                RemoveTutText();
+                tutClosed = true;
+                endlessText.SetActive(false);
+            }
+        }
+    }
+
     public void AddTutText(){
         if (levelIdentifier == "Assets/Levels/level_1.txt")
         {
@@ -81,43 +118,6 @@ public class UI : MonoBehaviour
         Cursor.visible = false;
         Time.timeScale = 1f;
         _crosshair.SetActive(true);
-    }
-
-    // Update is called once per frame
-    void Update()
-    { // Prevent menu from opening if the win or lose panel is active
-        if (Input.GetKeyDown(KeyCode.Escape) && !_winPanel.activeInHierarchy && !_losePanel.activeInHierarchy){
-            if (PausedGame){
-                ResumeGame();
-            } else {
-                PauseGame();
-            }
-        }
-
-        if (tutClosed == false){
-            if (Input.anyKey && levelIdentifier == "Assets/Levels/level_1.txt")
-            {
-                RemoveTutText();
-                tutClosed = true;
-                level1Text.SetActive(false);
-
-            } else if (Input.anyKey && levelIdentifier == "Assets/Levels/level_2.txt")
-            {
-                RemoveTutText();
-                tutClosed = true;
-                level2Text.SetActive(false);
-            } else if (Input.anyKey && levelIdentifier == "Assets/Levels/level_3.txt")
-            {
-                RemoveTutText();
-                tutClosed = true;
-                level3Text.SetActive(false);
-            } else if (Input.anyKey && levelIdentifier == "Procedural")
-            {
-                RemoveTutText();
-                tutClosed = true;
-                endlessText.SetActive(false);
-            }
-        }
     }
 
     public void PauseGame(){
@@ -160,6 +160,10 @@ public class UI : MonoBehaviour
         _crosshair.SetActive(false);
         ManagePauseMenu();
         SceneManager.LoadScene(0);
+    }
+
+    public void RestartLevel(){
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame(){
