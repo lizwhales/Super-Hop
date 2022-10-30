@@ -75,13 +75,9 @@ public class PlayerMovement : MonoBehaviour
         PlayerInput();
         LimitSpeed();
         StateHandler();
-
-
-    }
-
-    private void FixedUpdate(){
-        LimitSpeed();
         MovePlayer();
+
+
     }
 
     private void PlayerInput(){
