@@ -18,8 +18,6 @@ public class ObjectPlacer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Will need to remove this later v
-        //CoinCounter.addCoins(100);
         buildables.Add(PlayerCube.Instance);
         buildables.Add(PlayerRamp.Instance);
         buildables.Add(PlayerColumn.Instance);

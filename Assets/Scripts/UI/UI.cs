@@ -23,7 +23,6 @@ public class UI : MonoBehaviour
     string levelIdentifier;    
     bool tutClosed = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         // Set up Cursor and Time
@@ -53,7 +52,8 @@ public class UI : MonoBehaviour
             }
         }
 
-        if (tutClosed == false){
+        if (tutClosed == false)
+        {
             if (Input.anyKey && levelIdentifier == "Assets/Levels/level_1.txt")
             {
                 RemoveTutText();
@@ -79,7 +79,8 @@ public class UI : MonoBehaviour
         }
     }
 
-    public void AddTutText(){
+    public void AddTutText()
+    {
         if (levelIdentifier == "Assets/Levels/level_1.txt")
         {
             level3Text.SetActive(false);
@@ -113,14 +114,16 @@ public class UI : MonoBehaviour
         }
     }
 
-    public void RemoveTutText(){
+    public void RemoveTutText()
+    {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1f;
         _crosshair.SetActive(true);
     }
 
-    public void PauseGame(){
+    public void PauseGame()
+    {
         Time.timeScale = 0f;
         PausedGame = true;
         _pauseMenu.SetActive(true);
@@ -129,7 +132,8 @@ public class UI : MonoBehaviour
         Cursor.visible = true;
     }
 
-    public void ResumeGame(){
+    public void ResumeGame()
+    {
         Time.timeScale = 1f;
         PausedGame = false;
         Cursor.visible = false;
@@ -139,7 +143,8 @@ public class UI : MonoBehaviour
         ManagePauseMenu();
     }
 
-    public void ManagePauseMenu(){
+    public void ManagePauseMenu()
+    {
         GameObject pauseMainMenu = _pauseMenu.transform.GetChild(0).GetChild(0).gameObject;
         GameObject optionsMenu = _pauseMenu.transform.GetChild(0).GetChild(1).gameObject;
 
@@ -150,7 +155,8 @@ public class UI : MonoBehaviour
         }
     }
 
-    public void MainMenu(){
+    public void MainMenu()
+    {
         _pauseMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -162,11 +168,13 @@ public class UI : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void RestartLevel(){
+    public void RestartLevel()
+    {
         SceneManager.LoadScene(1);
     }
 
-    public void QuitGame(){
+    public void QuitGame()
+    {
         Application.Quit();
     }
 }

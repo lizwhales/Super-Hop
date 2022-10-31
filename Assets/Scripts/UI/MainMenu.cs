@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     GameObject levelIdentifier;
-    // Start is called before the first frame update
+    
     void Start()
     {
         Screen.SetResolution(1920, 1080, true);
@@ -14,29 +14,36 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public void playLevel1(){
+    public void playLevel1()
+    {
         
         levelIdentifier.GetComponent<LevelID>().LevelFile = "Assets/Levels/level_1.txt";  
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1); 
     }
-    public void playLevel2(){
+
+    public void playLevel2()
+    {
         
         levelIdentifier.GetComponent<LevelID>().LevelFile = "Assets/Levels/level_2.txt";  
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
-    public void playLevel3(){
+
+    public void playLevel3()
+    {
         
         levelIdentifier.GetComponent<LevelID>().LevelFile = "Assets/Levels/level_3.txt";  
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 
-    public void endlessLevel(){
+    public void endlessLevel()
+    {
         
         levelIdentifier.GetComponent<LevelID>().LevelFile = "Procedural";  
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 
-    public void QuitGame(){
+    public void QuitGame()
+    {
         Application.Quit();
     }
 }

@@ -85,7 +85,6 @@ Shader "Glow/CameraGlowShader"
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 mainTexture = tex2D(_FinalTex, i.uv);
-                //return mainTex;
                 fixed4 blurMap = tex2D(_GBlurMap, i.uv);
                 return mainTexture + (blurMap*_Intensity);
             }
