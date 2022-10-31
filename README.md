@@ -214,8 +214,6 @@ In the third pass the shadow of the object is cast to the scene.
 Shader file to be evaluated: ./Assets/Shaders/CameraGlowShader.shader
 ```
 
-  
-
 This glow is a post-processing effect that works in two stages of the rendering journey. Firstly, a command buffer is made to run the `CmdDepthShader` before image effects are applied. Chosen objects in the scene have the `GlowObj` script attached to them and are then added into the set of Glow Objects in `GlowRender`. From the `GlowRender` script the selected object is drawn onto a black Render Texture (RT) in the chosen glow colour. This process involves creating a depth map to see if there is something blocking the object. If so, then the parts which are hidden are not drawn to the RT.
 
 Once the RT is completed, the second stage of the process begins. The RT from the first stage becomes a global texture to be accessed in `GlowPostProcess`. This script which is attached to the camera then grabs a copy of the scene before glow is applied, then downsamples and upsamples the newly made global texture with a box blur. That RT is then applied to the copy of the final scene and blitted into the destination RT, which is what is displayed on the player’s screen.
@@ -223,6 +221,10 @@ Once the RT is completed, the second stage of the process begins. The RT from th
 Further improvements which could be made on this effect is the way the blur is handled, as well as allowing more customization for the colour and strength of the glow.
 
 It should be noted that the bloom effect acts in a similar way to the glow effect. The bloom shader downsamples, upsamples, and uses a box blur. The key difference between the two is that the bloom shader acts on the entire scene and only makes changes to the pixel based on if the red colour value is above a certain threshold.
+
+<p align="center">
+  <img src="Gifs/GlowShader.gif" width="500">
+</p>
 
 #### Particle Effects
 The particle system implemented in Super Hop emits particles from the goal object which the player aims to collect in order to complete a level. The particle system can be located in the `./Assets/Assets - level` directory and is contained in the `GoalParticles` prefab under the name `Orbs`. The purpose of the particle system is to increase the appeal of reaching the goal, and also helps differentiate the goal objects from other objects such as coins.
@@ -247,6 +249,10 @@ In total there were 11 participants that tested Super Hop. Information about Pla
 Most of the participants were male (81.8%), with the majority of users being between 21-26 years of age (63.7%). It was also noted that most users (45.5%) invested more than 20+ hours per week on games whilst 100% of participants selected PC as the primary platform of gaming. 
 
 Regarding primarily played game genres there were many variations, however it was distinct that RPG (63.6%), MOBA (72.7%) , MMORPG (63.6%)  and FPS (63.6%)  were the core genres of experience within testers - with the Platforming genre deprioritized (27.3%). Information regarding a participant’s presumed overall gaming skill level was also highlighted in order to be contrasted towards their presumed confidence level concerning platform games.  54.5% of users rated their overall gaming abilities extremely highly, however when asked to rate their skills in platformers, majority (63.7%)  filled in responses close to not confident or neutral. 
+
+<p align="center">
+  <img src="Documentation\ReportImages\GameSkills.png" width="500">
+</p>
 
 #### 2. Methodology
 There was a set workflow employed by each team member in regards to user testing. This involved getting participants to watch the Super Hop trailer as a preliminary step. Next, the game was provided via a zip file on GoogleDrive where various observational methods (see 2.2) were employed whilst the user plays the game. Whilst the participant is playing and giving feedback, each team member is expected to record this data either textually or through a screen capture/ video recording. As the participant concludes their play test of Super Hop, they are queried on their experience through a GoogleForm Questionnaire. If there are any circumstances under a team member’s discretion where more information is needed about a certain area of critique from a user, a supplementary interview can be held to gain a more detailed insight if needed. 
@@ -287,10 +293,17 @@ There were a range of responses that varied within the feedback received by part
 
 Thus these areas became the basis of fixes and features applied within the final sprint. 
 
+<p align="center">
+  <img src="Documentation\ReportImages\LeastGE.png" width="500">
+</p>
+
 Concerning Game Impressions there was a spread of responses concerning how challenging Super Hop was for each user. It is noted that 36.4% viewed Super Hop as ‘not that challenging’ whilst 27.3% saw the game as “quite challenging”. This result may be correlated towards the demographic of participants sampled where the majority (54.5%) rated their gaming abilities highly. Additionally, 63.7% of users agreed after watching the trailer that Super Hop’s gameplay matched very-extremely well with the trailer provided. 
 
+<p align="center">
+  <img src="Documentation\ReportImages\PlatGameSkill.png" width="500">
+</p>
+
 #### 4. Changes Made
-Feedback implemented:
 * Air movement was nerfed overall.
   * Top speed and acceleration were decreased.
   * Air drag was implemented.

@@ -1,5 +1,4 @@
 # Glow and Bloom Effect Shaders
-### Table of contents
 <p align="center">
   <img src="Glow&Bloom IMGs/GB_000.png" width="300">
 </p>
