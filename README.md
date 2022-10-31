@@ -98,7 +98,6 @@ In regards to ‘losing’ within a level, there are two ways where a player can
 
 ---
 ### Gameplay Design
-#### Design Decisions
 **Timer for Urgency:**
 The timer acts as a medium to add a sense of urgency within players, prompting them to complete each level within a timeframe or lose. The usage of coins in conjunction with the timer adds a greater level of depth as players are incentivized to go out of their way to reach coins not only for building but especially within Endless mode, to gather coins for more time. There was an active decision to make the timer and coin relationship unstackable. In simple terms if the timer’s starting time is 2:00, it will never exceed its starting time even if a player collects many coins. I.e the timer could be at 1:57 and if a player collects a coin and adds 5 seconds to their in-game timer, it will never exceed the starting time of 2:00. This makes the game more challenging and exciting for the player.
 
@@ -117,7 +116,7 @@ In addition to the classic platforms, two unique platform materials were created
 These two different platform blocks add variability within the gameplay both mechanically and visually, both challenging a player’s grasp of the game’s movement and adding to the games “vaporwave” aesthetic. Furthermore, this gameplay design decision forces players to stay engaged within each level by paying attention to variations within platforms and their effect on player movement.
   
 
-#### Procedural Generation
+### Procedural Generation
 Procedural generation is used to create endless mode by generating random platforms, obstacles, and coins. The endless mode level is generated 20 platform lengths at a time, hiding unloaded sections behind an opaque wall and loading it when the player reaches 200 units within the wall, unloading the wall in the process.
 
 To generate a section of the endless level, a Perlin noise generator is queried at regular intervals to create a continuous terrain of platforms. Then platforms are randomly deleted to create a corridor of spare platforms. This results in what appears to be random placements of platforms, but with close platforms at similar heights. The advantage of this over completely randomly placed platforms is it prevents close platforms having large vertical distances, which is difficult and frustrating in gameplay, while still allowing platforms far apart to be vertically separated - leading to emergent challenging gameplay that still feels fair and predictable.
@@ -144,7 +143,7 @@ Very little assets are taken from the assets store in Unity such as the ramp, co
 
 When discussing if we should use more assets from the unity store, we concluded that the emphasis should be on the shader applied to the object, and that it would not be productive to look for premade assets which fit the aesthetic we are hoping to achieve. The decisions made are the results of tradeoffs and balances, such as the amount of attention provided to a limited set of models as opposed to quickly working on a large variety.
 
-Given the way levels are generated in Super Hop, all of the rendered objects in a level, with the exception of the player, are generated from prefabs. This can introduce extra costs by considering the way shaders are used in Unity (attached to materials) and how the same object is required to be duplicated for variance in design. Despite this repetition, distinguishable entities are created with the custom shaders through the use of colour.
+Given the way levels are generated in Super Hop, all of the rendered objects in a level, with the exception of the player, are generated from prefabs. Despite this repetition, distinguishable entities are created with the custom shaders through the use of colour.
 
 When considering on what sort of shader(s) we would implement, we looked at the key characteristics of both the synth-wave and outrun art style.
 
@@ -160,11 +159,11 @@ The characteristics we focused on are as such:
 This led us to the creation of the following custom shaders: cel shader, bloom shader, and glow shader. 
 These can be found in `./Assets/Shaders` and out of the three, the _cel shader_ and the _glow shader_ are the two which are to be evaluated.
 
-These shaders enhance the visuals of the game by being the visuals, working in conjunction with one another. Without the effects provided in these shaders, we would not be able to achieve the characteristics which are iconic to the inspirations we draw from. Furthermore, cel shading aids our goal of clean and simple. Cel shading typically does not utilize textures, and textures can add a layer of visual information which can overload the player. Regarding the glow and bloom effect, the glow enhances the neon colours, whereas the bloom helps intensify the brightness of the rendered frame.
+These shaders enhance the visuals of the game by being the visuals, working in conjunction with one another. Without the effects provided in these shaders, we would not be able to achieve the characteristics which are iconic to the inspirations we draw from. Furthermore, cel shading aids our goal of clean and simple. Cel shading typically does not utilize textures and textures can add a layer of visual information which can overload the player. Regarding the glow and bloom effect, the glow enhances the neon colours, whereas the bloom helps intensify the brightness of the rendered frame.
 
 Super Hop uses Unity’s Built-in Render Pipeline with the forward rendering path. The main focus of these custom shaders is in regard to the drawing and post-processing operations.
 
-#### Cel Shader
+### Cel Shader
 ```
 -Shader
 ./Assets/Shaders/CelShader.shader
@@ -190,11 +189,11 @@ In the first pass, all the effects besides the object outline is applied. The st
 4.  Composite the results of 1 to 3.
 5.  Apply fog (based on the distance from the player to the object)
 
-In the second pass the object outline is created with the fog also being calculated to ensure the outline does not stand out in the fog. This pass has limitations as the outline can affect other objects, which may produce some visual bugs for the player.
+In the second pass the object outline is created with the fog also being calculated to ensure the outline does not stand out in the fog.
 
 In the third pass the shadow of the object is cast to the scene.
 
-#### Glow Shader
+### Glow Shader
 ```
 – Shader
 ./Assets/Shaders/CameraGlowShader.shader
@@ -218,15 +217,13 @@ This glow is a post-processing effect that works in two stages of the rendering 
 
 Once the RT is completed, the second stage of the process begins. The RT from the first stage becomes a global texture to be accessed in `GlowPostProcess`. This script which is attached to the camera then grabs a copy of the scene before glow is applied, then downsamples and upsamples the newly made global texture with a box blur. That RT is then applied to the copy of the final scene and blitted into the destination RT, which is what is displayed on the player’s screen.
 
-Further improvements which could be made on this effect is the way the blur is handled, as well as allowing more customization for the colour and strength of the glow.
-
-It should be noted that the bloom effect acts in a similar way to the glow effect. The bloom shader downsamples, upsamples, and uses a box blur. The key difference between the two is that the bloom shader acts on the entire scene and only makes changes to the pixel based on if the red colour value is above a certain threshold.
-
 <p align="center">
   <img src="Gifs/GlowShader.gif" width="500">
 </p>
 
-#### Particle Effects
+It should be noted that the bloom effect acts in a similar way to the glow effect. The bloom shader downsamples, upsamples, and uses a box blur. The key difference between the two is that the bloom shader acts on the entire scene and only makes changes to the pixel based on if the red colour value is above a certain threshold.
+
+### Particle Effects
 The particle system implemented in Super Hop emits particles from the goal object which the player aims to collect in order to complete a level. The particle system can be located in the `./Assets/Assets - level` directory and is contained in the `GoalParticles` prefab under the name `Orbs`. The purpose of the particle system is to increase the appeal of reaching the goal, and also helps differentiate the goal objects from other objects such as coins.
 
 The main attributes of the particle system that were incorporated were Emission, Shape, Velocity over Lifetime, Colour over Lifetime, Size over Lifetime, Noise, and Trails.
@@ -241,8 +238,9 @@ A sphere was chosen as the shape of the emitter. This is in accordance with the 
 
 The amount of particles emitted per second was chosen with trial and error. The value chosen was 70, this was keeping in mind that too many particles can not only be distracting to the player, but also more expensive to render, and could cause FPS drops. Too few particles, and the effect of the particle system is too underwhelming and doesn’t achieve its purpose of drawing the players attention.
 
-### Evaluation and Feedback
+---
 
+### Evaluation and Feedback
 #### 1. Demographics
 In total there were 11 participants that tested Super Hop. Information about Player Demographics were collected through the Player Demographic section of the Google Form Questionnaire. A brief overview about the user statistics showed that:
 
@@ -287,8 +285,8 @@ There were a range of responses that varied within the feedback received by part
 * No restart button for endless mode: it is tedious to replay the game from main menu options each time after losing in endless mode
 * Endless mode white box bug: there is a random white box/ hole in the wall within endless mode 
 * Death box broken in Endless mode: the death box does not work all the time 
-* Levels were too long/ not enough time to complete each level
-* Default volume too loud 
+* Levels were too long / not enough time to complete each level
+* Default volume is too loud 
 * Issues with text being broken at times
 
 Thus these areas became the basis of fixes and features applied within the final sprint. 
@@ -300,6 +298,7 @@ Thus these areas became the basis of fixes and features applied within the final
 Concerning Game Impressions there was a spread of responses concerning how challenging Super Hop was for each user. It is noted that 36.4% viewed Super Hop as ‘not that challenging’ whilst 27.3% saw the game as “quite challenging”. This result may be correlated towards the demographic of participants sampled where the majority (54.5%) rated their gaming abilities highly. Additionally, 63.7% of users agreed after watching the trailer that Super Hop’s gameplay matched very-extremely well with the trailer provided. 
 
 <p align="center">
+  <img src="Documentation\ReportImages\GameDiff.png" width="500">
   <img src="Documentation\ReportImages\PlatGameSkill.png" width="500">
 </p>
 
