@@ -79,7 +79,7 @@ public class LevelGenerator : MonoBehaviour
     string[][] readLayerText(int layer, string text) {
         string [] layers = Regex.Split(text, "#");
         string curLayer = layers[layer];
-        string[] lines = Regex.Split(curLayer, ",\r\n");
+        string[] lines = Regex.Split(curLayer, ",\n");
         for (int k = 0; k < lines.Length; k++){
         }
         int rows = lines.Length;
