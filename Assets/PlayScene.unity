@@ -6487,7 +6487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
       propertyPath: airMultipler
-      value: 1.5
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 723418005896816067, guid: 3b4abafaff609ea4691ef130e02cf0d0, type: 3}
       propertyPath: wallRunSpeed
