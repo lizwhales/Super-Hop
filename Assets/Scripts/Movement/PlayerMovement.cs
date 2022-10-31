@@ -52,7 +52,17 @@ public class PlayerMovement : MonoBehaviour
         jumpReady = true;
         groundedTime = coyoteTime;
     }
+    private void FixedUpdate() {
+        
 
+        var v = rb.velocity;
+        v.y = 0f;
+        v = -v * v.magnitude;
+        rb.AddForce(groundDrag * v);
+        MovePlayer();
+        PlayerInput();
+        LimitSpeed();
+    }
     private void Update(){
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, Ground);
@@ -67,15 +77,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Drag
-        var v = rb.velocity;
-        v.y = 0f;
-        v = -v * v.magnitude;
-        rb.AddForce(groundDrag * v);
+        // var v = rb.velocity;
+        // v.y = 0f;
+        // v = -v * v.magnitude;
+        // rb.AddForce(groundDrag * v);
 
-        PlayerInput();
-        LimitSpeed();
+        // PlayerInput();
+        // LimitSpeed();
         StateHandler();
-        MovePlayer();
+        // MovePlayer();
 
 
     }

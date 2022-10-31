@@ -66,7 +66,7 @@ public class ProceduralGenerator : MonoBehaviour
         }
 
         // Delete random floors
-        float platformDensity = 0.1F;
+        float platformDensity = 0.13F;
         for (int i = 0; i < LEVEL_WIDTH; i++) {
             for (int j = 0; j < LEVEL_DEPTH; j++) {
                 for (int k = 0; k < LEVEL_HEIGHT; k++) {
@@ -121,7 +121,7 @@ public class ProceduralGenerator : MonoBehaviour
         }
 
         // Add some coins in air
-        float coinAirDensity = 0.03F;
+        float coinAirDensity = 0.05F;
         for (int i = 0; i < LEVEL_WIDTH; i++) {
             for (int j = 0; j < LEVEL_DEPTH; j++) {
                 for (int k = 0; k < LEVEL_HEIGHT; k++) {
