@@ -64,6 +64,10 @@ A lot of collaboration has been done between the team members, with the use of V
 
 <!-- [[EndTeamworkPlan]] PLEASE LEAVE THIS LINE UNTOUCHED -->
 ## Final report
+### NOTE - BUILD RELATED
+After building the game, please move `./Assets/Levels/` to the build folder. The levels will not generate without these files.
+You can create your own levels with this folder as well!
+
 ### Game Summary
 
 _Super Hop_ is an exciting first-person 3D strategic running game. The aim of this game is to survive each timed level by making it to a goal point at the end of each map. In a race against time, you must use your allocated amount of blocks wisely to pave a path towards the end goal, whilst collecting coins to continue forging your way forwards and keep your timer from ticking to zero. Hop your way to victory with complex movement mechanics such as wall sliding and wall jumping! But beware, not all tiles you step on are as equal as others - one wrong block could send you plummeting to death. Currently playable in two modes: levelled and endless.
@@ -74,7 +78,6 @@ _Super Hop_ is an exciting first-person 3D strategic running game. The aim of th
 * [Technologies](#technologies)
 * [How To Play](#how-to-play)
 * [Gameplay Design](#gameplay-design)
-	* [Design Decisions](#design-decisions)
 	* [Procedural Generation](#procedural-generation)
 * [Graphics](#graphics)
 	* [Shader #1](#cel-shader)
