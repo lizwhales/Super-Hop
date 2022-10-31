@@ -50,10 +50,6 @@ public class WallJumping : MonoBehaviour
     {
         wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallhit, wallCheckDistance, whatIsWall);
         wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallhit, wallCheckDistance, whatIsWall);
-
-        if(wallLeft){
-            Debug.Log("left hit");
-        }
     }
 
     private bool AboveGround()
@@ -88,6 +84,5 @@ public class WallJumping : MonoBehaviour
     
     private void ResetJump(){
         wallJumpReady = true;
-        Debug.Log("jump reset");
     }
 }

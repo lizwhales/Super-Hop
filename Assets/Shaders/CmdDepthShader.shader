@@ -3,7 +3,6 @@ Shader "Glow/CmdDepthShader"
     // Used in the GlowObj script with the GlowTargetMat
     Properties
     {
-        // _MainTex ("Texture", 2D) = "white" {}
         _GlowColor ("Glow Color", Color) = (1,0,0,1)
     }
 

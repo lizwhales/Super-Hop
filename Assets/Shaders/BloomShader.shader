@@ -104,7 +104,7 @@ Shader "Custom/BloomShader"
         Pass // 3 - Bloom Pass
         {
             CGPROGRAM
-                float _Intensity;// = 1;
+                float _Intensity;
                 sampler2D _BloomPassRT;
                 float4 _BloomPassRT_TexelSize;
                 float scale = 0.5;

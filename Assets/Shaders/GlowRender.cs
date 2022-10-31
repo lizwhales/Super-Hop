@@ -14,7 +14,6 @@ public class GlowSystem
             if (instant == null)
             {
                 instant = new GlowSystem();
-                // Debug.Log("Getting new GlowSystem");
             }
             return instant;
         }
@@ -26,15 +25,14 @@ public class GlowSystem
     {
         Remove(o);
         glowObjs.Add(o);
-        // Debug.Log(Time.time + ": Added Object " + o.gameObject.name);
     }
 
     public void Remove(GlowObj o)
     {
         glowObjs.Remove(o);
-        // Debug.Log(Time.time + ": Removed Object " + o.gameObject.name);
     }
 }
+
 public class GlowRender : MonoBehaviour
 {
     private CommandBuffer glowCMD;
@@ -73,11 +71,10 @@ public class GlowRender : MonoBehaviour
 
         // Make new CMD Buffer with RT for the object mask
         glowCMD = new CommandBuffer();
-        // Debug.Log("New CommandBuffer created!");
         glowCMD.name = "Glow Buffer"; // Visible in Frame Debugger
         cameras[cam] = glowCMD;
 
-        // Create an instance of the Glow SYstem
+        // Create an instance of the Glow System
         var glowSystem = GlowSystem.instance;
         
         // Temporary RT for the object mask
@@ -97,8 +94,8 @@ public class GlowRender : MonoBehaviour
             if (r && glowMat){ glowCMD.DrawRenderer(r, glowMat); }
         }
 
-        // Taken outside the foreach so the render isn't done several tiems over
-        // Make this  RT global and add the CMD buffer to the pipeline
+        // Taken outside the foreach so the render isn't done several times over
+        // Make this RT global and add the CMD buffer to the pipeline
         glowCMD.SetGlobalTexture("_GlowMap", tmpID);
         cam.AddCommandBuffer(CameraEvent.BeforeImageEffects, glowCMD);
     }

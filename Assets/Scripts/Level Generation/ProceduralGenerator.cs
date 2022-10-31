@@ -155,12 +155,10 @@ public class ProceduralGenerator : MonoBehaviour
                         levelArray[i, k, j] = '-';
                     }
                 }
-
             }
         }
 
         string levelText = buildLevelText(levelArray);
-        Debug.Log(levelText);
         return levelText;
     }
 

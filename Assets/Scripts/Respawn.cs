@@ -13,23 +13,24 @@ public class Respawn : MonoBehaviour
     
     public int spikePenalty = 3;
     private float z;
-    void Start(){
+    void Start()
+    {
         kb = GameObject.Find("KillBox");
         kbPos = kb.transform.position;
     }
-    void Update() {
+    void Update()
+    {
         z = player.transform.position.z;
         kb.transform.position = new Vector3(kbPos.x, kbPos.y, z);
     }
+    
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "DeathTrigger")
         {
-            Debug.Log("Player has collided with the death trigger!");
             RespawnPoint();
         } else if (other.gameObject.tag == "Obstacle") {
             CoinCounter.removeCoins(spikePenalty);
-            Debug.Log("3 Coins lost!");
             RespawnPoint();
         }
     }
@@ -44,9 +45,6 @@ public class Respawn : MonoBehaviour
             UI.transform.Find("Timer").GetComponent<Timer>().LoseGame();
         } else {
             transform.position = spawnPoint.position;
-            Debug.Log("respawning");
         }
-
-
     }
 }

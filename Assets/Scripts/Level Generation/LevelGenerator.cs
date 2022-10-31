@@ -78,12 +78,9 @@ public class LevelGenerator : MonoBehaviour
 
     string[][] readLayerText(int layer, string text) {
         string [] layers = Regex.Split(text, "#");
-        //Debug.Log("number of layers: "+ layers.Length);
         string curLayer = layers[layer];
         string[] lines = Regex.Split(curLayer, ",\r\n");
-        //Debug.Log("This is layer: " + layer);
         for (int k = 0; k < lines.Length; k++){
-            // Debug.Log(lines[k]);
         }
         int rows = lines.Length;
     
@@ -235,7 +232,6 @@ public class LevelGenerator : MonoBehaviour
     {
         GameObject level = GameObject.Find("Level_ID");
         levelFile = level.GetComponent<LevelID>().LevelFile;
-        Debug.Log("LevelGenerator.cs: " + levelFile);
         if (levelFile == "Procedural")
         {
             loadProceduralLevel(NUM_LAYERS);

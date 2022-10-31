@@ -104,14 +104,14 @@ Shader "Custom/CelShader"
                     lightFalloff = posterize(_PosterizeDiffuse, lightFalloff);
                 }
 
-                // Direct diffues light
+                // Direct diffuse light
                 i.diffuse = lightFalloff * _LightColor0;
                 float4 diffuseLight = i.diffuse + (_AmbientLight*_AmbientModifier);
 
                 // Direct Specular light. Dir from object to camera, need to define view vector
                 float3 camPos = _WorldSpaceCameraPos;
                 float3 fragToCam = camPos - i.worldPos;
-                float3 viewDir = normalize (fragToCam);
+                float3 viewDir = normalize(fragToCam);
                 float3 viewReflect = reflect(-viewDir, normal);
 
                 float specularFalloff = max(0,dot(viewReflect, lightDir));
@@ -122,10 +122,10 @@ Shader "Custom/CelShader"
                     specularFalloff = posterize(_PosterizeSpecular, specularFalloff);
                 }
 
-                //specularFalloff = step(_SpecularStep, specularFalloff);
+
                 float4 directSpecular = _LightColor0 * specularFalloff;
 
-                // Inner glow outline from Elizabeth
+                // Inner glow outline
                 float glowDot = 1 - dot(viewDir, normal);
                 float glowIntensity = smoothstep(_GlowAmount - 0.01, _GlowAmount + 0.01, glowDot);
                 float4 glow = glowIntensity * _GlowColor;
@@ -136,7 +136,6 @@ Shader "Custom/CelShader"
 
                 // FOG
                 float distToObject = i.dis-_MinDistance;
-                // float distToObject = i.dis;
                 float frac = clamp((_MaxDistance - distToObject) / (_MaxDistance), 0.0, 1.0);
                 frac = sqrt(frac);
                 fixed4 objectFrac = frac * col;
